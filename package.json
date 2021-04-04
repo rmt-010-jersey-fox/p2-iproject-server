@@ -1,0 +1,30 @@
+{
+  "name": "MyFinance",
+  "version": "1.0.0",
+  "description": "MyFinance is App for manage your financial, i created this project because there is financeApp not totally free.\r Hope you enjoying this app :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizqizulfian/MyFinance.git"
+  },
+  "keywords": [],
+  "author": "M Rizqi Zulfian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rizqizulfian/MyFinance/issues"
+  },
+  "homepage": "https://github.com/rizqizulfian/MyFinance#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
