@@ -16,8 +16,6 @@ module.exports = {
         table: 'Tournaments',
         field: 'id'
       },
-      onDelete: 'setnull',
-      onUpdate: 'setnull'
     });
     await queryInterface.addConstraint('Teams', {
       fields: ['TournamentId'],
