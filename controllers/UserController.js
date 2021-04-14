@@ -1,5 +1,3 @@
-
-
 class UserController{
   static register(req, res, next)
 }
