@@ -5,11 +5,12 @@ const { BookUser, Book, User } = require('../models')
 
 class userController {
     static register(req, res, next) {
-        let { email, password } = req.body;
-        User.create({ email: email, password: password })
+        let { username, email, password } = req.body;
+        User.create({  username, email, password})
             .then(data => {
                 let user = {
                     id: data.id,
+                    username: data.username,
                     email: data.email
                 }
                 res.status(200).json(user)
@@ -23,6 +24,7 @@ class userController {
                 if (data && compare(password, data.password)) {
                     let loggedUser = {
                         id: data.id,
+                        username: data.username,
                         email: data.email
                     }
                     let token = generateToken(loggedUser)
@@ -37,6 +39,7 @@ class userController {
     static googleLogin(req, res, next) {
         let { id_token } = req.body
         let email = ""
+        let name = ""
         const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
         client.verifyIdToken({
             idToken: id_token,
@@ -44,6 +47,7 @@ class userController {
         })
             .then(ticket => {
                 const payload = ticket.getPayload()
+                username = payload.name,
                 email = payload.email
                 return User.findOne({ where: { email } })
             })
@@ -53,6 +57,7 @@ class userController {
                 }
                 else {
                     return User.create({
+                        username: username,
                         email: email,
                         password: Math.random() * 1000000 + 'passwordGoogle'
                     })
@@ -61,6 +66,7 @@ class userController {
             .then(user => {
                 let token = generateToken({
                     id: user.id,
+                    username: user.username,
                     email: user.email
                 })
                 res.status(200).json({ token })

@@ -1,10 +1,7 @@
 [
     {
+        "username" : "tes",
         "email": "tes@gmail.com",
-        "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
-    },
-    {
-        "email": "tes1@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     }
 ]

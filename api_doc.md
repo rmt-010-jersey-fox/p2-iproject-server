@@ -21,6 +21,7 @@ ecommerce is an application for shopping.
 _Request Body_
 ```
 {
+  "username": "<string>",
 	"email": "<string>",
 	"password": "<string>"
 }
@@ -29,6 +30,7 @@ _Response (201)_
 ```
 {
 	"id": <integer>,
+  "username": "<string>",
 	"email": "<string>"
 }
 ```
