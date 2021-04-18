@@ -19,7 +19,19 @@ module.exports = (sequelize, DataTypes) => {
     TeamId: DataTypes.INTEGER,
     position: DataTypes.INTEGER,
     TournamentId: DataTypes.INTEGER,
-    score: DataTypes.INTEGER
+    score: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: {
+          args: [0],
+          msg: 'minimum score is 0'
+        },
+        max: {
+          args: [3],
+          msg: 'maximum score is 3'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Bracket',

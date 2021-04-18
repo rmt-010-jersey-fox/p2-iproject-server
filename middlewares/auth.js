@@ -22,23 +22,34 @@ function authenticate (req, res, next) {
 }
 
 function authorizeUserTournamnet (req, res, next) {
-  let id = req.params.id
-  let UserId = req.loggedUser.id
-  Tournament.findOne({ where: { id }})
-    .then((data) => {
-      if(data) {
-        if(data.UserId === UserId) {
-          next()
+  if(req.params.id) {
+    let id = req.params.id
+    let UserId = req.loggedUser.id
+    Tournament.findOne({ where: { id }})
+      .then((data) => {
+        if(data) {
+          if(data.UserId === UserId) {
+            next()
+          } else {
+            throw { name: 'unauthorized' }
+          }
         } else {
-          throw { name: 'unauthorized' }
+          throw { name: 'notournament' }
         }
-      } else {
-        throw { name: 'notournament' }
-      }
-    })
-    .catch((err) => {
-      next(err)
-    })
+      })
+      .catch((err) => {
+        next(err)
+      })
+  } else {
+    Tournament.findOne({ where: { UserId: req.loggedUser.id }})
+      .then((data) => {
+        req.loggedUser.TournamentId = data.id
+        next()
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
 }
 
 module.exports = { authenticate, authorizeUserTournamnet }
