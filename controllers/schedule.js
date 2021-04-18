@@ -1,87 +1,92 @@
-const { Schedule, Doctor } = require('../models')
-
+const { Schedule, Doctor, Poli } = require("../models");
 class ScheduleCtrl {
   static async getSchedules(req, res, next) {
+    //untuk history pasien
     try {
       let getAll = await Schedule.findAll({
         where: {
-          UserId: req.userData.id
-        }, inclde: Doctor
-      })
-      res.status(200).json(getAll)
+          PatientId: req.userData.id,
+        },
+        include: {
+          model: Doctor,
+          include: Poli,
+        },
+      });
+      res.status(200).json(getAll);
     } catch (error) {
-      next({ status: 500, message: 'Internal server error'})
+      next({ status: 500 });
     }
   }
 
   static async postSchedules(req, res, next) {
+    // pasien daftar berobat
     let toPost = {
       date: req.body.date,
-      UserId: req.userData.id,
-      DoctorId: req.body.doctorId    }
+      PatientId: +req.userData.id,
+      DoctorId: +req.body.DoctorId,
+    };
     try {
-      let created = await Schedule.create(toPost)
-      res.status(201).json(created)
+      let created = await Schedule.create(toPost);
+      res.status(201).json(created);
     } catch (error) {
-      if (error.name === 'SequelizeValidationError') {
-        let arrErr = []
-        error.errors.forEach(err => arrErr.push(err.message))
-        res.status(400).json({message: arrErr})
+      if (error.name === "SequelizeValidationError") {
+        let arrErr = [];
+        error.errors.forEach((err) => arrErr.push(err.message));
+        res.status(400).json({ message: arrErr });
       } else {
-        next({status: 500, message: 'Internal server error'})
+        next({ status: 500 });
       }
     }
   }
 
   static async getById(req, res, next) {
+    // untuk populate edit by pk
     try {
-      let getSchedule = await Schedule.findByPk(+req.params.id, { include: Doctor })
-      res.status(200).json(getSchedule)
+      let getSchedule = await Schedule.findByPk(+req.params.id, {
+        include: {
+          model: Doctor,
+          include: Poli,
+        },
+      });
+      res.status(200).json(getSchedule);
     } catch (error) {
-      next({status: 500, message: 'Internal server error'})
-    }
-  }
-
-  static async patchById(req, res, next) {
-    let toPatch = { status: req.body.status }
-    try {
-      await Schedule.update(toPatch, {
-        where: {
-        id: +req.params.id
-        }
-      })
-      res.status(200).json({message: `Status berhasil diubah menjadi ${req.body.status}`})
-    } catch (error) {
-      next({status: 500, message: 'Internal server error'})
+      next({ status: 500 });
     }
   }
 
   static async putById(req, res, next) {
+    //update berobat
     let toPut = {
-      DoctorId: +req.body.doctorId,
-      status: req.body.status,
-      date: req.body.date
-    }
+      DoctorId: +req.body.DoctorId,
+      date: req.body.date,
+    };
     try {
       await Schedule.update(toPut, {
         where: {
-        id: +req.params.id
-        }
-      })
-      res.status(200).json({message: 'Data jadwal berobat berhasil diubah'})
+          id: +req.params.id,
+        },
+      });
+      res.status(200).json({ message: "Data jadwal berobat berhasil diubah" });
     } catch (error) {
-      next({status: 500, message: 'Internal server error'})
+      if (error.name === "SequelizeValidationError") {
+        let arrErr = [];
+        error.errors.forEach((err) => arrErr.push(err.message));
+        next({ status: 400, message: arrErr });
+      } else {
+        next({ status: 500 });
+      }
     }
   }
 
   static async deleteById(req, res, next) {
+    //hapus history berobat
     try {
-      await Schedule.destroy({ where: { id: +req.params.id } })
-      res.status(200).json({message: 'Jadwal berobat berhasil dihapus'})
+      await Schedule.destroy({ where: { id: +req.params.id } });
+      res.status(200).json({ message: "Jadwal berobat berhasil dihapus" });
     } catch (error) {
-      next({status: 500, message: 'Internal server error'})
+      next({ status: 500 });
     }
   }
 }
 
-module.exports = ScheduleCtrl
+module.exports = ScheduleCtrl;
