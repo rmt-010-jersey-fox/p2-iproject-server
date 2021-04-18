@@ -9,7 +9,7 @@ function errorhandling(err, req, res, next) {
       res.status(400).json({ message: error })      
     break;
     case 'invalidlogin':
-      res.status(400).json({ message: 'Invalid Email/Password' })      
+      res.status(403).json({ message: 'Invalid Email/Password' })      
     break;
 
     default:

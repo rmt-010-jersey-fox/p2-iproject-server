@@ -8,14 +8,16 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.addConstraint('Users', {
-      fields: ['TournamentId'],
+    await queryInterface.addConstraint('Tournaments', {
+      fields: ['UserId'],
       type: 'foreign key',
-      name: 'custom_fkey_constraint_Users-TournamentId',
+      name: 'custom_fkey_constraint_UsersId-Tournament',
       references: { //Required field
-        table: 'Tournaments',
+        table: 'Users',
         field: 'id'
       },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('Teams', {
       fields: ['TournamentId'],
