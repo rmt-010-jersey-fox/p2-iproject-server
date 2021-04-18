@@ -35,6 +35,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Bracket',
+    hooks: {
+      beforeCreate(instance, option) {
+        instance.score = 0
+      }
+    }
   });
   return Bracket;
 };
