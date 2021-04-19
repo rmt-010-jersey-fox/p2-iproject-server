@@ -20,8 +20,4 @@ app.use(function errorHandler(error, req, res, next) {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("Cangcimen. kacang kwaci permen harga " + PORT);
-});
-
 module.exports = app;

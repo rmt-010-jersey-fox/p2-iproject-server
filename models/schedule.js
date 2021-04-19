@@ -26,10 +26,17 @@ module.exports = (sequelize, DataTypes) => {
           isDate: {
             msg: "Pilih tanggal berobat anda",
           },
-          isAfter: {
-            args: new Date().toISOString(),
-            msg:
-              "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok",
+          afterToday(value) {
+            let date = new Date().getDate();
+            let month;
+            if (new Date().getMonth() <= 8) {
+              month = `0${new Date().getMonth() + 1}`;
+            } else {
+              month = new Date().getMonth();
+            }
+            let year = new Date().getFullYear();
+            if (value <= `${year}-${month}-${date}`)
+              throw "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok";
           },
         },
       },

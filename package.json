@@ -4,9 +4,9 @@
   "description": "Individual Project server site",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit --runInBand",
-    "dev": "set NODE_ENV=development&& nodemon app.js",
-    "start": "node app.js"
+    "test": "jest --detectOpenHandles --forceExit --runInBand --coverage",
+    "dev": "set NODE_ENV=development&& nodemon bin/www.js",
+    "start": "node bin/www.js"
   },
   "repository": {
     "type": "git",

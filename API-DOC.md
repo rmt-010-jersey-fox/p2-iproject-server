@@ -145,6 +145,14 @@ _Response (200 - OK)_
 ]
 ```
 
+_Response (401 - Unauthorize)_
+
+```
+  {
+    "message": "Harap login terlebih dahulu"
+  }
+```
+
 _Response (500 - Internal Server Error)_
 
 ```
@@ -189,6 +197,14 @@ _Response (400 - Bad Request)_
 ```
   {
     "message": "["Anda belum memilih dokter", "Pilih tanggal berobat anda", "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok"]"
+  }
+```
+
+_Response (401 - Unauthorize)_
+
+```
+  {
+    "message": "Harap login terlebih dahulu"
   }
 ```
 
@@ -333,6 +349,14 @@ _Request Body_
 
 ```
 Not needed
+```
+
+_Response (200 - OK)_
+
+```
+{
+  "message": "Jadwal berobat berhasil dihapus"
+}
 ```
 
 _Respponse (401 - Unauthorize)_
