@@ -1,3 +1,4 @@
+const nextpos = require('../helpers/nextPost')
 const { Tournament, User, Team, Bracket } = require('../models')
 
 class BracketController{
@@ -41,6 +42,36 @@ class BracketController{
         } else {
           throw { name: 'error' }
         }
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
+
+  static addWinnertoNextBracket(req, res, next) {
+    let winnerId = +req.params.id
+    let input
+    Bracket.findOne({ where: { id: winnerId }})
+      .then((data) => {
+        let winnerPost = data.position
+        let nextposition = nextpos(winnerPost)
+        input = {
+          TeamId: data.TeamId,
+          position: nextposition,
+          TournamentId: data.TournamentId,
+          score: data.score
+        }
+        return Bracket.findOne({ where: { TournamentId: data.TournamentId, position: nextposition }})
+      })
+      .then((data) => {
+        if(data){
+          throw { name: 'alreadyadvanced' }
+        } else {
+          return Bracket.create(input)
+        }
+      })
+      .then((data) => {
+        res.status(201).json(data)
       })
       .catch((err) => {
         next(err)

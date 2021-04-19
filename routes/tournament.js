@@ -7,5 +7,6 @@ tournament.get('/:id', TournamentController.getBracketByTournamentId)
 tournament.use(authenticate)
 tournament.post('/', TournamentController.addTournament)
 tournament.put('/:id', authorizeUserTournamnet, TournamentController.editTournament)
+tournament.delete('/:id', authorizeUserTournamnet, TournamentController.finishTournament)
 
 module.exports = tournament

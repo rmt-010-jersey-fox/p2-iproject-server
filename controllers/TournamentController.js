@@ -68,6 +68,16 @@ class TournamentController {
         next(err)
       })
   }
+
+  static finishTournament(req, res, next) {
+    Tournament.destroy({ where: { id: req.params.id }})
+      .then((data) => {
+        res.status(200).json({ message: 'Tournament has finished' })
+      })
+      .catch((err) => [
+        next(err)
+      ])
+  }
 }
 
 module.exports = { TournamentController }
