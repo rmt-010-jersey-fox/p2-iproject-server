@@ -39,7 +39,7 @@ class userController {
     static googleLogin(req, res, next) {
         let { id_token } = req.body
         let email = ""
-        let name = ""
+        let username = ""
         const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
         client.verifyIdToken({
             idToken: id_token,
@@ -49,6 +49,7 @@ class userController {
                 const payload = ticket.getPayload()
                 username = payload.name,
                 email = payload.email
+                // console.log(username);
                 return User.findOne({ where: { email } })
             })
             .then(user => {
