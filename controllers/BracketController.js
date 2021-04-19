@@ -30,6 +30,22 @@ class BracketController{
         next(err)
       })
   }
+
+  static editScoreBracket(req, res, next) {
+    let id = req.params.id
+    let score = req.body.score
+    Bracket.update({ score }, { where: { id }, returning: true })
+      .then((data) => {
+        if(data[0] == 1){
+          res.status(200).json(data[1][0])
+        } else {
+          throw { name: 'error' }
+        }
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
 }
 
 module.exports = { BracketController }

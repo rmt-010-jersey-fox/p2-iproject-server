@@ -5,6 +5,6 @@ const bracket = require('express').Router()
 bracket.use(authenticate)
 bracket.use(authorizeUserTournamnet)
 bracket.post('/', BracketController.addTeamtoBracket)
-// bracket.put('/:id', TeamController.editTeam)
+bracket.patch('/:id', BracketController.editScoreBracket)
 
 module.exports = bracket

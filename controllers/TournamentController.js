@@ -1,4 +1,4 @@
-const { Tournament, User, Team } = require('../models')
+const { Tournament, User, Team, Bracket } = require('../models')
 
 class TournamentController {
   static addTournament(req, res, next) {
@@ -51,6 +51,16 @@ class TournamentController {
 
   static getTournament(req, res, next) {
     Tournament.findAll({ include: { model: User, attributes: ['id', 'email'] } })
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
+
+  static getBracketByTournamentId(req, res, next) {
+    Bracket.findAll({ where: { TournamentId: req.params.id }, include: Team})
       .then((data) => {
         res.status(200).json(data)
       })
