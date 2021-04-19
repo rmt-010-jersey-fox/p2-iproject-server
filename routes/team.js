@@ -4,6 +4,7 @@ const team = require('express').Router()
 
 team.use(authenticate)
 team.use(authorizeUserTournamnet)
+team.get('/', TeamController.getTeam)
 team.post('/', TeamController.addTeam)
 team.put('/:id', TeamController.editTeam)
 
