@@ -32,6 +32,10 @@ function errorHandler(err, req, res, next) {
     code = 404
     message = "Card with this Id is not found"
 
+  } else if(err.name === "InvalidAnswerType") {
+    code = 404
+    message = "Answer type is not valid"
+
   } else if(err.name === "JsonWebTokenError") {
     code = 401
     message = "Invalid Access Token: You are not authenticated"

@@ -1,4 +1,4 @@
-const {Deck, Card} = require("../models")
+const {User, Deck, Card} = require("../models")
 
 class CardController {
   static async showOne(req, res, next) {
@@ -66,13 +66,14 @@ class CardController {
   }
 
   static async masteryUpdate(req, res, next) {
+    if(!req.body.answer) throw {name: "InvalidAnswerType"}
+
     let today = new Date()
     let newDue = new Date()
-    console.log('AAAAAAAAA <<<<<<<<<<<<<<<<<')
 
-    let input = {
-      mastery: req.body.mastery,
-      due: newDue.setDate(today.getDate() + 1 + +req.body.mastery)
+    let input = { 
+      mastery: +req.body.mastery,
+      due: newDue.setDate(today.getDate() + 1 + +req.body.mastery) //jadwalkan card untuk muncul lagi
     }
 
     try {
@@ -81,6 +82,31 @@ class CardController {
           id: +req.params.id
         }
       })
+
+      //update XP user
+      let gainedXP = 0
+      let cleared = 0
+
+      if(req.body.answer !== "again") {
+        let multiplier = input.mastery
+        cleared = 1
+        
+        if(multiplier > 10) multiplier = 10
+
+        if(req.body.answer === "good") {
+          gainedXP = 3 * multiplier
+  
+        } else if (req.body.answer === "hard") {
+          gainedXP = multiplier + 1
+  
+        } 
+
+        await User.increment({exp: gainedXP, cardsCleared: cleared}, {
+          where: {
+            id: +req.user.id
+          }
+        })
+      }
 
       res.status(200).json({newMastery: input.mastery})
     }
