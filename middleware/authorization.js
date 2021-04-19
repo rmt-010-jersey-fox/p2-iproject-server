@@ -1,8 +1,8 @@
 const { Book, BookUser } = require('../models')
 
 function authorization(req, res, next) {
-    let bookId = req.params.id
-    BookUser.findOne({ where: { bookId, userId: req.loggedUser.id } })
+    let isbn = req.params.id
+    BookUser.findOne({ where: { isbn, userId: req.loggedUser.id } })
         .then(book => {
             if (book) {
                 next()

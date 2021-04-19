@@ -2,7 +2,8 @@ const { Book } = require('../models')
 
 class BookController {
     static findAll(req, res, next) {
-        let {category} = req.body
+        let category = req.params.category
+        // console.log(req.body);
         Book.findAll({ where: { category , status : 'new'}})
             .then(data => {
                 res.status(200).json(data)
