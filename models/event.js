@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Event.belongsTo(models.User)
+      Event.belongsTo(models.Game)
     }
   };
   Event.init({
@@ -51,7 +52,8 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    GameId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Event',

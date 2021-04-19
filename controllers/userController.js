@@ -77,6 +77,80 @@ class userController{
             next(err)
         }
     }
+
+    static async getUsers(req, res, next) {
+        try {
+            const users = await User.findAll({exclude: ['email','password']})
+            // const users = await User.findAll()
+            if(!users){
+                throw { status: 404, message: 'Users is not found'}
+            } else {
+                res.status(200).json(users)
+            }
+        } catch (err) {
+            console.log(err)
+            next(err)
+        }
+    }
+
+    static async getUserByPk(req, res, next) {
+        try {
+            const user = await User.findByPk(req.params.id)
+            if (!user) {
+                throw { status: 401, message: 'Unauthorized' }
+            } else {
+                res.status(200).json(user)
+            }
+        } catch (err) {
+            
+        }
+    }
+
+    static async putUser(req, res, next) {
+        try {
+            const { fullname, username, email, password, image } = req.body
+            console.log(req.loggedUser)
+            const user = await User.findByPk(req.loggedUser.id)
+            if(!user) {
+                throw { status: 401, message: 'Unauthorized' }
+            } else {
+                console.log(user)
+                await user.update({ fullname, username, email, password, image }, { where: { id: user.id }})
+                res.status(200).json({ message: 'Profile is updated' })
+            }
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async patchUser(req, res, next) {
+        try {
+            const { status, UserId } = req.body
+            const user = await User.findOne({ where: { id: UserId }})
+            if(!user) {
+                throw { status: 404, message: 'User is not found' }
+            } else {
+                await User.update({ status }, { where: { id: user.id }})
+                res.status(200).json({ message: 'User status has been updated' })
+            }
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async deleteUser(req, res, next) {
+        try {
+            const user = await User.findByPk(req.loggedUser.id)
+            if(!user) {
+                throw { status: 401, message: 'Unauthorized' }
+            } else {
+                await User.destroy({ where: { id: user.id }})
+                res.status(200).json({ message: 'Successfully to delete' })
+            }
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = userController

@@ -12,10 +12,10 @@ class eventController{
 
     static async postEvent(req, res, next){
         try {
-            const { title, content, image, location, date } = req.body
+            const { title, content, image, location, date, GameId } = req.body
             const UserId = req.loggedUser.id
 
-            const newEvent = { title, content, image, location, date }
+            const newEvent = { title, content, image, location, date, GameId, UserId }
             const event = await Event.create(newEvent)
             res.status(201).json(event)
         } catch (err) {
@@ -38,12 +38,13 @@ class eventController{
 
     static async putEvent(req, res, next){
         try {
-            const { title, content, image, location, date } = req.body
+            const { title, content, image, location, date, GameId } = req.body
             const findEvent = await Event.findByPk(req.params.id)
             if(!findEvent){
                 throw { status: 404, message: 'Event is not found'}
             } else {
-                const updateEvent = await Event.update({ title, content, image: image || '', location, date })
+                const updateEvent = await Event.update({ title, content, image: image || '', location, date, GameId },
+                { where: { id: findEvent.id }, returning: true })
                 res.status(200).json(updateEvent[1][0])
             }
         } catch (err) {
@@ -58,6 +59,7 @@ class eventController{
                 throw { status: 404, message: 'Event is not found'}
             } else {
                 const patchEvent = await Event.update({date: req.body.date}, {where: {id: findEvent.id}, returning:true })
+                res.status(200).json(patchEvent[1][0])
             }
         } catch (err) {
             next(err)
