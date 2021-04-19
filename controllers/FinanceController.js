@@ -6,15 +6,15 @@ class FinanceDetailsController {
     static readAll(req, res, next) {
         Finance.findAll()
             .then(response => {
-                res.status(201).json(response)
+                res.status(200).json(response)
             })
             .catch(err => {
                 next(err)
             })
     }
 
-    static findByPk(req, res, next) {
-        Finance.findByPk(+req.currentUser.id)
+    static findByUser(req, res, next) {
+        Finance.findAll({where: {UserId: +req.currentUser.id}})
             .then(response => {
                 res.status(200).json(response)
             })
@@ -23,8 +23,20 @@ class FinanceDetailsController {
             })
     }
 
-    static detail(req, res, next) {
-        Finance.findByPk(+req.params.id)
+    // static detail(req, res, next) {
+    //     Finance.findByPk(+req.params.id)
+    //         .then(response => {
+    //             res.status(201).json(response)
+    //         })
+    //         .catch(err => {
+    //             next(err)
+    //         })
+    // }
+    static create(req, res, next) {
+        const { name } = req.body
+        Finance.create({
+            name, UserId: +req.currentUser.id
+        })
             .then(response => {
                 res.status(201).json(response)
             })

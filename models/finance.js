@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Finance.belongsToMany(models.User, { through: 'FinanceDetail'})
     }
   };
   Finance.init({
@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'Please insert name account'
       }
     },
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    saldo: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Finance',

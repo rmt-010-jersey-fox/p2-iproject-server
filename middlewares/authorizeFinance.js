@@ -1,8 +1,8 @@
 const { Finance } = require('../models')
 
-async function authorize(req, res, next) {
+async function authorizeFinance(req, res, next) {
     try {
-        const id = +req.params.id
+        const id = +req.params.financeId
         const foundFinance = await Finance.findByPk(id)
         if (foundFinance) {
             if (foundFinance.UserId === req.currentUser.id) {
@@ -18,4 +18,4 @@ async function authorize(req, res, next) {
     }
 }
 
-module.exports = { authorize }
+module.exports = { authorizeFinance }
