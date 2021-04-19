@@ -11,6 +11,7 @@ router.post("/register", IndexController.register)
 router.get("/profile/:id", IndexController.userProfile)
 
 router.use(authentication)
+
 router.patch("/profile", IndexController.changeDesc)
 router.use("/decks", decks)
 router.use("/cards", cards)

@@ -1,4 +1,4 @@
-const {Deck} = require("../models")
+const {Deck, Card} = require("../models")
 
 async function authorize(req, res, next) {
   try {
@@ -9,8 +9,14 @@ async function authorize(req, res, next) {
       if(deck.UserId !== +req.user.id) throw {name: "Unauthorized"}
     
       next()
-    } else if(req.baseUrl.includes("cards")) {
 
+    } else if(req.baseUrl.includes("cards")) {
+      let card = await Card.findByPk(+req.params.id, {
+        include: Deck
+      })
+
+      if(!card) throw {name: "CardNotFound"}
+      if(card.Deck.UserId !== +req.user.id) throw {name: "Unauthorized"}
       next()
     }
 

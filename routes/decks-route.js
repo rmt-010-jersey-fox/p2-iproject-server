@@ -7,6 +7,7 @@ router.get("/", DeckController.showAll)
 router.post("/", DeckController.create)
 
 router.use("/:id", authorization)
+
 router.get("/:id", DeckController.showOne)
 router.patch("/:id", DeckController.editName)
 router.delete("/:id", DeckController.delete)

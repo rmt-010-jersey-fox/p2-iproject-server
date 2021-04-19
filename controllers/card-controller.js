@@ -1,19 +1,13 @@
-const {Card} = require("../models")
+const {Deck, Card} = require("../models")
 
 class CardController {
-  static async showAll(req, res, next) {
-    try {
-      res.status(200).json({success: "showAll success"})
-    }
-
-    catch(err) {
-      next(err)
-    }
-  }
-
   static async showOne(req, res, next) {
     try {
-      res.status(200).json({success: "showOne success"})
+      let card = await Card.findByPk(+req.params.id, {
+        include: Deck
+      })
+
+      res.status(200).json(card)
     }
 
     catch(err) {
@@ -22,8 +16,21 @@ class CardController {
   }
 
   static async create(req, res, next) {
+    let input = {
+      DeckId: req.body.DeckId || 0,
+      front: req.body.front || "",
+      back: req.body.back || ""
+    }
+
     try {
-      res.status(201).json({success: "create success"})
+      let foundDeck = await Deck.findByPk(input.DeckId)
+ 
+      if(!foundDeck) throw {name: "DeckNotFound"} //cek apakah punya deck dengan deckid itu
+      if(foundDeck.UserId !== +req.user.id) throw {name: "Unauthorized"} //jika deck memang benar ada, cek apakah itu punya user
+
+      await Card.create(input) 
+
+      res.status(201).json({success: `Card has been successfully added to Deck ${foundDeck.name}`})
     }
 
     catch(err) {
@@ -32,8 +39,25 @@ class CardController {
   }
 
   static async edit(req, res, next) {
+    let input = {
+      DeckId: req.body.DeckId || 0,
+      front: req.body.front || "",
+      back: req.body.back || ""
+    }
+
     try {
-      res.status(200).json({success: "edit success"})
+      let foundDeck = await Deck.findByPk(input.DeckId)
+ 
+      if(!foundDeck) throw {name: "DeckNotFound"} //cek apakah punya deck dengan deckid itu
+      if(foundDeck.UserId !== +req.user.id) throw {name: "Unauthorized"} //jika deck memang benar ada, cek apakah itu punya user
+
+      await Card.update(input, {
+        where: {
+          id: +req.params.id
+        }
+      })
+      
+      res.status(200).json({success: `Card has been successfully updated`})
     }
 
     catch(err) {
@@ -42,8 +66,23 @@ class CardController {
   }
 
   static async masteryUpdate(req, res, next) {
+    let today = new Date()
+    let newDue = new Date()
+    console.log('AAAAAAAAA <<<<<<<<<<<<<<<<<')
+
+    let input = {
+      mastery: req.body.mastery,
+      due: newDue.setDate(today.getDate() + 1 + +req.body.mastery)
+    }
+
     try {
-      res.status(200).json({success: "masteryUpdate success"})
+      await Card.update(input, {
+        where: {
+          id: +req.params.id
+        }
+      })
+
+      res.status(200).json({newMastery: input.mastery})
     }
 
     catch(err) {
@@ -53,7 +92,13 @@ class CardController {
 
   static async delete(req, res, next) {
     try {
-      res.status(200).json({success: "delete success"})
+      await Card.destroy({
+        where: {
+          id: +req.params.id
+        }
+      })
+
+      res.status(200).json({sucess: "Card has been successfully deleted"})
     }
 
     catch(err) {

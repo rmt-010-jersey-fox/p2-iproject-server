@@ -28,6 +28,10 @@ function errorHandler(err, req, res, next) {
     code = 404
     message = "Deck with this Id is not found"
 
+  } else if(err.name === "CardNotFound") {
+    code = 404
+    message = "Card with this Id is not found"
+
   } else if(err.name === "JsonWebTokenError") {
     code = 401
     message = "Invalid Access Token: You are not authenticated"
