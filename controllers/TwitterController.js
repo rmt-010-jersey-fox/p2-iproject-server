@@ -43,7 +43,8 @@ class TwitterController{
               })
             })
             .then((response) => {
-              res.status(200).json({ data: response.data })
+              let data = response.data
+              res.status(200).json({ data })
             })
         } else {
           return axios({
@@ -54,7 +55,8 @@ class TwitterController{
             }
           })
           .then((response) => {
-             res.status(200).json({ data: response.data })
+            let data = response.data
+            res.status(200).json({ data })
           })
         }
 
