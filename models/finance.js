@@ -14,7 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Finance.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      notEmpty: {
+        msg: 'Please insert name account'
+      }
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
