@@ -33,9 +33,9 @@ class FinanceDetailsController {
     //         })
     // }
     static create(req, res, next) {
-        const { name } = req.body
+        const { name, saldo } = req.body
         Finance.create({
-            name, UserId: +req.currentUser.id
+            name, saldo, UserId: +req.currentUser.id
         })
             .then(response => {
                 res.status(201).json(response)

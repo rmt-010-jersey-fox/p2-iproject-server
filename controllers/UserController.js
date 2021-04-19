@@ -18,6 +18,7 @@ class UsersController {
             userEmail = user.email
             return Finance.create({
                 name: 'My Wallet',
+                saldo: 0,
                 UserId: user.id
             })
         })

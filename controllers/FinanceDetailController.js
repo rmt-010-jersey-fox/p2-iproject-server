@@ -19,9 +19,11 @@ class FinanceDetailController {
             })
             const finance = await Finance.findByPk(financeId)
             if (TransactionsType === 'income') {
-                finance.saldo = finance.saldo + amount
+                const saldo = Number(finance.saldo) + Number(amount)
+                await finance.update({ saldo },{ where : { id: financeId } })
             } else {
-                finance.saldo = finance.saldo - amount
+                const saldo = Number(finance.saldo) - Number(amount)
+                await finance.update({ saldo },{ where : { id: financeId } })
             }
             res.status(201).json(create)
         } catch (error) {

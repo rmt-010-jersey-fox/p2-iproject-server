@@ -21,8 +21,17 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     UserId: DataTypes.INTEGER,
-    saldo: DataTypes.INTEGER
+    saldo: {
+      type: DataTypes.INTEGER,
+    }
   }, {
+    hooks: {
+      beforeCreate(finance) {
+        if (finance.saldo === null) {
+          finance.saldo = 0
+        }
+      }
+    },
     sequelize,
     modelName: 'Finance',
   });
