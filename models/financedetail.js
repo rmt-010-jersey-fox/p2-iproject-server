@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
-          msg: 'please choose yout transaction types income / outcome'
+          msg: 'please choose your transaction types income / outcome'
         },
         isIn: {
           args: [['income', 'outcome']],
