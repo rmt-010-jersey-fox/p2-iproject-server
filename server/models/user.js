@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 		static associate(models) {
 			// define association here
 			User.hasMany(models.Cat, { foreignKey: 'UserId' })
-			User.hasOne(models.ChatRoom, { foreignKey })
+			User.hasOne(models.ChatRoom, { foreignKey: 'UserId' })
 		}
 	}
 	User.init(
@@ -73,6 +73,7 @@ module.exports = (sequelize, DataTypes) => {
 	User.addHook('beforeCreate', (user) => {
 		user.password = hashPassword(user.password)
 		user.avatarUrl = `https://avatars.dicebear.com/api/bottle/${user.username}.svg`
+		user.location = 'indonesia'
 	})
 	return User
 }
