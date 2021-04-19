@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull : {
           argss : true,
           msg : "Name is required"
-        }
+        },
+        isAlphanumeric : { msg: 'Name format should only contain letter and number'}
       },
       allowNull : false
     },
@@ -45,7 +46,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       allowNull : false
     },
-    game: DataTypes.STRING
+    game: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Tournament',

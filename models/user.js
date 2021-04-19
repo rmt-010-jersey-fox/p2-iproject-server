@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    TournamentId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
