@@ -1,9 +1,16 @@
-const {Deck} = require("../models")
+const {Deck, Card} = require("../models")
 
 class DeckController {
   static async showAll(req, res, next) {
     try {
-      res.status(200).json({success: "showAll success"})
+      let decks = await Deck.findAll({
+        where: {
+          UserId: +req.user.id
+        },
+        include: Card
+      })
+
+      res.status(200).json(decks)
     }
 
     catch(err) {
@@ -13,7 +20,10 @@ class DeckController {
 
   static async showOne(req, res, next) {
     try {
-      res.status(200).json({success: "showOne success"})
+      let deck = await Deck.findByPk(+req.params.id, {
+        include: Card
+      })
+      res.status(200).json(deck)
     }
 
     catch(err) {
@@ -22,8 +32,15 @@ class DeckController {
   }
 
   static async create(req, res, next) {
+    let input = {
+      name: req.body.name,
+      UserId: +req.user.id
+    }
+
     try {
-      res.status(201).json({success: "create success"})
+      let newDeck = await Deck.create(input)
+
+      res.status(201).json(newDeck)
     }
 
     catch(err) {
@@ -32,8 +49,17 @@ class DeckController {
   }
 
   static async editName(req, res, next) {
+    let input = {
+      name: req.body.name || ""
+    }
     try {
-      res.status(200).json({success: "editName success"})
+      await Deck.update(input, {
+        where: {
+          id: +req.params.id
+        }
+      })
+
+      res.status(200).json({success: "Deck's name has been updated"})
     }
 
     catch(err) {
@@ -43,7 +69,13 @@ class DeckController {
 
   static async delete(req, res, next) {
     try {
-      res.status(200).json({success: "delete success"})
+      await Deck.destroy({
+        where: {
+          id: +req.params.id
+        }
+      })
+
+      res.status(200).json({success: "The deck has been successfully deleted"})
     }
 
     catch(err) {

@@ -86,6 +86,28 @@ class IndexController {
       next(err)
     }  
   }
+
+  static async changeDesc(req, res, next) {
+    let input = {
+      desc: req.body.desc || ""
+    }
+
+    try {
+      let updatedProfile = await User.update(input, {
+        where: {
+          id: +req.user.id
+        }
+      })
+
+      if(!updatedProfile) throw {name: "UserNotFound"}
+
+      res.status(200).json({updatedProfile})
+    }
+
+    catch(err) {
+      next(err)
+    }  
+  }
 }
 
 module.exports = IndexController

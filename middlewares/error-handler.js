@@ -1,6 +1,6 @@
 function errorHandler(err, req, res, next) {
-  // console.log(">>>>>>>>>>>", err.name)
-  // console.log(err, "<<<<<<<<<<<<<")
+  console.log(">>>>>>>>>>>", err.name)
+  console.log(err, "<<<<<<<<<<<<<")
   let code = 500
   let message = "Internal Server Error"
 
@@ -23,7 +23,20 @@ function errorHandler(err, req, res, next) {
   } else if(err.name === "UserNotFound") {
     code = 404
     message = "User with this Id is not found"
+
+  } else if(err.name === "DeckNotFound") {
+    code = 404
+    message = "Deck with this Id is not found"
+
+  } else if(err.name === "JsonWebTokenError") {
+    code = 401
+    message = "Invalid Access Token: You are not authenticated"
+
+  } else if(err.name === "Unauthorized") {
+    code = 401
+    message = "You are not authorized for this action"
   }
+
 
   
   
