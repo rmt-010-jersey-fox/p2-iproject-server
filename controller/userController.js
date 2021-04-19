@@ -28,7 +28,7 @@ class userController {
                         email: data.email
                     }
                     let token = generateToken(loggedUser)
-                    res.status(200).json({ token })
+                    res.status(200).json({ token, username: data.username })
                 }
                 else {
                     next({ status: 401, message: 'invalid password or email' })
@@ -70,7 +70,7 @@ class userController {
                     username: user.username,
                     email: user.email
                 })
-                res.status(200).json({ token })
+                res.status(200).json({ token, username: user.username })
             })
             .catch(next)
     }

@@ -12,6 +12,7 @@ router.post('/login', userController.login)
 router.post('/googleLogin', userController.googleLogin)
 router.get('/nyTimes', NYTimes.fetchData)
 router.get('/books/:category', BookController.findAll)
+router.get('/book/:isbn', BookController.oneBook)
 
 router.use(authentication)
 

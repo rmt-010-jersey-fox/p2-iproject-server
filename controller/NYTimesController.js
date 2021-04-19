@@ -47,7 +47,7 @@ class NYTimes {
                 return Book.bulkCreate(filteredData, {updateOnDuplicate: ["status"]})
             })
             .then(data => {
-                res.status(200).json('input data from NY Times to Database Sucess')
+                res.status(200).json(data)
                 // 'input data from NY Times to Database Sucess'
             })
             .catch(next)
