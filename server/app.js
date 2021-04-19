@@ -19,5 +19,5 @@ app.use(router)
 app.use(errorHandler)
 
 app.listen(port, () => {
-	console.log(`Liste to port ${port}`)
+	console.log(`Listen to port ${port}`)
 })

@@ -5,7 +5,7 @@ const { verifyToken, signToken } = require('../helpers/jwt')
 class UserController {
 	static async register(req, res, next) {
 		const { username, email, password } = req.body
-
+		console.log(username)
 		try {
 			let user = await User.create({
 				username,
@@ -19,6 +19,7 @@ class UserController {
 				id: user.id,
 			})
 		} catch (error) {
+			console.log(error)
 			next(error)
 		}
 	}

@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 
-const hashPasword = function (password) {
+const hashPassword = function (password) {
 	return bcrypt.hashSync(password, 8)
 }
 const verifyPassword = function (password, passDb) {
@@ -8,6 +8,6 @@ const verifyPassword = function (password, passDb) {
 }
 
 module.exports = {
-	hashPasword,
+	hashPassword,
 	verifyPassword,
 }
