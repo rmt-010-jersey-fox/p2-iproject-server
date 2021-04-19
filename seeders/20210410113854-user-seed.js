@@ -10,6 +10,7 @@ module.exports = {
         password: hashPassword("lilily"),
         exp: 2341,
         cardsCleared: 764,
+        desc: "app untuk memorization nano!",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -19,6 +20,7 @@ module.exports = {
         password: hashPassword("pass123"),
         exp: 0,
         cardsCleared: 0,
+        desc: "desc kosong juga gapapa",
         createdAt: new Date(),
         updatedAt: new Date()
       }

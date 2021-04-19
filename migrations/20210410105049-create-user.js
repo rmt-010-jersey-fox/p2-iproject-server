@@ -10,11 +10,13 @@ module.exports = {
       },
       username: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING,
@@ -25,6 +27,9 @@ module.exports = {
       },
       cardsCleared: {
         type: Sequelize.INTEGER
+      },
+      desc: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

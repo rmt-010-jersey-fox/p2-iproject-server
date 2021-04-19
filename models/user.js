@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       let residualXP = this.exp
       let requiredXP = 10 //base
 
-      while(residualXP > requiredXP) {
+      while(residualXP >= requiredXP) {
         residualXP -= requiredXP
         level ++
 
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           requiredXP += 10
         } else if(level <= 10) {
           requiredXP = 100 + (25 * (level - 5))
-        } else if(level <= 20) {
+        } else if(level <= 25) {
           requiredXP = 30 * level
         } else {
           requiredXP = 1000
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
 
       return {
         level,
-        nextLevel: residualXP
+        nextLevel: requiredXP- residualXP
       }
     }
   };
@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: "Please fill your email"
         },
-        isAlphanumeric: {
+        isEmail: {
           msg: "Please fill your email with a correct format: example@mail.com"
         }
       }
@@ -82,12 +82,14 @@ module.exports = (sequelize, DataTypes) => {
   },
 
     exp: DataTypes.INTEGER,
-    cardsCleared: DataTypes.INTEGER
+    cardsCleared: DataTypes.INTEGER,
+    desc: DataTypes.STRING,
   }, {
     hooks: {
       beforeCreate: (user, options) => {
         user.exp = 0
         user.cardsCleared = 0
+        user.desc = ''
         user.password = hashPassword(user.password)
       }
     },

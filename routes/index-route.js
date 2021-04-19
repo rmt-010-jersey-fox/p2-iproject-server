@@ -7,7 +7,7 @@ const cards = require("./cards-route")
 router.post("/login", IndexController.login)
 router.post("/glogin", IndexController.glogin)
 router.post("/register", IndexController.register)
-router.get("/user", IndexController.userProfile)
+router.get("/profile/:id", IndexController.userProfile)
 
 router.use("/decks", decks)
 router.use("/cards", cards)
