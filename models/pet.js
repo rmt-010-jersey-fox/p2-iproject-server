@@ -10,17 +10,26 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Pet.belongsTo(models.User)
     }
   };
   Pet.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     imageUrl: DataTypes.STRING,
-    description: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
     sequelize,
-    modelName: 'Pet',
+    modelName: 'Pet'
   });
   return Pet;
 };

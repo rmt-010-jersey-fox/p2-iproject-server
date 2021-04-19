@@ -1,21 +1,33 @@
 'use strict';
+const { bcryptPass, cekPass } = require("../helpers/bcrypt")
+let pass = bcryptPass("admin")
+
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkInsert('Users', [{
-      name: 'John Doe',
-      isBetaMember: false
-    }], {});
+    return queryInterface.bulkInsert('Users', [
+      {
+        email: 'admin@mail.com',
+        password: bcryptPass("admin"),
+        role: "admin",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: 'costumer@mail.com',
+        password: bcryptPass("costumer"),
+        role: "costumer",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ], {});
 
   },
 
   down: (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * return queryInterface.bulkDelete('People', null, {});
-     */
+
+    return queryInterface.bulkDelete('Users', null, {});
+
   }
 };
