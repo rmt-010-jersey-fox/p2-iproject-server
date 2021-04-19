@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   BookUser.init({
-    bookId: {
-      type: DataTypes.INTEGER,
+    isbn: {
+      type: DataTypes.STRING,
       validate: {
         notEmpty: {
           msg: 'bookId harus diisi'

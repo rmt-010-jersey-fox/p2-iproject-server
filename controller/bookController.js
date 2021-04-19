@@ -3,7 +3,7 @@ const { Book } = require('../models')
 class BookController {
     static findAll(req, res, next) {
         let {category} = req.body
-        Book.findAll({ where: { category }})
+        Book.findAll({ where: { category , status : 'new'}})
             .then(data => {
                 res.status(200).json(data)
             })

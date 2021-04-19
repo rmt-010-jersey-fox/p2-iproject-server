@@ -8,12 +8,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      bookId: {
+      isbn: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         references: {
           model: 'Books',
-          key: 'id'
+          key: 'isbn'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'
