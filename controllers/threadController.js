@@ -12,10 +12,10 @@ class threadController{
 
     static async postThread(req, res, next){
         try {
-            const { title, content, image } = req.body
+            const { title, content, image, GameId } = req.body
             const UserId = req.loggedUser.id
     
-            const newThread = {title, content, image: image || ''}
+            const newThread = {title, content, image: image || '', UserId, GameId}
             const thread = await Thread.create(newThread)
             res.status(201).json(thread)
 
@@ -40,12 +40,15 @@ class threadController{
 
     static async putThread(req, res, next){
         try {
-            const { title, content, image } = req.body
+            const { title, content, image, GameId } = req.body
             const findThread = await Thread.findByPk(req.params.id)
+            console.log(findThread)
             if(!findThread){
                 throw { status: 404, message: 'Thread is not found'}
             } else {
-                const updateThread = await Thread.update({ title, content, image: image || ''})
+                const updateThread = await Thread.update({ title, content, image: image || '', GameId }, 
+                { where: { id: findThread.id }, returning: true })
+                console.log(updateThread)
                 res.status(200).json(updateThread[1][0])
             }
         } catch (err) {
@@ -59,7 +62,7 @@ class threadController{
             if(!findThread){
                 throw { status:404, message: 'Thread is not found'}
             } else {
-                const patchThread = await Thread.update({content: req.body.content}, {where: {id: findThread.id}})
+                const patchThread = await Thread.update({content: req.body.content}, {where: {id: findThread.id}, returning: true })
                 res.status(200).json(patchThread[1][0])
             }
         } catch (err) {

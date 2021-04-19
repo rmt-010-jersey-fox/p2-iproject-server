@@ -40,8 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
+    fullname: DataTypes.STRING,
     username: {
       type: DataTypes.STRING,
       validate: {
@@ -50,12 +49,19 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    status: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'User',
     hooks: {
       beforeCreate(user, options){
+        user.password = hashPassword(user.password)
+      },
+      beforeUpdate(user, options) {
         user.password = hashPassword(user.password)
       }
     }

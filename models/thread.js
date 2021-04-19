@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Thread.belongsTo(models.User)
+      Thread.belongsTo(models.Game)
     }
   };
   Thread.init({
@@ -32,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     image: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    GameId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Thread',
