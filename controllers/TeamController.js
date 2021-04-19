@@ -36,6 +36,16 @@ class TeamController{
       next(err)
     ])
   }
+
+  static getTeam(req, res, next) {
+    Team.findAll({ where: { TournamentId: req.loggedUser.TournamentId }})
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
 }
 
 module.exports = { TeamController }
