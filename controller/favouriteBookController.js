@@ -66,10 +66,19 @@ class favouriteBookController {
             })
             .catch(next)
     }
-    static commentBook(req, res, next) {
+    static dislikeBook(req, res, next) {
         let userId = req.loggedUser.id
         let { isbn } = req.body
-        let { comment } = req.body
+        BookUser.update({ liked: false }, { where: { isbn, userId }, returning: true })
+            .then(data => {
+                let filteredData = data[1][0]
+                res.status(200).json(filteredData)
+            })
+            .catch(next)
+    }
+    static commentBook(req, res, next) {
+        let userId = req.loggedUser.id
+        let { isbn, comment } = req.body
         BookUser.findOne({ where: { isbn, userId } })
             .then(data => {
                 if (data && data.comment) {
@@ -94,8 +103,10 @@ class favouriteBookController {
             .catch(next)
     }
     static findAllWishedLike(req, res, next) {
-        // let userId = req.loggedUser.id
+        let userId = req.loggedUser.id
         let isbn = req.params.isbn
+        let liked = false
+        let wished = false
         BookUser.findAll({ where: { isbn } })
             .then((data) => {
                 let jumlahWish = data.filter(e => {
@@ -104,22 +115,54 @@ class favouriteBookController {
                 let jumlahLike = data.filter(e => {
                     return e.liked == true
                 })
-                res.status(200).json({ jumlahLike: jumlahLike.length, jumlahWish: jumlahWish.length })
+                data.forEach(e => {
+                    if (userId == e.userId && e.liked) {
+                        liked = true
+                    }
+                    if (userId == e.userId && e.wished) {
+                        wished = true
+                    }
+                });
+                res.status(200).json({ jumlahLike: jumlahLike.length, jumlahWish: jumlahWish.length, liked, wished })
+                // res.status(200).json(data)
             })
             .catch(next)
     }
     static findAllComment(req, res, next) {
+        // const Op = require('sequelize').Op;
+        let userId = req.loggedUser.id
         let isbn = req.params.isbn
-        Book.findOne({ where: { isbn }, include:[User] })
+        Book.findOne({ where: { isbn }, include: [User] })
             .then(data => {
                 let comment = []
                 data.Users.forEach(e => {
-                    comment.push({
-                        username : e.username,
-                        comment : e.BookUser.comment
-                    })
+                    if (e.BookUser.comment) {
+                        comment.push({
+                            username: e.username,
+                            comment: e.BookUser.comment,
+                            commented: (e.BookUser.userId == userId) ? true : false,
+                        })
+                    }
                 });
                 res.status(200).json(comment)
+            })
+            .catch(next)
+    }
+    static editComment(req, res, next) {
+        let userId = req.loggedUser.id
+        let {isbn, comment} = req.body
+        BookUser.update({ comment }, { where: { isbn, userId }})
+            .then(data => {
+                res.status(200).json('komentar berhasil di update')
+            })
+            .catch(next)
+    }
+    static deleteComment(req, res, next) {
+        let userId = req.loggedUser.id
+        let isbn = req.params.isbn
+        BookUser.update({ comment: null }, { where: { isbn, userId } })
+            .then(data => {
+                res.status(200).json('komentar berhasil di delete')
             })
             .catch(next)
     }

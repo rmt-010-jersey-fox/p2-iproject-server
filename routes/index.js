@@ -13,13 +13,16 @@ router.post('/googleLogin', userController.googleLogin)
 router.get('/nyTimes', NYTimes.fetchData)
 router.get('/books/:category', BookController.findAll)
 router.get('/book/:isbn', BookController.oneBook)
-router.get('/favouriteBooks/wishLikeAmount/:isbn', favouriteBookController.findAllWishedLike)
-router.get('/favouriteBooks/comment/:isbn', favouriteBookController.findAllComment)
 
 router.use(authentication)
 
+router.get('/favouriteBooks/comment/:isbn', favouriteBookController.findAllComment)
+router.get('/favouriteBooks/wishLikeAmount/:isbn', favouriteBookController.findAllWishedLike)
 router.post('/favouriteBooks/like/', favouriteBookController.likeBook)
+router.post('/favouriteBooks/dislike/', favouriteBookController.dislikeBook)
 router.post('/favouriteBooks/comment/', favouriteBookController.commentBook)
+router.post('/favouriteBooks/editComment/', favouriteBookController.editComment)
+router.delete('/favouriteBooks/deleteComment/:isbn', favouriteBookController.deleteComment)
 router.get('/favouriteBooks/', favouriteBookController.showWishList)
 router.post('/favouriteBooks/', favouriteBookController.addWishlist)
 
