@@ -1,5 +1,5 @@
 const errorHandler = require('../middlewares/error-handler')
-const { User } = require('../models')
+const { User, Cat } = require('../models')
 const { verifyPassword } = require('../helpers/bcrypt')
 const { verifyToken, signToken } = require('../helpers/jwt')
 class UserController {
@@ -58,6 +58,20 @@ class UserController {
 		}
 	}
 	static async googleLogin(req, res, next) {}
+	static async getUserById(req, res, next) {
+		let { id, email, username } = req.userAuth
+		try {
+			let user = await User.findByPk(id, {
+				include: { model: Cat },
+				attribute: { exclude: ['createdAt', 'updatedAt'] },
+			})
+			res.status(200).json({
+				user,
+			})
+		} catch (error) {
+			next(error)
+		}
+	}
 }
 
 module.exports = UserController
