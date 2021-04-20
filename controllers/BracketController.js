@@ -4,27 +4,44 @@ const { Tournament, User, Team, Bracket } = require('../models')
 class BracketController{
   static addTeamtoBracket(req, res, next) {
     let teams
-    Team.findAll({ where: { TournamentId: req.loggedUser.TournamentId }, order: [['id', 'ASC']]})
+    Bracket.findOne({ where: { TournamentId: req.loggedUser.TournamentId } })
+      .then((data) => {
+        if(data) {
+          throw { name: 'havebracket' }
+        } else {
+          return Team.findAll({ where: { TournamentId: req.loggedUser.TournamentId }, order: [['id', 'ASC']]})
+        }
+      })
       .then((data) => {
         teams = data
         if(data.length !== 8) {
           throw { name: 'notenoughteam' }
-        }
-        for(let i = 0; i < teams.length; i++){
-          let input = {
-            TeamId: teams[i].id,
-            position: i+1,
-            TournamentId: req.loggedUser.TournamentId
+        } else {
+          for(let i = 0; i < 15; i++){
+            let input
+            if(i < 8) {
+              input = {
+                TeamId: teams[i].id,
+                position: i+1,
+                TournamentId: req.loggedUser.TournamentId
+              }
+            } else {
+              input = {
+                TeamId: null,
+                position: i+1,
+                TournamentId: req.loggedUser.TournamentId
+              }
+            }
+            Bracket.create(input)
+              .then((data) => { 
+                if(data.position == 8){
+                  Bracket.findAll({ where: { TournamentId: req.loggedUser.TournamentId }, include: Team, order: [['position', 'ASC']] })
+                    .then((data) =>  {
+                      res.status(201).json(data)
+                    })
+                } 
+              })
           }
-          Bracket.create(input)
-            .then((data) => { 
-              if(data.position == 8){
-                Bracket.findAll({ where: { TournamentId: req.loggedUser.TournamentId }, include: Team, order: [['position', 'ASC']] })
-                  .then((data) =>  {
-                    res.status(201).json(data)
-                  })
-              } 
-            })
         }
       })
       .catch((err) => {
@@ -56,22 +73,12 @@ class BracketController{
         let winnerPost = data.position
         let nextposition = nextpos(winnerPost)
         input = {
-          TeamId: data.TeamId,
-          position: nextposition,
-          TournamentId: data.TournamentId,
-          score: data.score
+          TeamId: data.TeamId
         }
-        return Bracket.findOne({ where: { TournamentId: data.TournamentId, position: nextposition }})
+        return Bracket.update( { TeamId: data.TeamId }, { where: { TournamentId: data.TournamentId, position: nextposition }, returning: true})
       })
       .then((data) => {
-        if(data){
-          throw { name: 'alreadyadvanced' }
-        } else {
-          return Bracket.create(input)
-        }
-      })
-      .then((data) => {
-        res.status(201).json(data)
+        res.status(200).json(data)
       })
       .catch((err) => {
         next(err)

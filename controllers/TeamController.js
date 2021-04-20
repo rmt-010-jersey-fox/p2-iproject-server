@@ -38,6 +38,7 @@ class TeamController{
   }
 
   static getTeam(req, res, next) {
+    // console.log('masuk')
     Team.findAll({ where: { TournamentId: req.loggedUser.TournamentId }})
       .then((data) => {
         res.status(200).json(data)

@@ -18,11 +18,11 @@ class TwitterController{
         } else if (gamecode === 'LOL') {
           username = 'LeagueOfLegends'
         } else if (gamecode === 'Dota2') {
-          username = 'DOTA2'
-        } else {
-          username = 'nouser'
+          username = 'DOTA2'  
         }
-      
+        // else {
+        //   username = 'nouser'
+        // }
         if(username !== 'nouser'){
           let UserId
           axios({
