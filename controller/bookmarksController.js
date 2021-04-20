@@ -2,9 +2,8 @@ const {Bookmark} = require ('../models')
 
 class bookmarksController {
     static getBookmarks(req, res, next) {
-        Bookmark.findAll({
-          order: [["id"]],
-        })
+      console.log('masuk')
+        Bookmark.findAll()
           .then((data) => {
             res.status(200).json(data);
           })
@@ -17,7 +16,7 @@ class bookmarksController {
         let input = {
             title: req.body.title,
             UserId: req.loggedUser.id,
-            lang: req.body.lang
+            lang: "EN"
           };
           Bookmark.create(input)
             .then((data) => {
@@ -35,9 +34,10 @@ class bookmarksController {
     static deleteBookmarks(req,res,next){
         Bookmark.destroy({
             where: {
-                title: req.body.title,
-                UserId: req.loggedUser.id,
-                lang: req.body.lang
+                // title: req.body.title,
+                // UserId: req.loggedUser.id,
+                // lang: req.body.lang
+                id: req.params.id
             }
         })
         .then((data)=>{
