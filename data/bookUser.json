@@ -1,14 +1,23 @@
 [
     {
         "isbn": "1421589605",
-        "userId": 1
+        "userId": 1,
+        "wished": true,
+        "liked" : false,
+        "comment" : "bukunya bagus"
     },
     {
         "isbn": "1421590158",
-        "userId": 1
+        "userId": 1,
+        "wished": true,
+        "liked" : false,
+        "comment" : null
     },
     {
         "isbn": "1421589591",
-        "userId": 1
+        "userId": 1,
+        "wished": false,
+        "liked" : false,
+        "comment" : "bukunya jelek"
     }
 ]

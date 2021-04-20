@@ -28,6 +28,15 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
+      wished: {
+        type: Sequelize.BOOLEAN
+      },
+      liked: {
+        type: Sequelize.BOOLEAN
+      },
+      comment: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

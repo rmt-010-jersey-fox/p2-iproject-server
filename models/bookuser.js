@@ -30,6 +30,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    wished: {
+      type: DataTypes.BOOLEAN,
+    },
+    liked: {
+      type: DataTypes.BOOLEAN,
+    },
+    comment: {
+      type: DataTypes.STRING,
+    },
   }, {
     sequelize,
     modelName: 'BookUser',
