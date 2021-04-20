@@ -69,3 +69,48 @@ link client : `https://kanban-project-f2.web.app/`<br />
   * **Code:** 500 SERVER ERROR <br />
     **Content:** `{ error : "Internal Server Error" }`
 <hr><br />
+
+**SignIn User**
+--------------
+  Returns json data of user has signIn
+
+* **URL** <br/>
+  `/users/signin`
+
+* **Method:** <br/>
+  `POST`
+  
+* **URL Params** <br/>
+  None
+
+  **Required:**
+  * **Headers** <br/>
+    None
+
+  * **Data Body**
+  ```
+    {
+      "email"   : "string",
+      "password": "string"
+    }
+  ```
+
+* **Success Response:**
+  * **Code:** 200 Ok <br />
+    **Content:** 
+    ```
+    {
+      "id": 1,
+      "email": "client@mail.com",
+      "username": "client1",
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjbGllbnRAbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNsaWVudDEiLCJpYXQiOjE2MTg5MzI3MjR9.MTAVFY_GemwZAvFYMSs7d3plZdy9gamhuaaHCsZvap8"
+    }
+    ```
+ 
+* **Error Response:**
+  * **Code:** 400 Bad Request <br />
+    **Content:** `{ "message": "Wrong Password/Email!" }`
+    <br/>OR :
+  * **Code:** 500 SERVER ERROR <br />
+    **Content:** `{ error : "Internal Server Error" }`
+<hr><br />
