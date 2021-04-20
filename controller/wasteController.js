@@ -74,7 +74,7 @@ class WasteController {
                     saldo = saldo + (el.quantity * el.Waste.price)
                     el.save()
                 })
-                let text = `This is Your saldo from your latest deposit Rp. ${saldo},-`
+                let text = `This is your latest deposit amount Rp. ${saldo},-`
                 send(emailUser, text)
                 res.status(200).json({message: 'Your waste has been deposited'})
             })
