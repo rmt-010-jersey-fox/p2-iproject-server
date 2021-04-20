@@ -2,9 +2,11 @@ const router = require('express').Router()
 const authenticate = require('../middlewares/auth')
 const UserController = require('../controller/userController')
 const WasteController = require('../controller/wasteController')
+const AirController = require('../controller/airQualityController')
 
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
+router.get('/airQuality', AirController.getAirQuality)
 
 router.use(authenticate)
 

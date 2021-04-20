@@ -1,4 +1,5 @@
 const { Waste, UserWaste } = require('../models')
+const send = require('../helpers/nodeMailer')
 
 class WasteController {
     static getWaste (req, res, next) {
@@ -64,12 +65,17 @@ class WasteController {
 
     static deposit (req, res, next) {
         const UserId = +req.loggedUser.id
-        UserWaste.findAll({where: {UserId, status: 'Undeposited'}})
+        const emailUser = req.loggedUser.email
+        let saldo = 0
+        UserWaste.findAll({where: {UserId, status: 'Undeposited'}, include: Waste})
             .then(data => {
                 data.forEach(el => {
                     el.status = 'Deposited'
+                    saldo = saldo + (el.quantity * el.Waste.price)
                     el.save()
                 })
+                let text = `This is Your saldo from your latest deposit Rp. ${saldo},-`
+                send(emailUser, text)
                 res.status(200).json({message: 'Your waste has been deposited'})
             })
             .catch(err => {
