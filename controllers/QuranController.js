@@ -1,13 +1,13 @@
 const axios = require("axios");
 
-let link = "https://api.quran.sutanlab.id";
+let BaseURL = "https://api.quran.sutanlab.id";
 
 class QuranController {
   static getQuran(req, res, next) {
     let surah = req.body.surah
     let ayat = req.body.ayat
     axios
-      .get(`${link}/surah/${surah}/${ayat}`)
+      .get(`${BaseURL}/surah/${surah}/${ayat}`)
       .then((response) => {
         res.status(200).json(response.data);
       })
