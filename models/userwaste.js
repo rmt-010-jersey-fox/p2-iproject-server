@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'UserWaste',
+    hooks: {
+      beforeCreate: (waste) => {
+        if (!waste.status) {
+          waste.status = 'Undeposited'
+        }
+      }
+    }
   });
   return UserWaste;
 };

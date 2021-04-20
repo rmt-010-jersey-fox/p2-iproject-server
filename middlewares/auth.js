@@ -1,4 +1,4 @@
-const { User, Waste } = require('../models')
+const { User } = require('../models')
 const { verifyToken } = require('../helpers/jwt')
 
 function authenticate(req, res, next) {
@@ -24,3 +24,5 @@ function authenticate(req, res, next) {
         next({name: 'bad request', message: 'You must log in'})
     }
 }
+
+module.exports = authenticate
