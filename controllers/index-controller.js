@@ -21,7 +21,7 @@ class IndexController {
       if(user && checkPassword(input.password, user.password)) {
 				let token = jwt.sign({id: user.id, username: user.username}, process.env.SECRET_CODE || "secret")
 				
-				res.status(200).json({username: user.username, access_token: token})
+				res.status(200).json({username: user.username, id: user.id, access_token: token})
 				
 			} else {
 				throw {name: "InvalidUsernameOrPassword"}
@@ -75,6 +75,7 @@ class IndexController {
       let profile = {
         username: user.username,
         level,
+        exp: user.exp,
         nextLevel,
         cardsCleared: user.cardsCleared,
         desc: user.desc
