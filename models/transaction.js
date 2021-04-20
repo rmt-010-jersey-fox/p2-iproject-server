@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     CustomerId: DataTypes.INTEGER,
     CarId: DataTypes.INTEGER,
     start_date: DataTypes.DATE,
-    start_time: DataTypes.TIME,
     end_date: DataTypes.DATE,
     location: DataTypes.STRING
   }, {

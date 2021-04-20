@@ -17,6 +17,9 @@ module.exports = {
       color: {
         type: Sequelize.STRING
       },
+      imgUrl: {
+        type: Sequelize.TEXT
+      },
       year: {
         type: Sequelize.STRING
       },

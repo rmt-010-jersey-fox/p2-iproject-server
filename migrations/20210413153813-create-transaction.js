@@ -38,14 +38,8 @@ module.exports = {
       start_date: {
         type: Sequelize.DATE
       },
-      start_time: {
-        type: Sequelize.TIME
-      },
       end_date: {
         type: Sequelize.DATE
-      },
-      end_time: {
-        type: Sequelize.TIME
       },
       location: {
         type: Sequelize.STRING
