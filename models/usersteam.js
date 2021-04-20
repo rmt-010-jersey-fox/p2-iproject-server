@@ -16,9 +16,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   UsersTeam.init({
-    name: DataTypes.STRING,
-    UserId: DataTypes.INTEGER,
-    PlayerId: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Name is required'
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'UserId is required'
+        }
+      }
+    },
+    PlayerId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'PlayerId is required'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'UsersTeam',

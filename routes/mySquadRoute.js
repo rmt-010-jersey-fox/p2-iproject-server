@@ -6,8 +6,7 @@ const router = express.Router()
 
 router.use(authentication)
 router.get('/', MySquadController.findAll)
-router.post('/', MySquadController.addSquad)
-router.patch('/:playerid', authorization, MySquadController.changePlayer)
-router.delete('/:playerid', authorization, MySquadController.deleteSquad)
+router.post('/:playerid', MySquadController.addSquad)
+router.delete('/:id', authorization, MySquadController.deleteSquad)
 
 module.exports = router
