@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Botol Plastik",
+        "condition": "clean",
+        "price": 2000,
+        "baseUnit": "kg"
+    },
+    {
+        "name": "Botol Plastik",
+        "condition": "dirty",
+        "price": 1000,
+        "baseUnit": "kg"
+    },
+    {
+        "name": "Botol Kaleng",
+        "condition": "clean",
+        "price": 2500,
+        "baseUnit": "kg"
+    },
+    {
+        "name": "Botol Kaleng",
+        "condition": "dirty",
+        "price": 2000,
+        "baseUnit": "kg"
+    },
+    {
+        "name": "Botol Kaca 200ml",
+        "condition": "clean",
+        "price": 800,
+        "baseUnit": "bottle"
+    },
+    {
+        "name": "Botol Kaca 200ml",
+        "condition": "dirty",
+        "price": 500,
+        "baseUnit": "bottle"
+    },
+    {
+        "name": "Botol Kaca 600ml",
+        "condition": "clean",
+        "price": 2000,
+        "baseUnit": "bottle"
+    },
+    {
+        "name": "Botol Kaca 600ml",
+        "condition": "dirty",
+        "price": 1000,
+        "baseUnit": "bottle"
+    },
+    {
+        "name": "Kertas",
+        "condition": "clean",
+        "price": 1000,
+        "baseUnit": "kg"
+    },
+    {
+        "name": "Kertas",
+        "condition": "dirty",
+        "price": 800,
+        "baseUnit": "kg"
+    }
+]
