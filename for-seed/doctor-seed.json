@@ -100,6 +100,11 @@
     "PoliId": 7
   },
   {
+    "full_name": "Dr. Sayuti Melik, Sp.KJ",
+    "session": "Sore",
+    "PoliId": 7
+  },
+  {
     "full_name": "M. Riski Putra Awali, M.Psi, Psikolog",
     "session": "Pagi",
     "PoliId": 8
@@ -107,6 +112,11 @@
   {
     "full_name": "Elon Musk, M.Psi, Psikolog",
     "session": "Siang",
+    "PoliId": 8
+  },
+  {
+    "full_name": "Bill Gates, M.Psi, Psikolog",
+    "session": "Sore",
     "PoliId": 8
   }
 ]

@@ -29,7 +29,7 @@ _Request Body_
   "birthdate": "<your birthdate> on validation not empty",
   "ktp": "<your identity number(ktp)>, on validation unique, not empty",
   "phone": "<your phone number>, on validation unique, not empty",
-  "gender": "<your gender>, on validation not empty"
+  "gender": "<your gender>"
 }
 ```
 
@@ -53,7 +53,7 @@ _Response (400 - Bad Request)_
 
 ```
 {
-  "message": ["Masukkan email menggunakan format email", "Password tidak boleh kosong", "Nama depan anda tidak boleh kosong", "Tanggal lahir tidak boleh kosong", "Alamat tidak boleh kosong", "KTP tidak boleh kosong", "Nomor hp tidak boleh kosong", "Gender tidak boleh kosong", "Email sudah terdaftar, gunakan email lain", "KTP sudah terdaftar", "Nomor hp telah terdaftar"]
+  "message": ["Masukkan email menggunakan format email", "Password tidak boleh kosong", "Nama depan anda tidak boleh kosong", "Tanggal lahir tidak boleh kosong", "Alamat tidak boleh kosong", "KTP tidak boleh kosong", "Nomor hp tidak boleh kosong", "Email sudah terdaftar, gunakan email lain", "KTP sudah terdaftar", "Nomor hp telah terdaftar"]
 }
 ```
 
@@ -82,7 +82,7 @@ _Request Body_
 }
 ```
 
-_Response (201 - Created)_
+_Response (200 - Ok)_
 
 ```
 {
@@ -106,6 +106,85 @@ _Response (500 - Internal Server Error)_
 }
 ```
 
+### GET /patient
+
+_Request Header_
+
+```
+Not needed
+```
+
+_Request Body_
+
+```
+Not needed
+```
+
+_Response (200 - Ok)_
+
+```
+{
+  "id": "<your id created by server>",
+  "email": "<your email>",
+  "first_name": "<your first_name>",
+  "last_name": "<your last_name>",
+  "birthdate": "<your birthdate>",
+  "address": "<your address>",
+  "ktp": "<your ktp>",
+  "phone": "<your phone>",
+  "gender": "<your gender>",
+  "Schedule": "<your Schedule>",
+}
+```
+
+_Response (401 - Unauthorize)_
+
+```
+  {
+    "message": "Harap login terlebih dahulu"
+  }
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+{
+  "message": "Internal server error"
+}
+```
+
+### POST /googleLogin
+
+_Request Headers_
+
+```
+  {
+    "token": "<given by google>"
+  }
+```
+
+_Request Body_
+
+```
+Not needed
+```
+
+_Response (201 / 200 - Created/OK)_
+
+```
+  {
+   "access_token": "<your access_token>"
+  }
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+  {
+    "message": "Internal server error
+  }
+```
+
 ## Schedules API
 
 ### GET /schedules
@@ -127,22 +206,13 @@ Not needed
 _Response (200 - OK)_
 
 ```
-[
   {
     "id": "1",
     "date": "<schedules date>",
     "PatientId": "<your PatientId>",
     "DoctorId": "<doctor id>",
     "Doctor": { "instance of Doctor, instance of Poli"}
-  },
-  {
-    "id": "2",
-    "date": "<schedules date>",
-    "PatientId": "<your PatientId>",
-    "DoctorId": "<doctor id>",
-    "Doctor": { "instance of Doctor, instance of Poli"}
   }
-]
 ```
 
 _Response (401 - Unauthorize)_
@@ -175,28 +245,25 @@ _Request Body_
 
 ```
   {
-    "date": "<date> on validation isAfter and isDate",
-    "PatientId": "<your patient id>",
-    "DoctorId": "<doctor id>, on validation mustFilled"
+    "session": "<picked session>",
+    "date": "<picked date>",
+    "total": "<total amount>",
+    "method": "<payment method>",
+    "PoliId": "<picked poli id>",
   }
 ```
 
 _Response (201 - Created)_
 
 ```
-  {
-    "id": "<schedules id create by server>",
-    "date": "<your picked date>",
-    "PatientId": "<your patient id>",
-    "DoctorId": "<doctor id>",
-  }
+Payment receipt
 ```
 
 _Response (400 - Bad Request)_
 
 ```
   {
-    "message": "["Anda belum memilih dokter", "Pilih tanggal berobat anda", "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok"]"
+    "message": "["Harap isi form dengan lengkap", "Pilih tanggal berobat anda", "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok"]"
   }
 ```
 
@@ -290,8 +357,9 @@ _Request Body_
 
 ```
   {
-    "DoctorId": "<doctor id>",
-    "date": "<picked date>"
+    "session": "<picked session>",
+    "date": "<picked date>",
+    "PoliId": "<picked poli id>",
   }
 ```
 
@@ -307,7 +375,7 @@ _Reseponse (400 - Bad Request)_
 
 ```
   {
-    "message": "[Anda belum memilih dokter", "Pilih tanggal berobat anda", "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok"]"
+    "message": "["Pilih tanggal berobat anda", "Tanggal untuk pendaftaran jadwal berobat minimal adalah besok"]"
   }
 ```
 
@@ -440,11 +508,13 @@ _Response (200 - OK)_
   [
     {
       "id": "<doctor id>",
-      "name": "<poli name>"
+      "name": "<poli name>",
+      "Doctors": "<array of doctor>"
     },
     {
       "id": "<doctor id>",
-      "name": "<poli name>"
+      "name": "<poli name>",
+      "Doctors": "<array of doctor>"
     }
   ]
 ```
@@ -455,4 +525,40 @@ _Response (500 - Internal Server Error)_
 {
   "message": "Internal server error"
 }
+```
+
+### GET /covid
+
+_Request Headers_
+
+```
+Not needed
+```
+
+_Request Body_
+
+```
+Ndt needed
+```
+
+_Response (200 - OK)_
+
+```
+  [
+    {
+      "name": "Indonesia",
+      "positif": "<data of positive covid>",
+      "sembuh": "<data of cured from covid>",
+      "meninggal": "<data of passed away caused by covid>",
+      "dirawat": "<data of treated person of covid>"
+    }
+  ]
+```
+
+_Response (500 - Internal Server Error)_
+
+```
+  {
+    "message"; "Internal server error"
+  }
 ```

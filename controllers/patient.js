@@ -1,7 +1,7 @@
 const { Patient, Schedule } = require("../models");
 const { validate } = require("../helpers/bcrypt");
 const { generate } = require("../helpers/jwt");
-
+const { OAuth2Client } = require("google-auth-library");
 class PatientCtrl {
   static async register(req, res, next) {
     let toRegist = {
@@ -93,7 +93,9 @@ class PatientCtrl {
 
   static async getById(req, res, next) {
     try {
-      let found = await Patient.findByPk(+req.params.id, { include: Schedule });
+      let found = await Patient.findByPk(req.userData.id, {
+        include: Schedule,
+      });
       let toShow = {
         id: found.id,
         email: found.email,
@@ -107,6 +109,54 @@ class PatientCtrl {
         Schedule: found.Schedule,
       };
       res.status(200).json(toShow);
+    } catch (error) {
+      next({ status: 500 });
+    }
+  }
+
+  static async googleLogin(req, res, next) {
+    const client = new OAuth2Client(process.env.CLIENT_ID);
+    try {
+      const ticket = await client.verifyIdToken({
+        idToken: req.headers.token,
+        audience: process.env.CLIENT_ID,
+      });
+      const payload = ticket.getPayload();
+      let foundAccount = await Patient.findOne({
+        where: {
+          email: payload.email,
+        },
+      });
+      if (foundAccount) {
+        let getToken = {
+          id: foundAccount.id,
+          first_name: foundAccount.first_name,
+          email: foundAccount.email,
+          ktp: foundAccount.ktp,
+        };
+        let access_token = generate(getToken);
+        res.status(200).json({ access_token });
+      } else {
+        let random = Math.floor(Math.random() * 99);
+        let randomKtp = Math.floor(Math.random() * 1000000000000000);
+        let toCreate = {
+          email: payload.email,
+          password: payload.at_hash,
+          first_name: payload.given_name,
+          last_name: payload.family_name,
+          address: `Jl. Google No.${random}`,
+          ktp: randomKtp,
+        };
+        let created = await Patient.create(toCreate);
+        let getToken = {
+          id: created.id,
+          first_name: created.first_name,
+          email: created.email,
+          ktp: created.ktp,
+        };
+        let access_token = generate(getToken);
+        res.status(201).json({ access_token });
+      }
     } catch (error) {
       next({ status: 500 });
     }
