@@ -2,9 +2,9 @@ const jwt = require('../helper/jwt')
 const { User } = require('../models')
 async function authenticate(req, res, next) {
     try {
-        const { access_token } = req.headers;
-        if (access_token) {
-            const payload = jwt.verify(access_token);
+        const { token } = req.headers;
+        if (token) {
+            const payload = jwt.verify(token);
             const findUser = await User.findOne({
                 where : {
                     email : payload.email
