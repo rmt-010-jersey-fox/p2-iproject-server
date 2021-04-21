@@ -34,9 +34,6 @@ class bookmarksController {
     static deleteBookmarks(req,res,next){
         Bookmark.destroy({
             where: {
-                // title: req.body.title,
-                // UserId: req.loggedUser.id,
-                // lang: req.body.lang
                 id: req.params.id
             }
         })
