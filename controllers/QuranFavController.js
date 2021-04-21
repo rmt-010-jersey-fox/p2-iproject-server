@@ -33,6 +33,21 @@ class QuranFavController {
     })
 
   }
+
+  static deleteFavQuran(req, res, next) {
+    let id = +req.params.id
+
+    Quran.destroy({
+      where: {id: id},
+    })
+    .then((delFavorite) => {
+      if (!delFavorite) {
+        throw { name: "NotFound"}
+      } else {
+        res.status(200).json({ message: "Favorite Surah success to delete" });
+      }
+    })
+  }
 }
 
 

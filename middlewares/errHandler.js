@@ -1,7 +1,7 @@
 function errHandler(err, req, res, next) {
-  // console.log(err);
-  // console.log(err.name);
-  // console.log(err.message);
+  console.log(err);
+  console.log(err.name);
+  console.log(err.message);
 
   switch (err.name) {
     case "SequelizeValidationError":
@@ -23,7 +23,7 @@ function errHandler(err, req, res, next) {
       res.status(401).json({ message: "Unauthorized Access" });
       break;
     case "NotFound":
-      res.status(404).json({ message: "Task Not Found" });
+      res.status(404).json({ message: "Favorite Not Found" });
       break;
     default:
       res.status(500).json({ message: "Internal server error" });

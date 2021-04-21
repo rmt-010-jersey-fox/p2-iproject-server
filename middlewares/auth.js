@@ -1,7 +1,7 @@
 const { verifyToken } = require("../helpers/jwt");
-const { User } = require("../models");
+const { User, Quran } = require("../models");
 
-function authentication(req, res, next) {
+function Authentication(req, res, next) {
   const access_token = req.headers.access_token;
   if (access_token) {
     const token = verifyToken(access_token);
@@ -32,6 +32,26 @@ function authentication(req, res, next) {
   }
 }
 
+function Authorization(req, res, next) {
+  const id = +req.params.id;
+
+  Quran.findOne({ where: { id: id}})
+    .then((foundFav) => {
+      if (foundFav) {
+        if (foundFav.UserId === req.loggedUser.id) {
+          next();
+        } else {
+          res.status(401).json({ message: "Authorization Failed!" });
+        }
+      } else {
+        res.status(401).json({ message: "Authorization Failed!" });
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+}
 
 
-module.exports = { authentication };
+
+module.exports = { Authentication, Authorization };
