@@ -8,12 +8,18 @@ const HadistController = require("../controllers/HadistController");
 router.use("/", UserRouter);
 
 // Quran
-router.get("/quran", QuranController.getQuran);
+router.get("/quran", QuranController.allSurah);
+router.get("/surah", QuranController.getQuranbyAyat);
 
 // Jadwal Solat
 router.get("/jadwalSolat", JadwalSolatController.getJadwalSolat);
-
 // Hadist
-router.get("/hadith", HadistController.getHadist)
+router.get("/hadist", HadistController.getHadist)
+
+
+// Fav Quran
+router.get('/Quranfavorites/:SurahId', QuranFavController.getFavQuran)
+router.post('/Quranfavorites/:SurahId', QuranFavController.postFavQuran)
+
 
 module.exports = router;
