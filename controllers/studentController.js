@@ -89,6 +89,19 @@ class StudentController {
             next(error)
         }
     }
+
+    static async schedule (req, res, next) {
+        try {
+            let schedule = await Booking.findAll({
+                where : {
+                    UserId : req.loggedUser.id
+                }
+            })
+            res.status(200).json(schedule)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = StudentController
