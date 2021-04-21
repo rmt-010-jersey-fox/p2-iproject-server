@@ -15,5 +15,6 @@ router.get('/schedule', studentController.schedule)
 
 router.use('/booking/:id', authorization)
 router.put('/booking/:id', studentController.cancelBooking)
+router.delete('/booking/:id', studentController.deleteHistory)
 
 module.exports = router
