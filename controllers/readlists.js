@@ -1,25 +1,13 @@
-const { News } = require("../models");
-class NewsControllers {
+const { Readlist } = require("../models");
+
+class ReadlistControllers {
   static async create(req, res, next) {
-    const {
-      title,
-      description,
-      url,
-      author,
-      image,
-      language,
-      category,
-      published,
-    } = req.body;
+    const { NewsId } = req.body;
     try {
-      const created = await News.create({
-        title: title,
-        description: description,
-        url: url,
-        author: author,
-        image: image,
-        category: category,
-        published: published,
+      const created = await Readlist.create({
+        NewsId: NewsId,
+        UserId: req.loggedUser.id,
+        status: "plan to read",
       });
 
       res.status(201).json({ message: "succeed" });
@@ -29,7 +17,7 @@ class NewsControllers {
   }
   static async read(req, res, next) {
     try {
-      const read = await News.findAll();
+      const read = await Readlist.findAll();
       res.status(200).json(read);
     } catch (err) {
       next(err);
@@ -38,7 +26,7 @@ class NewsControllers {
   static async readOne(req, res, next) {
     const id = +req.params.id;
     try {
-      const read = await News.findOne({
+      const read = await Readlist.findOne({
         where: {
           id: id,
         },
@@ -50,28 +38,12 @@ class NewsControllers {
   }
   static async update(req, res, next) {
     const id = +req.params.id;
-    const {
-      title,
-      description,
-      url,
-      author,
-      image,
-      language,
-      category,
-      published,
-    } = req.body;
+    const { status } = req.body;
 
     try {
-      const updated = await News.update(
+      const updated = await Readlist.update(
         {
-          title: title,
-          description: description,
-          url: url,
-          author: author,
-          image: image,
-          language: language,
-          category: category,
-          published: published,
+          status: status,
         },
         {
           where: {
@@ -90,7 +62,7 @@ class NewsControllers {
   static async delete(req, res, next) {
     const id = +req.params.id;
     try {
-      const deleted = await News.destroy({
+      const deleted = await Readlist.destroy({
         where: {
           id: id,
         },
@@ -101,4 +73,4 @@ class NewsControllers {
   }
 }
 
-module.exports = NewsControllers;
+module.exports = ReadlistControllers;

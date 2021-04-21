@@ -97,7 +97,7 @@ class UserControllers {
         };
 
         const access_token = encrypt(jwtPayload);
-        res.status(201).json({
+        res.status(200).json({
           email: foundUser.email,
           username: foundUser.username,
           access_token: access_token,

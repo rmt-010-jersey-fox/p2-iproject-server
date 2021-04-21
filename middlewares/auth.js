@@ -1,17 +1,16 @@
-const { User } = require("../models");
+const { User, Readlist } = require("../models");
 const { decrypt } = require("../helpers/jwt");
 
 const authentication = async (req, res, next) => {
   try {
     const { access_token } = req.headers;
-
     if (!access_token) {
       next({ name: "authenticationFailed", message: "Login first" });
     } else {
       const decryptedToken = decrypt(access_token);
 
       const foundUser = await User.findOne({
-        id: decryptedToken.username,
+        where: { username: decryptedToken.username },
       });
 
       if (!foundUser) {
@@ -33,7 +32,7 @@ const authentication = async (req, res, next) => {
 const authorization = async (req, res, next) => {
   try {
     const id = +req.params.id;
-    const news = await News.findOne({
+    const news = await Readlist.findOne({
       where: {
         id: id,
       },
