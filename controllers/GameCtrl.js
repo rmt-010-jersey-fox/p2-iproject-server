@@ -1,4 +1,5 @@
 const axios = require ('axios')
+const { Game } = require('../models')
 
 class GameCtrl {
   
@@ -20,6 +21,19 @@ class GameCtrl {
     })
     .catch(err => next(err))
 
+  }
+
+  static wishlist (req, res, next) {
+    const wishlist = {
+      name  : req.body.name,
+      gameId: req.body.gameId,
+      UserId: req.currentUser.id
+    }
+
+    Game
+      .create({ ...wishlist })
+      .then(wishlist => res.status(201).json({ wishlist }))
+      .catch(err => next(err))
   }
 
 }
