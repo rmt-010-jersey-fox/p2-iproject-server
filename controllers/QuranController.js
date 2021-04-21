@@ -4,6 +4,7 @@ let BaseURL = "https://api.quran.sutanlab.id";
 
 class QuranController {
   static getQuranbyAyat(req, res, next) {
+    console.log(req.body, "<<<<< Server")
     let surah = req.body.surah || ""
     let ayat = req.body.ayat || ""
     axios

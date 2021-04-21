@@ -4,16 +4,16 @@ let BaseURL = "https://islamic-api-indonesia.herokuapp.com"
 
 class HadistController {
   static getHadist(req, res, next) {
-    let kitab = req.body.kitab || "muslim" //Bukhari, Ahmad, Muslim, abu-daud, darimi, ibnu-majah, nasai, malik
-    let number = req.body.number || 1
+    let kitab = req.body.kitab  //Bukhari, Ahmad, Muslim, abu-daud, darimi, ibnu-majah, nasai, malik
+    let nomor = req.body.nomor
 
     axios
-    .get(`${BaseURL}/api/data/hadith?kitab=${kitab}&nomor=${number}`)
+    .get(`${BaseURL}/api/data/hadith?kitab=${kitab}&nomor=${nomor}`)
     .then((response) => {
       // console.log(response.data.result.data.id, "<<<<<< Kitab");
       // console.log(response.data.result.data.contents.number, "<<<<<< Number Hadist");
       res.status(200).json(
-        response.data.result.data
+        response.data
       //   {
       //     kitab: response.data.result.data.id,
       //     data: response.data.result.data.contents

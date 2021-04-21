@@ -30,7 +30,6 @@ class UserController {
           if (passwordCorect) {
             const payload = {
               id: foundUser.id,
-              name: foundUser.name,
               email: foundUser.email,
             };
             console.log(payload);
