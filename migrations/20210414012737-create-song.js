@@ -25,7 +25,7 @@ module.exports = {
       },
       release_year: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       country: {
         allowNull: false,

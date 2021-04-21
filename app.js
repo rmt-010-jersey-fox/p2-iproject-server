@@ -3,6 +3,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 const express = require('express')
 const app = express()
+const httpServer = require('http').createServer(app)
+const io = require('socket.io')(httpServer)
 const cors = require('cors')
 const router = require('./routes')
 const errHandler = require('./middlewares/errHandler')
@@ -14,6 +16,6 @@ app.use(express.json())
 app.use('/', router)
 app.use(errHandler)
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
     console.log(`This App is Listening at http://localhost:${PORT}`)
 })
