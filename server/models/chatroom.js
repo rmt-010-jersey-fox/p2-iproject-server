@@ -44,5 +44,8 @@ module.exports = (sequelize, DataTypes) => {
 			modelName: 'ChatRoom',
 		}
 	)
+	ChatRoom.addHook('beforeCreate', (chatRoom) => {
+		chatRoom.status = false
+	})
 	return ChatRoom
 }

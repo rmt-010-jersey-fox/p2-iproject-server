@@ -33,7 +33,14 @@ io.on('connection', (socket) => {
 		io.emit('getActiveUser', activeUser)
 	})
 	socket.on('sendLiveChat', (data) => {
-		socket.broadcast.emit('broadcastLiveChat', data)
+		if (data.room === 'live-chat') {
+			socket.broadcast.emit('broadcastLiveChat', data)
+		} else {
+			socket.broadcast.to(data.room).emit('broadcastLiveChat', data)
+		}
+	})
+	socket.on('join-room', (data) => {
+		socket.join(data)
 	})
 })
 

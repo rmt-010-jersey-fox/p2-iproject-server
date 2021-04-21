@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { User } = require('../models')
+const { User, Cat, ChatRoom } = require('../models')
 
 const authentication = async function (req, res, next) {
 	const token = req.headers.access_token
@@ -45,7 +45,28 @@ const authorizationCat = async function (req, res, next) {
 	}
 }
 
+const authorizationRoom = async function (req, res, next) {
+	const { id, email } = req.userAuth
+	const catId = req.params.id
+	let room = await ChatRoom.findByPk(catId)
+	if (!room) {
+		next({
+			name: 'Not Found',
+			message: 'error not found',
+		})
+	} else if (room.UserId !== id) {
+		next({
+			message:
+				'Authorization error, you are not allowed to do this to other user room ',
+			name: 'Unauthorized',
+		})
+	} else {
+		next()
+	}
+}
+
 module.exports = {
 	authentication,
 	authorizationCat,
+	authorizationRoom,
 }

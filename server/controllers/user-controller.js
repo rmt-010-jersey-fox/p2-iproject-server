@@ -1,10 +1,10 @@
 const errorHandler = require('../middlewares/error-handler')
-const { User, Cat, Photo } = require('../models')
+const { User, Cat, Photo, ChatRoom } = require('../models')
 const { verifyPassword } = require('../helpers/bcrypt')
 const { verifyToken, signToken } = require('../helpers/jwt')
 class UserController {
 	static async register(req, res, next) {
-		const { username, email, password } = req.body
+		const { username, email, password, roomName } = req.body
 		console.log(username)
 		try {
 			let user = await User.create({
@@ -12,6 +12,13 @@ class UserController {
 				email,
 				password,
 			})
+
+			let room = await ChatRoom.create({
+				UserId: user.id,
+				title: roomName,
+				status: false,
+			})
+
 			res.status(201).json({
 				message: 'Successfully register user',
 				username: user.username,
