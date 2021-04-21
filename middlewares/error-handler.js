@@ -43,7 +43,16 @@ function errorHandler(err, req, res, next) {
   } else if(err.name === "Unauthorized") {
     code = 401
     message = "You are not authorized for this action"
+
+  } else if(err.name === "EmptyDeck") {
+    code = 400
+    message = "You can't export an empty deck"
+
+  } else if(err.name === "PastebinGetError" || err.name === "Error") {
+    code = 400
+    message = "Invalid format for deck, invalid pastebin key, or internal server error from pastebin"
   }
+
 
 
   
