@@ -91,6 +91,7 @@ class WasteController {
                 res.status(200).json({message: 'waste has been deleted'})
             })
             .catch(err => {
+                console.log(err);
                 next(err)
             })
     }
