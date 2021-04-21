@@ -14,10 +14,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "emilia",
-    "password": "postgres",
-    "database": "database_production",
-    "host": "localhost",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+    "dialectOptions": {
+      "ssl": {
+          "rejectUnauthorized": false
+      }
+    }
   }
 }
