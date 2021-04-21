@@ -17,5 +17,7 @@ router.use("/anime", AnimeRouter)
 
 router.get('/quotes-anime', AnimeController.quotesAnime)
 
+router.get('/manga', AnimeController.mangas)
+
 
 module.exports = router

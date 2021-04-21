@@ -118,6 +118,23 @@ class AnimeController {
         }
     }
 
+    static async mangas(req, res, next) {
+        try {
+            const anime = await axios({
+                url: `https://kitsu.io/api/edge/manga`,
+                method : 'GET'
+            })
+            let dataManga = []
+            let data = anime.data.data
+            data.forEach(el => {
+                dataManga.push(el)
+            })
+            res.status(200).json(dataManga)
+        } catch (err) {
+            next(err)
+        }
+    }
+
 }
 
 module.exports = AnimeController
