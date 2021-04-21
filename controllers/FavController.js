@@ -38,8 +38,9 @@ class FavController {
   }
 
   static getRandomMeal (req,res,next) {
+    // https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,vegan,diet&apiKey=abb6817fb5984c97821b8fbdd27db3fd
     axios
-      .get(`${baseURL2}?apiKey=${apiKey}&includeNutrition=true?number=1&tags=vegetarian,vegan,diet`)
+      .get(`${baseURL2}?number=1&tags=vegetarian,vegan,diet&apiKey=${apiKey}`)
       .then(({data}) => {
         res.status(200).json(data)
       })
