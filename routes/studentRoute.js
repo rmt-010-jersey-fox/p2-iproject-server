@@ -6,6 +6,7 @@ const authorization = require('../middlewares/auth-student')
 router.use(authenticate)
 
 router.get('/buddy', studentController.getBuddy)
+router.get('/buddy/:id', studentController.getBuddyById)
 router.get('/materials', studentController.getMaterials)
 router.get('/buddy-materials', studentController.getBuddyMaterials)
 router.get('/materials/:id', studentController.getBuddyMaterialsById)
