@@ -1,7 +1,7 @@
 module.exports = (err, req, res, next) => {
     console.log("err name : ", err.name)
     if (err.name === "Not Found") {
-        res.status(404).json({ message: 'Task Not Found'})
+        res.status(404).json({ message: 'Data Not Found'})
     } else if (err.name === "No Access") {
         res.status(401).json({ message : 'You have no access'})
     } else if (err.name === "Unauthorized") {

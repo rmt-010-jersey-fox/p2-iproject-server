@@ -102,6 +102,44 @@ class StudentController {
             next(error)
         }
     }
+
+    static async cancelBooking (req, res, next) {
+        try {
+            //findOne
+            const id = +req.params.id;
+            let findBooking = await Booking.findOne({
+                where : {
+                    id : id
+                }
+            })
+            if (findBooking) {
+                let data = {
+                    status : 'canceled'
+                }
+                let update = await Booking.update(data, {
+                    where : {
+                        id : id
+                    },
+                    returning : true
+                })
+                if (update) {
+                    await BuddySchedule.update(
+                        { status : 'available'},
+                        { where : {
+                            id : findBooking.BuddyScheduleId
+                        }}
+                    )
+                    res.status(200).json(update[1]);
+                }
+            } else {
+                throw {
+                    name : "Not Found"
+                }
+            }
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = StudentController
