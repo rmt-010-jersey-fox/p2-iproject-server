@@ -44,5 +44,8 @@ module.exports = (sequelize, DataTypes) => {
 			modelName: 'Photo',
 		}
 	)
+	Photo.addHook('beforeCreate', (cat) => {
+		cat.caption = 'no caption'
+	})
 	return Photo
 }

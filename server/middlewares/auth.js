@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const { User } = require('../models')
 
 const authentication = async function (req, res, next) {
-	const token = req.headers
+	const token = req.headers.access_token
 	if (!token) {
 		next({
 			message: 'invalid token',
@@ -10,6 +10,7 @@ const authentication = async function (req, res, next) {
 		})
 	} else {
 		const decoded = jwt.verify(token, process.env.SECRET)
+		console.log(decoded)
 		let user = await User.findByPk(decoded.id)
 		if (!user) {
 			next({

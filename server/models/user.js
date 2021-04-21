@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
 
 	User.addHook('beforeCreate', (user) => {
 		user.password = hashPassword(user.password)
-		user.avatarUrl = `https://avatars.dicebear.com/api/bottle/${user.username}.svg`
+		user.avatarUrl = `https://avatars.dicebear.com/api/avataaars/${user.username}.svg`
 		user.location = 'indonesia'
 	})
 	return User

@@ -1,10 +1,10 @@
-const { Photo, Cat } = require()
+const { Photo, Cat } = require('../models')
 class CatController {
 	static async addPhoto(req, res, next) {
-		const { catId, imageUrl, caption } = req.body
+		const { CatId, imageUrl, caption } = req.body
 		try {
 			let photo = await Photo.create({
-				catId,
+				CatId: CatId,
 				imageUrl,
 				caption,
 			})
@@ -15,13 +15,13 @@ class CatController {
 			next(error)
 		}
 	}
-
 	static async getPhotos(req, res, next) {
-		const { catId } = req.body
+		const { id, email, username } = req.userAuth
+		const { CatId } = req.body
 		try {
 			let photos = await Photo.findAll({
 				where: {
-					catId: catId,
+					CatId,
 				},
 			})
 			res.status(200).json({
@@ -31,15 +31,18 @@ class CatController {
 			next(error)
 		}
 	}
-
 	static async addCat(req, res, next) {
 		const { id, email, username } = req.userAuth
-		const { avatar, description } = req.body
+		const { avatarUrl, description, imageUrl } = req.body
 		try {
 			let cat = await Cat.create({
 				UserId: id,
-				avatar,
+				avatarUrl,
 				description,
+			})
+			let photo = await Photo.create({
+				CatId: cat.id,
+				imageUrl,
 			})
 			res.status(201).json({
 				cat,
@@ -48,14 +51,13 @@ class CatController {
 			next(error)
 		}
 	}
-
 	static async deleteCat(req, res, next) {
 		const { id, email, username } = req.userAuth
-		const catId = req.params.id
+		const CatId = req.params.id
 		try {
 			let deleted = await Cat.destroy({
 				where: {
-					id: catId,
+					id: CatId,
 				},
 			})
 			if (!deleted) {
