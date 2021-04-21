@@ -1,6 +1,5 @@
 const jwt = require ('jsonwebtoken')
-// const JWT_SECRET = proccess.env.JWT_SECRET
-JWT_SECRET = "secretindiv"
+const JWT_SECRET = process.env.JWT_SECRET
 
 function generateToken(payload){
     return jwt.sign(payload, JWT_SECRET)
