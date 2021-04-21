@@ -16,18 +16,24 @@ module.exports = {
          UserId : 4,
          GithubUser : 'fadelmajid',
          GitlabUser : '',
+         createdAt : new Date(),
+         updatedAt : new Date(),
          skill : 'Backend development with Node.js, written & verbal communication'
        },
        {
         UserId : 5,
         GithubUser : 'amilioasmaramis',
         GitlabUser : '',
+        createdAt : new Date(),
+        updatedAt : new Date(),
         skill : 'Front-end development with Vue.js, critical thinking and problem solving'
       },
       {
         UserId : 6,
         GithubUser : 'ekhaer',
         GitlabUser : '',
+        createdAt : new Date(),
+        updatedAt : new Date(),
         skill : 'Software testing & debugging; Specialty: Python, Javascript'
       }
      ])

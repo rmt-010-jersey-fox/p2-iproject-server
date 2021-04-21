@@ -11,7 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     await queryInterface.bulkInsert('BuddyProfiles', [
+     await queryInterface.bulkInsert('BuddySchedules', [
         {
           UserId : 4,
           time : '17.00',
@@ -102,7 +102,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('BuddyProfiles', null, {} )
+     await queryInterface.bulkDelete('BuddySchedules', null, {} )
 
   }
 };
