@@ -11,13 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Song.belongsToMany(models.User, {
-        through: models.Playlist,
+      Song.belongsToMany(models.Playlist, {
+        through: models.PlaylistSong,
+        as: 'playlist',
         foreignKey: 'SongId'
       })
     }
   };
   Song.init({
+    track_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Song Title Required"
+        }
+      }
+    },
     artist: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -36,15 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    track_title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: "Song Title Required"
-        }
-      }
-    }
+
   }, {
     sequelize,
     modelName: 'Song',

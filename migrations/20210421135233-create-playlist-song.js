@@ -1,28 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Playlists', {
+    return queryInterface.createTable('PlaylistSongs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      UserId: {
+      PlaylistId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Users",
+          model: "Playlists",
           key: "id"
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      name: {
-        unique: true,
-        type: Sequelize.STRING
-      },
-      cover: {
-        type: Sequelize.STRING
+      SongId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Songs",
+          key: "id"
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Playlists');
+    return queryInterface.dropTable('PlaylistSongs');
   }
 };

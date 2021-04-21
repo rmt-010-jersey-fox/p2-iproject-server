@@ -8,13 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      track_title: {
+        type: Sequelize.STRING
+      },
       artist: {
         type: Sequelize.STRING
       },
       album_title: {
-        type: Sequelize.STRING
-      },
-      track_title: {
         type: Sequelize.STRING
       },
       createdAt: {

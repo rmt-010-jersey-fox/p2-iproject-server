@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       Playlist.belongsTo( models.User, {
         foreignKey: 'UserId'
       })
-      Playlist.belongsTo( models.Song, {
-        foreignKey: 'SongId'
+      Playlist.belongsToMany( models.Song, {
+        through: models.PlaylistSong,
+        as: 'songs',
+        foreignKey: 'PlaylistId'
       })
     }
   };
@@ -27,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     UserId: DataTypes.INTEGER,
-    SongId: DataTypes.INTEGER,
     name: {
       type: DataTypes.STRING,
       allowNull: false,
