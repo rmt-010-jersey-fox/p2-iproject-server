@@ -2,8 +2,14 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Clubs', 'shortName', {
-      type: Sequelize.STRING
+    await queryInterface.addColumn('UsersTeams', 'ClubId', {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'Clubs',
+        key: 'id'
+      },
+      onUpdate: 'cascade',
+      onDelete: 'cascade'
     })
     /**
      * Add altering commands here.
@@ -14,7 +20,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeColumn('Clubs', 'shortName', {})
+    await queryInterface.removeColumn('UsersTeams', null, {})
     /**
      * Add reverting commands here.
      *

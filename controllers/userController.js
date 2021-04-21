@@ -66,7 +66,6 @@ class UserController {
             audience: process.env.CLIENT_ID
         })
         .then(ticket => {
-                console.log(ticket);
                 let payload = ticket.getPayload()
                 email = payload.email
                 return User.findOne({

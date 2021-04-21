@@ -1,10 +1,12 @@
 const { UsersTeam } = require('../models')
 
 async function authorization(req, res, next) {
-    const id = +req.params.id
+    const id = +req.params.playerid
+    const UserId = +req.loggedIn.id
     UsersTeam.findOne({
         where: {
-            id
+            PlayerId: id,
+            UserId
         }
     })
     .then(player => {
@@ -12,7 +14,7 @@ async function authorization(req, res, next) {
             res.status(404).json({
                 msg: 'Player not found'
             }) 
-        } else if(player.UserId === req.loggedIn.id) {
+        } else if(player.UserId === UserId) {
             next()
         } else {
             res.status(401).json({

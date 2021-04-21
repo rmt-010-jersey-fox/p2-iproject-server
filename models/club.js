@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Club.hasMany(models.Player)
+      Club.hasMany(models.UsersTeam)
     }
   };
   Club.init({

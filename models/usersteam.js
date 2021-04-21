@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UsersTeam.belongsTo(models.User, {foreignKey: 'UserId', targetKey: 'id'})
       UsersTeam.belongsTo(models.Player, {foreignKey: 'PlayerId', targetKey: 'id'})
+      UsersTeam.belongsTo(models.Club, {foreignKey: 'ClubId', targetKey: 'id'})
     }
   };
   UsersTeam.init({

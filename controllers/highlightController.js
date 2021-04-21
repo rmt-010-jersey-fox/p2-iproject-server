@@ -8,8 +8,14 @@ class HighlightController {
     })
       .then(({ data }) => {
         const highlights = data.filter(e => e.competition.name === 'ENGLAND: Premier League')
-        res.status(200).json(highlights)
-        // console.log(data.data);
+        const highlightArr = []
+        highlights.forEach(e => {
+          highlightArr.push({
+            title: e.title,
+            link: e.videos[0].embed
+          })
+        })
+        res.status(200).json(highlightArr)
       })
       .catch(err => {
         console.log(err);
