@@ -108,7 +108,7 @@ _Response (500 - Internal Server Error)_
 
 ### GET /bookmarks
 
-> fetch all product data
+> fetch bookmarks list
 
 _Request Header_
 
@@ -165,7 +165,7 @@ _Response (500 - Internal Server Error)_
 
 ### POST /bookmarks
 
-> add product
+> add manga to your bookmarks list
 
 _Request Header_
 
@@ -225,7 +225,7 @@ _Response (500 - Internal Server Error)_
 
 ### DELETE /bookmarks/:id
 
-> edit products stock based on id
+> delete manga from bookmarks list
 
 _Request Header_
 
