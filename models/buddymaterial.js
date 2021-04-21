@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       BuddyMaterial.belongsTo(models.Material)
       BuddyMaterial.belongsTo(models.User)
+      BuddyMaterial.hasMany(models.Booking)
     }
   };
   BuddyMaterial.init({

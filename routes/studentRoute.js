@@ -10,4 +10,5 @@ router.get('/buddy-materials', studentController.getBuddyMaterials)
 router.get('/materials/:id', studentController.getBuddyMaterialsById)
 
 router.post('/booking', studentController.booking)
+
 module.exports = router

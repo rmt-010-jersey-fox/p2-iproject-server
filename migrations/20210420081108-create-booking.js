@@ -17,19 +17,10 @@ module.exports = {
         onUpdate : "CASCADE",
         onDelete : "CASCADE"
       },
-      BuddyId: {
+      BuddyMaterialId: {
         type: Sequelize.INTEGER,
         references : {
-          model : "Users",
-          key: "id"
-        },
-        onUpdate : "CASCADE",
-        onDelete : "CASCADE"
-      },
-      MaterialId: {
-        type: Sequelize.INTEGER,
-        references : {
-          model : "Materials",
+          model : "BuddyMaterials",
           key: "id"
         },
         onUpdate : "CASCADE",

@@ -1,4 +1,4 @@
-const { User, Material, BuddyMaterial } = require('../models')
+const { User, Material, BuddyMaterial, Booking, BuddySchedule } = require('../models')
 class StudentController {
     static async getBuddy (req, res, next) {
         try {
@@ -63,7 +63,28 @@ class StudentController {
 
     static async booking (req, res, next) {
         try {
-            
+            /**
+             * data needed : UserId, BuddyMaterialId, BuddyScheduleId
+             */
+            let data = {
+                UserId : req.loggedUser.id,
+                BuddyMaterialId : +req.body.BuddyMaterialId,
+                BuddyScheduleId : +req.body.BuddyScheduleId
+            }
+            let book = await Booking.create(data)
+            if (book) {
+                let dataUpdate = {
+                    status : "unavailabe"
+                }
+                let changeBuddyStatus = await BuddySchedule.update(dataUpdate, {
+                    where : {
+                        id : +req.body.BuddyScheduleId
+                    },
+                    returning : true
+                })
+                res.status(201).json({ message : "Congratulation, you have successfully book a schedule!"})
+            }
+            // res.status(201).json({ message : "Congratulation, you have successfully book a schedule!"})
         } catch (error) {
             next(error)
         }

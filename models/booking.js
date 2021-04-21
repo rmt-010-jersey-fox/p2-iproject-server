@@ -12,17 +12,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Booking.belongsTo(models.User)
-      Booking.belongsTo(models.User, { foreignKey : 'BuddyId'})
-      Booking.belongsTo(models.Material)
+      Booking.belongsTo(models.BuddyMaterial)
       Booking.belongsTo(models.BuddySchedule)
     }
   };
   Booking.init({
     UserId: DataTypes.INTEGER,
-    BuddyId: DataTypes.INTEGER,
-    MaterialId: DataTypes.INTEGER,
+    BuddyMaterialId : DataTypes.INTEGER,
     BuddyScheduleId: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    status: {
+      type : DataTypes.STRING,
+      defaultValue : "booked"
+    }
   }, {
     sequelize,
     modelName: 'Booking',
