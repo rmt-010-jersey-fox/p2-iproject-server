@@ -10,7 +10,6 @@ var router = express.Router()
 router.post('/register', userController.register)
 router.post('/login', userController.login)
 router.post('/googleLogin', userController.googleLogin)
-router.get('/nyTimes', NYTimes.fetchData)
 router.get('/books/:category', BookController.findAll)
 router.get('/book/:isbn', BookController.oneBook)
 
@@ -25,7 +24,9 @@ router.post('/favouriteBooks/editComment/', favouriteBookController.editComment)
 router.delete('/favouriteBooks/deleteComment/:isbn', favouriteBookController.deleteComment)
 router.get('/favouriteBooks/', favouriteBookController.showWishList)
 router.post('/favouriteBooks/', favouriteBookController.addWishlist)
-
 router.delete('/favouriteBooks/:id', authorization, favouriteBookController.delete)
+
+router.use(authorization)
+router.get('/nyTimes', NYTimes.fetchData)
 
 module.exports = router
