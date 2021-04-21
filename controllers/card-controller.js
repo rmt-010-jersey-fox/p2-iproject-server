@@ -73,9 +73,13 @@ class CardController {
 
     let input = { 
       mastery: +req.body.mastery,
-      due: newDue.setDate(today.getDate() + 1 + +req.body.mastery) //jadwalkan card untuk muncul lagi
+      
     }
 
+    if(req.body.answer !== 'again') {
+      input.due = newDue.setDate(today.getDate() + 1 + +req.body.mastery) //jadwalkan card untuk muncul lagi
+    }
+    
     try {
       await Card.update(input, {
         where: {
