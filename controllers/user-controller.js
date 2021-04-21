@@ -1,5 +1,7 @@
 const {
-    User
+    User,
+    Friend,
+    Post
 } = require("../models");
 
 const {
@@ -18,13 +20,12 @@ const {
 class UserController {
     static async register(req, res, next) {
         try {
-            const {
+            let {
                 email,
                 password,
                 username,
                 avatar
             } = req.body;
-
             const newUser = await User.create({
                 email,
                 password,
@@ -109,7 +110,14 @@ class UserController {
             const user = await User.findOne({
                 where: {
                     id: req.params.id
-                }
+                },
+                include: [{
+                    model: Friend,
+                    include: [{
+                        model: User,
+                        as: 'friend'
+                    }],
+                }, Post]
             })
             res.status(200).json(user)
         } catch (err) {
@@ -158,7 +166,7 @@ class UserController {
             }
 
             res.status(200).json({
-                message: "Username Changed Successfully"
+                message: "Avatar Changed Successfully"
             })
         } catch (err) {
             next(err)
@@ -177,6 +185,12 @@ class UserController {
                     status: 404
                 }
             }
+
+            const friendDeleted = await Friend.destroy({
+                where: {
+                    FriendId: req.params.id
+                }
+            })
 
             res.status(200).json({
                 message: "User Deleted Successfully"

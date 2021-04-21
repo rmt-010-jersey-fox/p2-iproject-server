@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Post)
       User.hasMany(models.Friend)
     }
   };
@@ -61,7 +62,8 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate(instance, options) {
         instance.password = hashPassword(instance.password)
-        if(!instance.avatar) instance.avatar = `https://avatars.dicebear.com/api/micah/whoelse.svg`
+        instance.username = instance.username.replace(' ','')
+        if(!instance.avatar) instance.avatar = `https://avatars.dicebear.com/api/micah/${instance.username}.svg`
       }
     },
     sequelize,

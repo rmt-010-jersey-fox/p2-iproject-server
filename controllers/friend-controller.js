@@ -48,6 +48,22 @@ class FriendController {
             next(err)
         }
     }
+
+    static async deleteFriend(req, res, next) {
+        try {
+            const deleted = await Friend.destroy({
+                where: {
+                    FriendId: req.params.id
+                }
+            })
+            res.status(201).json({
+                message: 'Delete Friend Success',
+            })
+        }
+        catch (err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = FriendController;

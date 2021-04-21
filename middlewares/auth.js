@@ -3,7 +3,8 @@ const {
 } = require("../helpers/jwt");
 const {
     User,
-    Post
+    Post,
+    Friend
 } = require("../models");
 
 async function authentication(req, res, next) {
@@ -85,7 +86,6 @@ async function userAuthorization(req, res, next) {
                 id: req.params.id
             }
         })
-        console.log(userFound)
         if (!userFound) {
             next()
         }
@@ -101,11 +101,38 @@ async function userAuthorization(req, res, next) {
     } catch (err) {
         next(err)
     }
+}
 
+async function friendAuthorization(req, res, next) {
+    try {
+        const friendFound = await Friend.findOne({
+            where: {
+                FriendId: req.params.id
+            }
+        })
+
+        if (!friendFound) {
+            throw {
+                status: 404,
+            }
+        }
+
+        if (friendFound.UserId == req.loggedUser.id) {
+            next()
+        } else {
+            throw {
+                status: 401,
+                message: 'Your Are Unauthorized'
+            }
+        }
+    } catch (err) {
+        next(err)
+    }
 }
 
 module.exports = {
     authentication,
     postAuthorization,
-    userAuthorization
+    userAuthorization,
+    friendAuthorization
 };
