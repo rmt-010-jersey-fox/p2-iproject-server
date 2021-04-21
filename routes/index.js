@@ -1,0 +1,22 @@
+const router = require('express').Router()
+const API = require('../controllers/api')
+const User = require('../controllers/user')
+const Chat = require('../controllers/chat')
+const Playlist = require('../controllers/playlist')
+const Song = require('../controllers/song')
+const authenticate = require('../middlewares/auth')
+
+router.post('/register', User.register)
+router.post('/login', User.login)
+router.use(authenticate)
+router.get('/playlists', Playlist.read)
+router.get('/playlists/:id', Playlist.readOne)
+router.get('/list', API.getPlaylist)
+router.get('/songs', Song.read)
+router.get('/songs/:id', Song.readOne)
+router.get('/lyrics', API.getLyrics)
+router.get('/charts', API.getBillboardChart)
+router.post('/chats', Chat.chat)
+router.get('/chats', Chat.read)
+
+module.exports = router
