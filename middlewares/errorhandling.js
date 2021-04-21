@@ -8,6 +8,9 @@ function errorhandling(err, req, res, next) {
       err.errors.forEach(el => error.push(el.message))
       res.status(400).json({ message: error })      
     break;
+    case 'notenoughteam':
+      res.status(400).json({ message: 'Not Enough Team to Create Bracket' })      
+    break;
     case 'invalidlogin':
       res.status(403).json({ message: 'Invalid Email/Password' })      
     break;
@@ -19,12 +22,14 @@ function errorhandling(err, req, res, next) {
     break;
     case 'invalidtoken':
       res.status(401).json({ message: 'Invalid Access Token' })      
+    case 'alreadyadvanced':
+      res.status(400).json({ message: 'This Team Already Advanced to Next Bracket' })      
     break;
     case 'unauthorized':
       res.status(401).json({ message: 'Unauthorized Access' })      
     break;
     case 'notournament':
-      res.status(404).json({ message: 'No tournament Found' })      
+      res.status(400).json({ message: 'There are no Tournamet currently for your account right now please create one' })     
     break;
     case 'havebracket':
       res.status(400).json({ message: 'This Tournament Already Have Bracket' })      
@@ -34,7 +39,7 @@ function errorhandling(err, req, res, next) {
     break;
 
     default:
-      res.status(500).json(err)
+      res.status(500).json({ message: 'Internal Server Error' })
   }
 }
 

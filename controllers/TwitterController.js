@@ -1,6 +1,6 @@
 const { Tournament } = require('../models')
 const axios = require('axios');
-const author = `Bearer AAAAAAAAAAAAAAAAAAAAAK2gOAEAAAAAwWUHLm9cD66iC%2B0KdSN6fbl%2B0j8%3D6vaKOGXyiJEirIOcQB6mwgiwvBsq3a1RdrJWeaSFVW6N018ngr`
+const author = `Bearer ${process.env.BEARER_TOKEN_TWITTER}`
 
 class TwitterController{
   static getTwitterPerTournament(req, res, next){
@@ -18,7 +18,6 @@ class TwitterController{
             }
           })
           .then((response) => {
-            
             twitter = response.data
             let appid
             if (game === 'R6'){
@@ -48,6 +47,7 @@ class TwitterController{
           })
           .catch((err) => {
             next(err)
+
           })
       })
   }

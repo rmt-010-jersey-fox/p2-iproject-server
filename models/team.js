@@ -16,7 +16,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Team.init({
-    name: DataTypes.STRING,
+    name: {
+      type : DataTypes.STRING,
+      validate : {
+        notEmpty : {
+          args : true,
+          msg : "Name is required"
+        },
+        notNull : {
+          argss : true,
+          msg : "Name is required"
+        },
+        isAlphanumeric : { msg: 'Name format should only contain letter and number'}
+      },
+      allowNull : false
+    },
     description: DataTypes.STRING,
     TournamentId: DataTypes.INTEGER
   }, {
