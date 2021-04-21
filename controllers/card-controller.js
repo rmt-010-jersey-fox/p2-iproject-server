@@ -70,16 +70,22 @@ class CardController {
 
     let today = new Date()
     let newDue = new Date()
+    let level
 
     let input = { 
       mastery: +req.body.mastery,
       
     }
 
-    if(req.body.answer !== 'again') {
-      input.due = newDue.setDate(today.getDate() + 1 + +req.body.mastery) //jadwalkan card untuk muncul lagi
+    if(req.body.answer !== "again") {
+      if(+req.body.mastery === 0) {
+        input.due = newDue.setDate(today.getDate() + 1 +req.body.mastery) //jadwalkan card untuk muncul lagi
+      } else {
+        input.due = newDue.setDate(today.getDate() + +req.body.mastery) //jadwalkan card untuk muncul lagi
+      }
+
     }
-    
+
     try {
       await Card.update(input, {
         where: {
@@ -110,9 +116,13 @@ class CardController {
             id: +req.user.id
           }
         })
+
+        let user = await User.findByPk(+req.user.id)
+
+        level = user.showLevelAndNext().level
       }
 
-      res.status(200).json({newMastery: input.mastery})
+      res.status(200).json({newMastery: input.mastery, level})
     }
 
     catch(err) {
