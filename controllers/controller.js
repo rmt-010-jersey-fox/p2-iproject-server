@@ -1,4 +1,6 @@
 const axios = require('axios')
+const { User } = require('../models')
+const { generateToken } = require('../helpers/jwt')
 class Controller {
     static showCase(req,res){
         axios({
@@ -63,6 +65,52 @@ class Controller {
             }
             res.status(200).json(news)
             
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+    static register(req,res){
+        const name = req.body.name
+        const email = req.body.email
+        User.create({
+            name: name,
+            email: email
+        })
+        .then(response => {
+            res.status(200).json({
+                user : {
+                    name: response.name,
+                    email: response.email
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+    static login(req,res){
+        const email = req.body.email
+        User.findOne({
+            where: {
+                email: email
+            }
+        })
+        .then(user => {
+            if(user){
+                const token = generateToken({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email
+                })
+                res.status(200).json({
+                    token: token
+                })
+            }else {
+                res.status(404).json({
+                    message: 'user not found'
+                })
+            }
         })
         .catch(err => {
             console.log(err);
