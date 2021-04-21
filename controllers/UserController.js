@@ -29,6 +29,7 @@ class UserController{
           if (compare){
             let payload = { id: data.id, email: data.email }
             let token = generateToken(payload)
+            console.log('masuk')
             res.status(200).json({ access_token: token, id: data.id })
           } else {
             throw { name: 'invalidlogin' }
@@ -38,6 +39,7 @@ class UserController{
         }
       })
       .catch ((err) => {
+        console.log(err.message)
         next(err)
       })
   }

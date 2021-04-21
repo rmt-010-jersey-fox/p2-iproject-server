@@ -47,7 +47,6 @@ class TwitterController{
           })
           .catch((err) => {
             next(err)
-
           })
       })
   }
