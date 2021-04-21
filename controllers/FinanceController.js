@@ -44,6 +44,7 @@ class FinanceDetailsController {
                 next(err)
             })
     }
+
 }
 
 module.exports = FinanceDetailsController
