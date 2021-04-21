@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      BuddySchedule.hasMany(models.User)
+      BuddySchedule.belongsTo(models.User)
     }
   };
   BuddySchedule.init({

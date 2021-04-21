@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.BuddyProfile)
       User.hasMany(models.BuddyMaterial)
       User.hasMany(models.BuddySchedule)
       User.hasMany(models.Booking)
@@ -25,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail : {
           msg : "Email is incorrect"
         },
-        isEmpty : {
+        notEmpty : {
           msg : "Email should not be empty"
         }
       }
@@ -37,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
           args : [6],
           msg : 'Password is weak (should be min 6 words length)'
         },
-        isEmpty : {
+        notEmpty : {
           msg : "Password should not be empty"
         }
       }
@@ -48,13 +47,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     first_name: {
       type : DataTypes.STRING,
-      isEmpty : {
+      notEmpty : {
         msg : "First Name should not be empty"
       }
     },
     last_name: {
       type : DataTypes.STRING,
-      isEmpty : {
+      notEmpty : {
         msg : "Last Name should not be empty"
       }
     }
