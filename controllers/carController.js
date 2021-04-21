@@ -1,8 +1,8 @@
-const {Car} = require('../models')
+const {Car, Rental} = require('../models')
 
 class CarController {
     static getCars(req, res, next) {
-        Car.findAll()
+        Car.findAll({include: Rental})
         .then(data => {
             res.status(200).json(data)
         })
