@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
 
 function generateToken(payload) {
-  return jwt.sign(payload, process.env.SECRETPASSWORD);
+  return jwt.sign(payload, 'password');
 }
 
 function verify(token) {
-  return jwt.verify(token, process.env.SECRETPASSWORD);
+  return jwt.verify(token, 'password');
 }
 
 module.exports = { generateToken, verify };

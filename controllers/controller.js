@@ -37,13 +37,29 @@ class Controller {
                     }
                     res.status(200).json({access_token: generateToken(payload)})
                 } else {
-                    res.status(401).json({message: 'invalid email or password'})
+                    res.status(400).json({message: 'invalid email or password'})
                 }
             } else {
-                res.status(401).json({message: 'invalid email or password'})
+                res.status(400).json({message: 'invalid email or password'})
             }
         })
         .catch(err => {
+            res.status(500).json({message: 'internal server error'})
+        })
+    }
+
+    static getUser(req, res) {
+        console.log('masuk get')
+        User.findOne({
+            where: {
+                id:req.loggedUser.id
+            }
+        })
+        .then(user => {
+            res.status(200).json(user)
+        })
+        .catch(err => {
+            console.log(err.message)
             res.status(500).json({message: 'internal server error'})
         })
     }
@@ -68,11 +84,10 @@ class Controller {
     }
 
     static addHistory(req, res) {
-        const {price, from, destination} = req.body
+        const {price, item} = req.body
         History.create({
             price,
-            from,
-            destination,
+            item,
             UserId:req.loggedUser.id
         })
         .then(data => {
