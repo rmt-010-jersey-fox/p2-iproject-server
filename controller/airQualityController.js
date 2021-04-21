@@ -4,7 +4,7 @@ class AirController {
     static getAirQuality (req, res, next) {
         axios({
             method: 'GET',
-            url: `http://api.airvisual.com/v2/nearest_city?key=${process.env.AIRAPI}`
+            url: `http://api.airvisual.com/v2/nearest_city?lat=-6.16&lon=106.86&key=${process.env.AIRAPI}`
         })
         .then(response => {
             const AQI_US = response.data.data.current.pollution.aqius
