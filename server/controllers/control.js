@@ -173,10 +173,12 @@ class Controller {
     try {
       const { UserId } = req.loggedUser;
       const MovieId = req.params.imdbID;
-      console.log(UserId, MovieId);
+      const { title, poster } = req.body;
       const watch = await Watchlist.create({
         UserId,
         MovieId,
+        title,
+        poster,
       });
 
       res.status(201).json(watch);
