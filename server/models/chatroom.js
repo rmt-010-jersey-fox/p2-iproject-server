@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'title should not be empty',
 					},
 				},
 			},
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.BOOLEAN,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'status should not be empty',
 					},
 				},
 			},
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.INTEGER,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'UserId should not be empty',
 					},
 				},
 			},

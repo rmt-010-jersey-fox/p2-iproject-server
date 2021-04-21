@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'imageUrl should not be empty',
 					},
 				},
 			},
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'caption should not be empty',
 					},
 				},
 			},
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.INTEGER,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'CatId should not be empty',
 					},
 				},
 			},
