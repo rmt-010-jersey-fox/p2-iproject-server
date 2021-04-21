@@ -8,7 +8,7 @@ var job = new CronJob('0 */1 * * * *', function () {
         method: 'GET',
         url: 'http://localhost:3000/nytimes',
         data : {
-            password: process.env.NYpassword
+            key: process.env.NYkey
         }
     })
         .then(()=>{
