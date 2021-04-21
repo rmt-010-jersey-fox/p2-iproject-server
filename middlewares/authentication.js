@@ -13,7 +13,8 @@ async function authenticate(req, res, next) {
             if(findUser) {
                 req.loggedUser = {
                     email : payload.email,
-                    id : payload.id
+                    id : payload.id,
+                    role : findUser.role
                 }
                 next()
             } else {
