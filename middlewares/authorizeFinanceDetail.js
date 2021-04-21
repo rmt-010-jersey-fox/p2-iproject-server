@@ -1,9 +1,9 @@
-const { Finance } = require('../models')
+const { FinanceDetail } = require('../models')
 
-async function authorize(req, res, next) {
+async function authorizeFinanceDetail(req, res, next) {
     try {
-        const id = +req.params.id
-        const foundFinance = await Finance.findByPk(id)
+        const id = +req.params.financeDetailId
+        const foundFinance = await FinanceDetail.findOne({where: {id: id}})
         if (foundFinance) {
             if (foundFinance.UserId === req.currentUser.id) {
                 next()
@@ -18,4 +18,4 @@ async function authorize(req, res, next) {
     }
 }
 
-module.exports = { authorize }
+module.exports = { authorizeFinanceDetail }

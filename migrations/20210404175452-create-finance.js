@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      saldo: {
+        type: Sequelize.INTEGER
+      },
       UserId: {
         type: Sequelize.INTEGER,
         references: {
