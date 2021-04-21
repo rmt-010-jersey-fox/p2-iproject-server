@@ -1,5 +1,4 @@
 const axios = require('axios');
-const e = require('cors');
 const filterSameISBN = require('../helper/filterSameIsbn')
 let NYTimesApiKey = process.env.NYTimesApiKey
 const { Book } = require('../models')
@@ -47,7 +46,7 @@ class NYTimes {
                 return Book.bulkCreate(filteredData, {updateOnDuplicate: ["status"]})
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json('input data from NY Times to Database Sucess')
                 // 'input data from NY Times to Database Sucess'
             })
             .catch(next)
