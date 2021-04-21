@@ -16,6 +16,9 @@ app.post('/login', Controller.login)
 app.put('/user', Controller.editUser)
 app.post('/history', Controller.addHistory)
 app.get('/history', Controller.getHistory)
+app.get('/location', Controller.fetchProvince)
+app.get('/ongkir/:province', Controller.fetchCity)
+app.post('/ongkir', Controller.fetchOngkir)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -1,6 +1,7 @@
 const { comparePass } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
 const { User, History } = require('../models')
+const axios = require('axios')
 
 class Controller {
     static register(req, res) {
@@ -94,6 +95,68 @@ class Controller {
         .catch(err => {
             res.status(500).json({message: 'internal server error'})
         })
+    }
+
+    static fetchProvince(req, res) {
+        axios({
+            method: 'get',
+            url: 'https://api.rajaongkir.com/starter/province',
+            headers: {
+              key: 'f43ccd2123446338968a237543600a18'
+            }
+          })
+            .then((response) => {
+              res.status(200).json(response.data.rajaongkir.results)
+            })
+            .catch(err => {
+              res.status(500).json({message: 'internal server error'})
+            })
+    }
+
+    static fetchOngkir(req, res) {
+        const {origin, destination, weight, courier} = req.body
+        axios({
+            method: 'post',
+            url: 'https://api.rajaongkir.com/starter/cost',
+            headers: {
+              key: 'f43ccd2123446338968a237543600a18'
+            },
+            data: {
+                origin: +origin,
+                destination: +destination,
+                weight: +weight,
+                courier
+            }
+          })
+            .then((response) => {
+                console.log('masuk')
+                console.log(response)
+              res.status(200).json(response.data.rajaongkir.results[0].costs)
+            })
+            .catch(err => {
+                console.log(err.response.data)
+              res.status(500).json({message: 'internal server error'})
+            })
+    }
+
+    static fetchCity(req, res) {
+        const id = req.params.province
+        axios({
+            method: 'get',
+            url: `https://api.rajaongkir.com/starter/city?province=${id}`,
+            headers: {
+              key: 'f43ccd2123446338968a237543600a18'
+            }
+          })
+            .then((response) => {
+                console.log('masuk')
+                console.log(response)
+              res.status(200).json(response.data.rajaongkir.results)
+            })
+            .catch(err => {
+                console.log(err.response.data)
+              res.status(500).json({message: 'internal server error'})
+            })
     }
 }
 
