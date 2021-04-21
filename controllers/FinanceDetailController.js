@@ -59,6 +59,9 @@ class FinanceDetailController {
             next(error)
         }
     }
+
+
+    // blablbala
 }
 
 module.exports = FinanceDetailController
