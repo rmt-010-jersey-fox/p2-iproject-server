@@ -72,11 +72,11 @@ class UserController {
 				include: { model: Cat, include: { model: Photo } },
 				attribute: { exclude: ['createdAt', 'updatedAt'] },
 			})
-			console.log(user.Cats[0].Photos)
 			res.status(200).json({
 				user,
 			})
 		} catch (error) {
+			console.log(error)
 			next(error)
 		}
 	}

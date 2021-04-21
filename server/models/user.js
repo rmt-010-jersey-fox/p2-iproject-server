@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'username should not be empty',
 					},
 				},
 			},
@@ -28,10 +28,10 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'email should not be empty',
 					},
 					isEmail: {
-						msg: 'should be email',
+						msg: 'email should be email',
 					},
 				},
 			},
@@ -39,11 +39,11 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {
-						msg: 'should not be empty',
+						msg: 'password should not be empty',
 					},
 					min: {
 						args: [6],
-						msg: 'minimum 6 character',
+						msg: 'password minimum 6 character',
 					},
 				},
 			},

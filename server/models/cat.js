@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Cat.init(
 		{
-			description: {
+			name: {
 				type: DataTypes.STRING,
 				validate: {
 					notEmpty: {

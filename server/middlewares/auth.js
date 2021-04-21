@@ -3,6 +3,7 @@ const { User } = require('../models')
 
 const authentication = async function (req, res, next) {
 	const token = req.headers.access_token
+	console.log(token)
 	if (!token) {
 		next({
 			message: 'invalid token',

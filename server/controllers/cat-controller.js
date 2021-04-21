@@ -33,12 +33,12 @@ class CatController {
 	}
 	static async addCat(req, res, next) {
 		const { id, email, username } = req.userAuth
-		const { avatarUrl, description, imageUrl } = req.body
+		const { avatarUrl, name, imageUrl } = req.body
 		try {
 			let cat = await Cat.create({
 				UserId: id,
 				avatarUrl,
-				description,
+				name,
 			})
 			let photo = await Photo.create({
 				CatId: cat.id,
