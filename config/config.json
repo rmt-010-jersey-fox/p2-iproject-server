@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "masghi63",
+    "password": "jamweker123",
+    "database": "database_development_lalappan1",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "masghi63",
+    "password": "jamweker123",
+    "database": "database_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
