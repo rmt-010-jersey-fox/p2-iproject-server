@@ -43,11 +43,11 @@ class UserController {
             if (user) {
                 return user
             } else {
-                let username = email.split('@')
+                let name = email.split('@')
                 return User.create({
                     email: email,
                     password: `${Math.random() * 10000}4tTh5ho5u4bk`,
-                    username: username[0] + 'kanban'
+                    name: name[0]
                 })
             }
         }).then(user => {
@@ -55,10 +55,10 @@ class UserController {
                 id: user.id,
                 email: user.email
             })
-            res.status(200).json({access_token: token})
+            res.status(200).json({access_token: token, name: data.name})
         }).catch(err => {
             console.log(err);
-            next({message: err.message})
+            next(err)
         })
     }
 
