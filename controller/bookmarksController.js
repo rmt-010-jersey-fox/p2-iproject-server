@@ -16,8 +16,10 @@ class bookmarksController {
         let input = {
             title: req.body.title,
             UserId: req.loggedUser.id,
-            lang: "EN"
+            lang: "EN",
+            mangaLink: req.body.mangaLink
           };
+          console.log(input)
           Bookmark.create(input)
             .then((data) => {
               res.status(201).json(data);

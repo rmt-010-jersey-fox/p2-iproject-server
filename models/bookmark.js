@@ -23,13 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     lang: {
       type: DataTypes.STRING,
-      // validate: {
-      //   notEmpty: { args: true, msg: "language can't be empty" },
-      //   isIn: {
-      //     args: [[EN, ID]],
-      //     msg: "Must be read or unread"
-      //   }
-      // },
+    },
+    mangaLink: {
+      type: DataTypes.STRING,
     },
     UserId: DataTypes.INTEGER
   }, {
