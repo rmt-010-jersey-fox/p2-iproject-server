@@ -51,8 +51,14 @@ class BracketController{
 
   static editScoreBracket(req, res, next) {
     let id = req.params.id
-    let score = req.body.score
-    Bracket.update({ score }, { where: { id }, returning: true })
+    Bracket.findOne({ where: { id }})
+      .then((data) => {
+        if(data) {
+          let beforescore = data.score
+          let score = beforescore + 1
+          return Bracket.update({ score }, { where: { id }, returning: true })
+        }
+      })
       .then((data) => {
         if(data[0] == 1){
           res.status(200).json(data[1][0])
