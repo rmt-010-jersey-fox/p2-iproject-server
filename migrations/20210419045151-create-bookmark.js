@@ -14,6 +14,9 @@ module.exports = {
       lang: {
         type: Sequelize.STRING
       },
+      mangaLink: {
+        type: Sequelize.STRING
+      },
       UserId: {
         type: Sequelize.INTEGER
       },
