@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.BuddyMaterial)
       User.hasMany(models.BuddySchedule)
       User.hasMany(models.Booking)
+      User.hasMany(models.BuddyProfile)
     }
   };
   User.init({

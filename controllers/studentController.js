@@ -1,4 +1,4 @@
-const { User, Material, BuddyMaterial, Booking, BuddySchedule } = require('../models')
+const { User, Material, BuddyMaterial, Booking, BuddySchedule, BuddyProfile } = require('../models')
 class StudentController {
     static async getBuddy (req, res, next) {
         try {
@@ -12,6 +12,27 @@ class StudentController {
             next(error)
         }
     }
+
+    static async getBuddyById (req, res, next) {
+        try {
+            const id = +req.params.id
+            let data = await BuddyProfile.findOne({
+                where : {
+                    UserId : id
+                },
+                include : {
+                    model : User,
+                    attributes : [
+                        'id', 'email', 'role', 'first_name', 'last_name', 'imgUrl'
+                    ]
+                }
+            })
+            res.status(200).json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
+    
     static async getMaterials (req, res, next) {
         try {
             let data = await Material.findAll()
