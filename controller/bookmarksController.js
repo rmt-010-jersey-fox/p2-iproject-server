@@ -2,7 +2,9 @@ const {Bookmark} = require ('../models')
 
 class bookmarksController {
     static getBookmarks(req, res, next) {
-        Bookmark.findAll()
+        Bookmark.findAll({
+          where: {UserId: req.loggedUser.id}
+        })
           .then((data) => {
             res.status(200).json(data);
           })
