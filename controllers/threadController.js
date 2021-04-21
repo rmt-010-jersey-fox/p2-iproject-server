@@ -1,9 +1,18 @@
-const { Thread } = require('../models')
+const { Thread, User } = require('../models')
 
 class threadController{
     static async getThread(req, res, next){
         try {
-            const thread = await Thread.findAll()
+            const thread = await Thread.findAll({include: [{ model: User, attributes: {exclude: ['password', 'email', 'createdAt', 'updatedAt']}}]})
+            res.status(200).json(thread)
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async myThread(req, res, next){
+        try {
+            const thread = await Thread.findAll({where: { UserId: req.loggedUser.id }, include: [{ model: User, attributes: {exclude: ['password', 'email', 'createdAt', 'updatedAt']}}]})
             res.status(200).json(thread)
         } catch (err) {
             next(err)
@@ -27,7 +36,7 @@ class threadController{
 
     static async getThreadById(req, res, next){
         try {
-            const thread = await Thread.findByPk(req.params.id)
+            const thread = await Thread.findOne({where: {id: req.params.id}, include: [{ model: User, attributes: {exclude: ['password', 'email', 'createdAt', 'updatedAt']}}]})
             if(!thread){
                 throw { status:404, message: 'Thread is not found'}
             } else {

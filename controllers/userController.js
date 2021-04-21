@@ -2,17 +2,35 @@ const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
 const { OAuth2Client } = require('google-auth-library');
+const sendMail = require('../helpers/nodemailer')
+const welcome = require('../helpers/tempEmail')
 
 class userController{
     static async register(req, res, next){
         try {
-            const { username, email, password } = req.body
+            const { fullname, username, email, password, image } = req.body
             const user = await User.create({
+                fullname: fullname || '',
                 username: username || '', 
                 email: email || '', 
-                password: password || ''
+                password: password || '',
+                image: image || ''
             })
-            res.status(201).json({id: user.id, email: user.email})
+            if (user) {
+
+                sendMail(`${user.email}`, 'Forum Games', welcome)
+                res.status(201).json({id: user.id, fullname:user.fullname, username: user.username, email: user.email})
+            }
+        } catch (err) {
+            next(err)
+        }
+    }
+
+    static async activate(req, res, next) {
+        try {
+            const id = req.params.id
+            await User.update({ status: true }, { where:{ id }})
+            res.status(200).json({ message: 'User successfully activated'})
         } catch (err) {
             next(err)
         }
@@ -95,7 +113,8 @@ class userController{
 
     static async getUserByPk(req, res, next) {
         try {
-            const user = await User.findByPk(req.params.id)
+            // const { username } = req.body
+            const user = await User.findOne({ where: { id: req.params.id }}, {exclude: ['password']})
             if (!user) {
                 throw { status: 401, message: 'Unauthorized' }
             } else {

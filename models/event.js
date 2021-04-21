@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Event.belongsTo(models.User)
-      Event.belongsTo(models.Game)
     }
   };
   Event.init({
@@ -25,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
         notEmpty: {
           msg: 'Content is required'
@@ -52,8 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    UserId: DataTypes.INTEGER,
-    GameId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Event',

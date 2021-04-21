@@ -1,5 +1,5 @@
 const { verify } = require('../helpers/jwt')
-const { User } = require('../models')
+const { User, Thread } = require('../models')
 
 async function authenticate(req, res, next){
     try {
@@ -30,7 +30,17 @@ async function authenticate(req, res, next){
 
 async function authorization(req, res, next){
     try {
-        
+        const id = req.params.id
+        const foundThread = await Thread.findByPk(id)
+        if(foundThread){
+            if(foundThread.UserId === req.loggedUser.id){
+                next()
+            } else {
+                throw { status: 401, message: 'Unauthorized' }
+            }
+        } else {
+            throw { status: 404, message: 'Not Found' }
+        }
     } catch (err) {
         
     }
