@@ -6,6 +6,7 @@ const AirController = require('../controller/airQualityController')
 
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
+router.post('/googlelogin', UserController.googleLogin)
 router.get('/airQuality', AirController.getAirQuality)
 
 router.use(authenticate)
