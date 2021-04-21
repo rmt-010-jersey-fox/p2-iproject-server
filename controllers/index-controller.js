@@ -1,5 +1,6 @@
 const {User} = require("../models")
 const checkPassword = require("../helpers/check-hashed-password")
+const generateAvatar = require("../helpers/random-avatar-generator")
 const jwt = require("jsonwebtoken")
 
 class IndexController {
@@ -21,7 +22,7 @@ class IndexController {
       if(user && checkPassword(input.password, user.password)) {
 				let token = jwt.sign({id: user.id, username: user.username}, process.env.SECRET_CODE || "secret")
 				
-				res.status(200).json({username: user.username, id: user.id, access_token: token})
+				res.status(200).json({username: user.username, id: user.id, avatarImageUrl: user.avatarImageUrl, access_token: token})
 				
 			} else {
 				throw {name: "InvalidUsernameOrPassword"}
@@ -31,16 +32,6 @@ class IndexController {
     catch(err) {
       next(err)
     }
-  }
-
-  static async glogin(req, res, next) {
-    try {
-      res.status(200).json({success: "glogin success"})
-    }
-
-    catch(err) {
-      next(err)
-    }  
   }
 
   static async register(req, res, next) {
@@ -78,7 +69,8 @@ class IndexController {
         exp: user.exp,
         nextLevel,
         cardsCleared: user.cardsCleared,
-        desc: user.desc
+        desc: user.desc,
+        avatarImageUrl: user.avatarImageUrl
       }
       res.status(200).json(profile)
     }
@@ -103,6 +95,35 @@ class IndexController {
       if(!updatedProfile) throw {name: "UserNotFound"}
 
       res.status(200).json({updatedProfile})
+    }
+
+    catch(err) {
+      next(err)
+    }  
+  }
+
+  static async changeAvatar(req, res, next) {
+    let input = {
+      avatarImageUrl: ""
+    }
+
+    if(req.body.random) {
+      input.avatarImageUrl = generateAvatar('flashero')
+    } else {
+      input.avatarImageUrl = req.body.avatarImageUrl || ""
+    }
+
+    try {
+      let updatedProfile = await User.update(input, {
+        where: {
+          id: +req.user.id
+        },
+				returning: true
+      })
+
+      if(!updatedProfile[0]) throw {name: "UserNotFound"}
+
+      res.status(200).json(updatedProfile[1][0].avatarImageUrl)
     }
 
     catch(err) {

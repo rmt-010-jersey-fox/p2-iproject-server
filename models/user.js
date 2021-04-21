@@ -1,5 +1,6 @@
 'use strict';
 const hashPassword = require("../helpers/hash-password")
+const avatarUrlGenerator = require("../helpers/random-avatar-generator")
 
 const {
   Model
@@ -84,12 +85,21 @@ module.exports = (sequelize, DataTypes) => {
     exp: DataTypes.INTEGER,
     cardsCleared: DataTypes.INTEGER,
     desc: DataTypes.STRING,
+    avatarImageUrl: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: {
+          msg: "Please fill avatar url with valid url format"
+        }
+      }
+    }
   }, {
     hooks: {
       beforeCreate: (user, options) => {
         user.exp = 0
         user.cardsCleared = 0
-        user.desc = ''
+        user.desc = 'Just a yet another new player in Flashero'
+        user.avatarImageUrl = avatarUrlGenerator(user.username)
         user.password = hashPassword(user.password)
       }
     },

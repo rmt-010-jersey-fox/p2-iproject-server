@@ -1,5 +1,6 @@
 'use strict';
 const hashPassword = require("../helpers/hash-password")
+const avatarUrlGenerator = require("../helpers/random-avatar-generator")
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,6 +12,7 @@ module.exports = {
         exp: 2341,
         cardsCleared: 764,
         desc: "app untuk memorization nano!",
+        avatarImageUrl: "https://i.imgur.com/qjIemZX.png",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -21,6 +23,7 @@ module.exports = {
         exp: 0,
         cardsCleared: 0,
         desc: "desc kosong juga gapapa",
+        avatarImageUrl: avatarUrlGenerator("otong322"),
         createdAt: new Date(),
         updatedAt: new Date()
       }
