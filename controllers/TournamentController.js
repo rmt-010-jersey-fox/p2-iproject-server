@@ -60,7 +60,7 @@ class TournamentController {
   }
 
   static getBracketByTournamentId(req, res, next) {
-    Bracket.findAll({ where: { TournamentId: req.params.id }, include: Team})
+    Bracket.findAll({ where: { TournamentId: req.params.id }, include: Team, order: [['position','ASC']]})
       .then((data) => {
         res.status(200).json(data)
       })
