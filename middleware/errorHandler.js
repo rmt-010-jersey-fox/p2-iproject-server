@@ -6,7 +6,9 @@ function errorHandler(err, req, res, next) {
         res.status(400).json({ message: err.errors[0].message });
     }
     else {
-        res.status(err.status || 500).json(err.message || 'internal server error')
+        let message = err.message || 'internal server error';
+        let status = err.status || 500
+        res.status(status).json({message})
     }
 }
 

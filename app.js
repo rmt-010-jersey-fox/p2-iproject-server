@@ -1,4 +1,25 @@
 require('dotenv').config()
+const axios = require('axios');
+
+// AWAL CRON
+var CronJob = require('cron').CronJob;
+var job = new CronJob('0 0 0 * * SUN', function () {
+    axios({
+        method: 'POST',
+        url: 'http://localhost:3000/nytimes',
+        data : {
+            key: process.env.NYkey
+        }
+    })
+        .then(()=>{
+            console.log('input data from NY Times to Database Sucess');
+        })
+        .catch((err)=>{
+            console.log(err.response.data);
+        })
+}, null, true, 'Asia/Jakarta');
+// AKHIR CRON
+
 var cors = require('cors')
 const express = require('express')
 const app = express()
