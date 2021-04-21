@@ -3,14 +3,14 @@ const nodemailer = require("nodemailer")
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: 'hidayahhtaufik12@gmail.com', // generated ethereal user
+    user: 'diamontaufik@gmail.com', // generated ethereal user
     pass:  process.env.PASSWORD// generated ethereal password
   },
 });
 
 const sendMail = (email) => {
   const option = {
-    from: 'hidayahhtaufik12@gmail.com',
+    from: 'diamontaufik@gmail.com',
     to: email,
     subject: "Welcome to Anime News",
     text: "Thank you for registering on Anime News"

@@ -48,8 +48,8 @@ class UserController  {
                         email: user.email
                     }
                     const access_token = generateToken(obj)
-                    const userEmail = user.email
-                    res.status(200).json({access_token, userEmail})
+                    const username = user.username
+                    res.status(200).json({access_token, username})
                 }
             }
 
@@ -92,6 +92,7 @@ class UserController  {
             console.log(access_token, "INI ACCESS TOKEENNN")
             let userEmail = payload.email
             res.status(200).json({access_token, userEmail})
+            sendMail(user.email)
           }
 
         }   catch(err){

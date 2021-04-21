@@ -55,14 +55,16 @@ class AnimeController {
     }
 
     static async putAnimesId(req, res, next) {
+        console.log("MASUK PUT")
         let { title, image_url, status, duration, score } = req.body
+        console.log(req.body, " INI REQ BODY")
         let id = +req.params.id
         let data = {
             title,
-                image_url, 
-                status, 
-                duration, 
-                score,
+            image_url, 
+            status, 
+            duration, 
+            score,
         }
         try {
             const findOne = await Anime.findOne({where: { id: id }})
@@ -107,7 +109,7 @@ class AnimeController {
     static async quotesAnime(req, res, next){
         try {
           const news = await axios({
-            url: `https://animechan.vercel.app/api/random`,
+            url: `https://animechan.vercel.app/api/quotes`,
             method : 'GET'
           })
           res.status(200).json(news.data)
