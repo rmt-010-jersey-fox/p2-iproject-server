@@ -38,7 +38,8 @@ class DrinkController{
             url: `http://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`,
         })
             .then(data => {
-                res.status(200).json(data.data)
+                const categories = data.data.categories
+                res.status(200).json(categories)
             })
             .catch(err => {
                 res.status(500).json(err)

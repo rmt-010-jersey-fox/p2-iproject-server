@@ -35,8 +35,11 @@ class MealController{
             url: `http://www.themealdb.com/api/json/v1/1/categories.php`,
         })
             .then(data => {
-                console.log(data.data);
-                res.status(200).json(data.data)
+                const categories = data.data.categories
+                res.status(200).json(categories)
+                // categories.forEach(el => {
+                //     res.status(200).json(el.strCategory)
+                // })
             })
             .catch(err => {
                 res.status(500).json(err)
