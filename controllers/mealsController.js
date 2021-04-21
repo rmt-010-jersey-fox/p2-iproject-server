@@ -37,9 +37,6 @@ class MealController{
             .then(data => {
                 const categories = data.data.categories
                 res.status(200).json(categories)
-                // categories.forEach(el => {
-                //     res.status(200).json(el.strCategory)
-                // })
             })
             .catch(err => {
                 res.status(500).json(err)
@@ -56,7 +53,7 @@ class MealController{
         })
             .then(data => {
                 console.log(data.data);
-                res.status(200).json(data.data)
+                res.status(200).json(data.data.meals)
             })
             .catch(err => {
                 console.log(err);

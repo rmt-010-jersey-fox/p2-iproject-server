@@ -38,7 +38,8 @@ class DrinkController{
             url: `http://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`,
         })
             .then(data => {
-                const categories = data.data.categories
+                const categories = data.data.drinks
+                console.log(data.data)
                 res.status(200).json(categories)
             })
             .catch(err => {
@@ -52,7 +53,7 @@ class DrinkController{
         console.log(category);
         axios({
             method: 'post',
-            url: `http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail${category}`,
+            url: `http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`,
         })
             .then(data => {
                 console.log(data.data);
