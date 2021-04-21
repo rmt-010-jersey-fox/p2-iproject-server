@@ -55,7 +55,8 @@ class DeckController {
         include: Card
       })
 
-      if(!deck.Cards.length) throw {name:"EmptyDeck"}
+      if(!deck) throw {name: "DeckNotFound"}
+      if(!deck.Cards.length) throw {name: "EmptyDeck"}
 
       let cards = deck.Cards.map(card => {
         return {

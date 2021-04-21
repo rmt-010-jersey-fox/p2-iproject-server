@@ -94,7 +94,7 @@ class IndexController {
 
       if(!updatedProfile) throw {name: "UserNotFound"}
 
-      res.status(200).json({updatedProfile})
+      res.status(200).json({success: 'Description has been updated'})
     }
 
     catch(err) {
