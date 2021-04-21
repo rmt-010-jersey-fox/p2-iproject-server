@@ -2,6 +2,7 @@ const { compare } = require('../helper/bcypt')
 
 function authorization(req, res, next) {
     let {key} = req.body
+    // console.log(key);
     try {
         if (compare( key ,'$2b$10$BJAHJ714WF52bKT2CQBVBenX3Vu5VeKtK4fN/2YOyPYvuEpuoNkfy')){
             next()

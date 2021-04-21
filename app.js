@@ -3,9 +3,9 @@ const axios = require('axios');
 
 // AWAL CRON
 var CronJob = require('cron').CronJob;
-var job = new CronJob('0 */1 * * * *', function () {
+var job = new CronJob('0 0 0 * * SUN', function () {
     axios({
-        method: 'GET',
+        method: 'POST',
         url: 'http://localhost:3000/nytimes',
         data : {
             key: process.env.NYkey
