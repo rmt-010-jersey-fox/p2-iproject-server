@@ -16,7 +16,9 @@ module.exports = (err, req, res, next) => {
         res.status(400).json({ message : 'Email is already exist'})
     } else if (err.name === "Invalid JWT") {
         res.status(401).json({ message : 'Invalid JWT token'})
-    } else {
+    }  else if (err.name === "unable action") {
+        res.status(401).json({ message : 'Unable to delete the data'})
+    }  else {
         res.status(500).json(error)
     }    
 }

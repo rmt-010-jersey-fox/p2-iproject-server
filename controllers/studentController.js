@@ -140,6 +140,35 @@ class StudentController {
             next(error)
         }
     }
+
+    static async deleteHistory (req, res, next) {
+        // delete booking that has "canceled" status
+        try {
+            const id = +req.params.id
+            //findOne
+            let findBooking = await Booking.findOne({
+                where : { id : id }
+            })
+            if (findBooking) {
+                if (findBooking.status === "canceled") {
+                    let deleteBooking = await Booking.destroy({
+                        where : { id : id }
+                    })
+                    res.status(200).json({ message : "Delete is success"})
+                } else {
+                    throw {
+                        name : "unable action"
+                    }
+                }
+            } else {
+                throw {
+                    name : "Not Found"
+                }
+            }
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = StudentController
