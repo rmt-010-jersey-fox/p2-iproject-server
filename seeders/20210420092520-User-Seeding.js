@@ -19,7 +19,8 @@ module.exports = {
           first_name : "Emil",
           createdAt: new Date(),
           updatedAt: new Date(),
-          last_name: "K"
+          last_name: "K",      
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         },
         {
           email : "kul@mail.com",
@@ -28,7 +29,8 @@ module.exports = {
           first_name : "Kulin",
           createdAt: new Date(),
           updatedAt: new Date(),
-          last_name: "LA"
+          last_name: "LA",         
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         },
         {
           email : "ris@mail.com",
@@ -37,7 +39,8 @@ module.exports = {
           first_name : "Riska",
           createdAt: new Date(),
           updatedAt: new Date(),
-          last_name: "Azmy"
+          last_name: "Azmy",          
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         },
         {
           email : "abuddy@mail.com",
@@ -46,7 +49,8 @@ module.exports = {
           first_name : "Fadel",
           createdAt: new Date(),
           updatedAt: new Date(),
-          last_name: "Majid"
+          last_name: "Majid",          
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         },
         {
           email : "bbuddy@mail.com",
@@ -55,7 +59,8 @@ module.exports = {
           first_name : "Amilio",
           updatedAt: new Date(),
           createdAt: new Date(),        
-          last_name: "Saja"
+          last_name: "Saja",          
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         },
         {
           email : "cbuddy@mail.com",
@@ -64,7 +69,8 @@ module.exports = {
           first_name : "Niki",
           updatedAt: new Date(),
           createdAt: new Date(),        
-          last_name: "Rising"
+          last_name: "Rising",          
+          imgUrl : "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
         }
       ])
   },

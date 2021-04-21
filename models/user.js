@@ -56,7 +56,8 @@ module.exports = (sequelize, DataTypes) => {
       notEmpty : {
         msg : "Last Name should not be empty"
       }
-    }
+    },
+    imgUrl : DataTypes.TEXT,
   }, {
     hooks : {
       beforeCreate(user){
