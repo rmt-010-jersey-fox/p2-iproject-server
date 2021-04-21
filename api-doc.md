@@ -18,6 +18,8 @@ Tech Stack used to build this app :
 * Bcrypt
 * Dotenv
 * Jsonwebtoken
+* Axios
+
 
 ## Global Responses
 > These responses are applied globally on all endpoints
@@ -50,11 +52,6 @@ _Response (500 - Internal Server Error)_
 - `POST /login`
 - `POST /googleLogin`
 - `POST /register`
-- `GET /games`
-- `GET /games/:id`
-- `POST /games`
-- `PUT /games/:id`
-- `DELETE /games/:id`
 - `GET /users`
 - `GET /users/:id`
 - `PUT /users/:id`
@@ -72,6 +69,7 @@ _Response (500 - Internal Server Error)_
 - `PUT /events/:id`
 - `PATCH /events/:id`
 - `DELETE /events/:id`
+- `GET /popularGames`
 
 
 &nbsp;
@@ -183,235 +181,6 @@ _Response (400)_Bad Request
     "errors": [
         "<Error message>"
     ]
-}
-```
-
----
-### GET /games
-
-> Get all games
-
-_Request Header_
-```
-{
-    "access_token" : <your access token>
-}
-```
-
-
-_Request Body_
-```
-not needed
-```
-
-_Response (200)_OK
-```
-[
-    {
-        "id": 1,
-        "name": "DOTA 2",
-        "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1618283868",
-        "createdAt": "2021-03-29T09:21:50.553Z",
-        "updatedAt": "2021-03-29T09:21:50.553Z"
-    },
-    {
-        "id": 2,
-        "name": "Fortnite",
-        "image_url": "https://cdn2.unrealengine.com/Diesel%2Fproduct%2Ffn%2FFortnite-Logo_w-Shadow-1778x811-ed23fe8dea13f030db120b226f9d2a101560bde2.png?h=270&resize=1&w=480",
-        "createdAt": "2021-03-29T09:40:43.723Z",
-        "updatedAt": "2021-03-29T10:23:02.775Z"
-    }
-]
-```
-
----
-### GET /games/:id
-
-> Get single asset as defined by the id provided
-
-_Request Header_
-```
-{
-    "access_token" : <your access token>
-}
-```
-
-_Request Body_
-```
-not needed
-```
-
-_Request Params_
-```
-Required: id=[integer]
-```
-
-_Response (200)_OK
-```
-{
-        "id": 1,
-        "name": "DOTA 2",
-        "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1618283868",
-        "createdAt": "2021-03-29T09:21:50.553Z",
-        "updatedAt": "2021-03-29T09:21:50.553Z"
-    }
-```
-
-_Response (404 - Not Found)_
-```
-{
-  "message": `Game is not found!`
-}
-```
-
-_Response (401)_
-```
-{
-    "message" : <authentication error>
-}
-```
-
----
-### POST /games
-
-> Create new asset
-
-_Request Header_
-```
-{
-    "access_token" : <your access token>
-}
-```
-
-_Request Body_
-```
-{
-    "name": "DOTA 2",
-    "image_url": "https://cdn.akamai.steamstaticcom/steam/apps/570/header.jpg?t=1618283868",
-}
-```
-
-_Request Params_
-```
-not needed
-```
-
-_Response (201 - Created)_
-```
-{
-    "id": <given id by system>,
-    "name": "<posted product name>",
-    "image_url": "<posted product image_url>",
-    "updatedAt": "2021-03-29T10:46:13.444Z",
-    "createdAt": "2021-03-29T10:46:13.444Z"
-}
-```
-
-_Response (400 - Error Validation)_
-```
-{
-    "message": '<key> cannot be empty!'
-}
-```
-
-_Response (401)_
-```
-{
-    "message" : <authentication error>
-}
-```
-
----
-### PUT /games/:id
-
-> Update an asset defined by the id provided
-
-_Request Header_
-```
-{
-    "access_token" : <your access token>
-}
-```
-
-_Request Params_
-```
-Required: id=[integer]
-```
-
-_Request Body_
-```
-{
-    "name": "DOTA 2",
-    "image_url": "https://cdn.akamai.steamstaticcom/steam/apps/570/header.jpg?t=1618283868",
-
-}
-```
-
-_Response (200 - OK)_
-```
-{
-    "name": "<updated product name>",
-    "image_url": "<updated product image_url>",
-    "updatedAt": "2021-03-29T10:46:13.444Z",
-    "createdAt": "2021-03-29T10:46:13.444Z"
-}
-```
-
-_Response (400 - Error Validation)_
-```
-{
-    "message": '<key> cannot be empty!'
-}
-```
-
-_Response (404 - Not Found)_
-```
-{
-  "message": 'Not Found'
-}
-```
-
-_Response (401)_
-```
-{
-    "message" : <authentication error>
-}
-```
-
----
-### DELETE /games/:id
-
-> Delete an asset defined by the id provided
-
-_Request Header_
-```
-{
-    "access_token" : <your access token>
-}
-```
-
-
-_Request Body_
-```
-not needed
-```
-
-_Request Params_
-```
-Required: id=[integer]
-```
-
-_Response (200 - OK) 
-```
-{
-  "message": "Game success to delete"
-}
-```
-
-_Response (401)_
-```
-{
-    "message" : <authentication error>
 }
 ```
 
@@ -976,6 +745,192 @@ _Response (401)_
 ```
 {
     "message" : <authentication error>
+}
+```
+
+
+---
+### GET /popularGames
+
+> Get single asset as defined by the id provided
+
+_Request Header_
+```
+{
+    "access_token" : <your access token>
+}
+```
+
+_Request Body_
+```
+not needed
+```
+
+_Request Params_
+```
+not needed
+```
+
+_Response (200)_OK
+```
+[
+    {
+        "slug": "medium",
+        "name": "The Medium",
+        "playtime": 4,
+        "platforms": [
+            {
+                "platform": {
+                    "id": 4,
+                    "name": "PC",
+                    "slug": "pc"
+                }
+            },
+            {
+                "platform": {
+                    "id": 1,
+                    "name": "Xbox One",
+                    "slug": "xbox-one"
+                }
+            },
+            {
+                "platform": {
+                    "id": 186,
+                    "name": "Xbox Series S/X",
+                    "slug": "xbox-series-x"
+                }
+            }
+        ],
+        "stores": [
+            {
+                "store": {
+                    "id": 1,
+                    "name": "Steam",
+                    "slug": "steam"
+                }
+            },
+            {
+                "store": {
+                    "id": 2,
+                    "name": "Xbox Store",
+                    "slug": "xbox-store"
+                }
+            },
+            {
+                "store": {
+                    "id": 5,
+                    "name": "GOG",
+                    "slug": "gog"
+                }
+            },
+            {
+                "store": {
+                    "id": 11,
+                    "name": "Epic Games",
+                    "slug": "epic-games"
+                }
+            }
+        ],
+        "released": "2021-01-28",
+        "tba": false,
+        "background_image": "https://media.rawg.io/media/games/8f5/8f5c25901d96e709ea631599106eda1c.jpg",
+        "rating": 3.56,
+        "rating_top": 4,
+        "ratings_count": 117,
+        "reviews_text_count": 5,
+        "added": 862,
+        "added_by_status": {
+            "yet": 49,
+            "owned": 476,
+            "beaten": 81,
+            "toplay": 201,
+            "dropped": 29,
+            "playing": 26
+        },
+        "metacritic": 73,
+        "suggestions_count": 537,
+        "updated": "2021-04-01T14:31:14",
+        "id": 440081,
+        "score": null,
+        "clip": null,
+        "esrb_rating": {
+            "id": 4,
+            "name": "Mature",
+            "slug": "mature",
+            "name_en": "Mature",
+            "name_ru": "С 17 лет"
+        },
+        "user_game": null,
+        "reviews_count": 124,
+        "saturated_color": "0f0f0f",
+        "dominant_color": "0f0f0f",
+        "short_screenshots": [
+            {
+                "id": -1,
+                "image": "https://media.rawg.io/media/games/8f5/8f5c25901d96e709ea631599106eda1c.jpg"
+            },
+            {
+                "id": 2374831,
+                "image": "https://media.rawg.io/media/screenshots/170/1708577e5a906e513daa4c88568e1119.jpg"
+            },
+            {
+                "id": 2374832,
+                "image": "https://media.rawg.io/media/screenshots/037/037eeba5eeb49e0080a50883c061b39b.jpg"
+            },
+            {
+                "id": 2374833,
+                "image": "https://media.rawg.io/media/screenshots/e8a/e8a07acd6993cc7ca2fb05a140a04ff5_oPkuc6K.jpg"
+            },
+            {
+                "id": 2374834,
+                "image": "https://media.rawg.io/media/screenshots/551/55166f53951099ff9dd6e28f1cf914b0.jpg"
+            },
+            {
+                "id": 2374835,
+                "image": "https://media.rawg.io/media/screenshots/eb9/eb98aa03f5131a0f6ba77c1b19aed063.jpg"
+            },
+            {
+                "id": 2456247,
+                "image": "https://media.rawg.io/media/screenshots/c99/c998545ac3d94df1481f5eb3592f0f69.jpg"
+            }
+        ],
+        "parent_platforms": [
+            {
+                "platform": {
+                    "id": 1,
+                    "name": "PC",
+                    "slug": "pc"
+                }
+            },
+            {
+                "platform": {
+                    "id": 3,
+                    "name": "Xbox",
+                    "slug": "xbox"
+                }
+            }
+        ],
+        "genres": [
+            {
+                "id": 3,
+                "name": "Adventure",
+                "slug": "adventure"
+            },
+            {
+                "id": 4,
+                "name": "Action",
+                "slug": "action"
+            }
+        ]
+    }
+]
+
+```
+
+_Response (404 - Not Found)_
+```
+{
+  "message": `popular Games is not found`
 }
 ```
 
