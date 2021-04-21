@@ -63,7 +63,7 @@ class BracketController{
         if(data[0] == 1){
           res.status(200).json(data[1][0])
         } else {
-          throw { name: 'error' }
+          throw { name: 'error', message: 'Invalid Server Error' }
         }
       })
       .catch((err) => {
