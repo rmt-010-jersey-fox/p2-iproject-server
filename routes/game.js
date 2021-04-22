@@ -3,6 +3,7 @@ const GameCtrl = require('../controllers/GameCtrl')
 const { authenticate } = require('../middlewares/auth')
 
 gameRoute.get('/', GameCtrl.showGame)
+gameRoute.get('/detail/:id', GameCtrl.detailGame)
 
 gameRoute.use(authenticate)
 gameRoute.post('/', GameCtrl.wishlist)

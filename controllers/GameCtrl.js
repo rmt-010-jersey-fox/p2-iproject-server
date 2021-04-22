@@ -61,7 +61,10 @@ class GameCtrl {
               'Client-ID': process.env.AXIOS_CLIENT_ID,
               'Authorization': `Bearer ${process.env.AXIOS_AUTHORIZATION}`
           },
-          data: `fields name,cover.url,involved_companies.company.name, summary; sort rating desc; where id = ${favorite};`
+          data: `fields 
+                name,cover.url,involved_companies.company.name, summary; 
+                sort rating desc; 
+                where id = ${favorite};`
         })
         .then(({ data }) => {
           console.log(data)
@@ -79,6 +82,40 @@ class GameCtrl {
       .destroy({ where: { gameId: id }})
       .then(_ => res.status(200).json({ message: 'Success delete!' }))
       .catch(err => next(err))
+  }
+
+  static detailGame (req, res, next) {
+    const gameId = req.params.id
+
+    axios({ 
+      url: "https://api.igdb.com/v4/games",
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Client-ID': process.env.AXIOS_CLIENT_ID,
+          'Authorization': `Bearer ${process.env.AXIOS_AUTHORIZATION}`
+      },
+      data: `fields
+            name,cover.url,involved_companies.company.name,platforms.name,summary,url,videos.video_id;
+            where id = ${gameId};`
+    })
+    .then(({ data }) => {
+
+      const developer = data[0].involved_companies.reduce((acc, each, idx) => {
+        acc += each.company.name
+        if (idx != data[0].involved_companies.length-1) acc += ', '
+        return acc
+      },'')
+
+      const platform = data[0].platforms.reduce((acc, each, idx) => {
+        acc += each.name
+        if (idx != data[0].platforms.length-1) acc += ', '
+        return acc
+      },'')
+
+      res.status(200).json({ detailGame : { detail: data, developer, platform } })
+    })
+    .catch(err => next(err))
   }
 
 }
