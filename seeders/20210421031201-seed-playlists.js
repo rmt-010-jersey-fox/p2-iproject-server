@@ -9,10 +9,10 @@ module.exports = {
       data[i].createdAt = new Date()
       data[i].updatedAt = new Date()
     }
-    queryInterface.bulkInsert('Playlists', data, {})
+    await queryInterface.bulkInsert('Playlists', data, {})
   },
 
   down: async (queryInterface, Sequelize) => {
-    queryInterface.bulkDelete('Playlists', null, {})
+    await queryInterface.bulkDelete('Playlists', null, {})
   }
 };

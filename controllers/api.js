@@ -9,6 +9,7 @@ spotifyApi
     .clientCredentialsGrant()
     .then((data) => {
         spotifyApi.setAccessToken(data.body['access_token'])
+        spotifyApi.setRefreshToken(data.body['refresh_token'])
     }, (err) => {
         next(err)
     })
@@ -53,7 +54,11 @@ class APIController {
         }
         getLyrics(options)
             .then((lyrics) => {
-                const text = lyrics.split(/\r?\n/).join('<br>')
+                const arr = lyrics.split(/\r?\n/)
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = '<p>' + arr[i] + '</p>'
+                }
+                const text = arr.join('<br>')
                 res.status(200).json({
                     html: text
                 })
@@ -91,7 +96,11 @@ class APIController {
                     arr[i]['weeks on chart'] = Number(arr[i]['weeks on chart'])
                 }
                 res.status(200).json({
-                    info: response.data.info,
+                    info: {
+                        category: response.data.info.category,
+                        chart: response.data.info.chart,
+                        update: response.data.info.date
+                    },
                     content: arr
                 })
             })
