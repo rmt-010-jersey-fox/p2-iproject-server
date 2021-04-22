@@ -100,7 +100,9 @@ class MySquadController {
         }
       })
       .then(result => {
-        res.status(200).json(result)
+        res.status(200).json({
+          message: 'One player has successfully replaced'
+        })
       })
       .catch(err => {
         next(err)
