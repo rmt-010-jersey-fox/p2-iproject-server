@@ -32,7 +32,8 @@ class StudentController {
 
             let schedule = await BuddySchedule.findAll({
                 where : {
-                    UserId : id
+                    UserId : id,
+                    status : 'available'
                 }
             })
             if (schedule) {
