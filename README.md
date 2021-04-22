@@ -149,6 +149,11 @@ Response:
 
 Request:
 
+- headers:
+```
+ "Content-Type": "application/json",
+```
+
 - data:
 
 ```json
@@ -212,3 +217,34 @@ Response:
 }
 ```
 
+### POST /news
+
+> create a news
+
+request
+
+- headers:
+```
+ "Content-Type": "application/json",
+ "access_token": <access_token>
+```
+
+-status: 201
+- body:
+```
+          title: title,
+          description: description,
+          url: url,
+          author: author,
+          image: image,
+          language: language,
+          category: category,
+          published: published,
+l
+```
+
+-status 500
+-body 
+```
+	"message": "Internal Server Error"
+```
