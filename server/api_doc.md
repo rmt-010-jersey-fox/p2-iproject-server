@@ -390,7 +390,10 @@ _Request Header_
 _Request Body_
 
 ```
-not needed
+{
+  "poster": <poster string>,
+  "title": <title string>
+},
 ```
 
 _Response (201 - Created)_
