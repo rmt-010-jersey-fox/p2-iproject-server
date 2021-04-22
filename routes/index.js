@@ -5,8 +5,8 @@ const MovieController = require('../controllers/movieControllers')
 
 // router.post('/register', UserController.register)
 // router.post('/login', UserController.login)
-// router.use(authentication)
 
+// router.use(authentication)
 router.get('/movies/popular', MovieController.moviePopular)
 router.get('/movies/top_rated', MovieController.movieTopRate)
 router.get('/movies/upcoming', MovieController.moviesUpcoming)

@@ -86,7 +86,7 @@ class MovieController {
             })
             .then((response) => {
                 dataVideo = response.data.results
-                console.log(result, dataVideo, 'ini data nya');
+                // console.log(result, dataVideo, 'ini data nya');
                 res.status(200).json({result, dataVideo})
             })
         })
