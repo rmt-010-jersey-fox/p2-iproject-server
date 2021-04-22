@@ -17,7 +17,6 @@ router.get('/random-quote', ThirdApiController.randomQuote)
 router.use(authentication)
 
 router.get('/users/:username', UserController.getUserByUsername)
-router.get('/photos', CatController.getPhotos)
 router.post('/cats', CatController.addCat)
 router.delete('/cats/:id', authorizationCat, CatController.deleteCat)
 router.get('/rooms', ChatroomController.getChatroom)
