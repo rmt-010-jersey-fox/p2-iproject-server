@@ -3,12 +3,25 @@ const {comparePassword,hashPassword} = require('../helper/bcrypt')
 const {generateToken} = require('../helper/jwt')
 class CustomerController{
   static postRegister(req,res,next){
-    console.log('masuk register');
     const {username,email,phone,password} = req.body
     User.create({username,email,phone,password})
       .then((data)=>{
         let {id, username, email, phone}=data
         res.status(201).json({id, username, email, phone})
+      })
+      .catch((err)=>{
+        // res.status(400).json(err)
+        next(err)
+      })
+  }
+
+  static postBarbers(req,res,next){
+    const {BarberShopId,name,status} = req.body
+    console.log(BarberShopId,'<<<<<<<<<<<<<<');
+    Barber.create({BarberShopId,name,status})
+      .then((data)=>{
+        let {id, BarberShopId,name,status}=data
+        res.status(201).json({id, BarberShopId,name,status})
       })
       .catch((err)=>{
         // res.status(400).json(err)

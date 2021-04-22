@@ -6,9 +6,10 @@ const authorizeCustomer = require('../middlewares/authorizeCustomer')
 
 routerCustomer.post('/register',CustomerController.postRegister)
 routerCustomer.post('/login',CustomerController.postLogin)
+routerCustomer.get('/barbershops',CustomerController.getBarberShops)
+routerCustomer.post('/barbers/',CustomerController.postBarbers)
 
 routerCustomer.use('/',autenticate)
-routerCustomer.get('/barbershops',CustomerController.getBarberShops)
 routerCustomer.post('/appointments/:barbershopid',CustomerController.postAppointments)
 
 routerCustomer.use('/appointments/:id',authorizeCustomer)

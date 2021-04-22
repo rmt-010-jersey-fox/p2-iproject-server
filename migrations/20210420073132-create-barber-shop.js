@@ -23,6 +23,9 @@ module.exports = {
       address: {
         type: Sequelize.TEXT
       },
+      imgUrl: {
+        type: Sequelize.TEXT
+      },
       latitude: {
         type: Sequelize.STRING
       },
