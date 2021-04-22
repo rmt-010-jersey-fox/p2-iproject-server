@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const salt = +process.env.SALT
+const salt = 10
 
 const hashPassword = (password) => {
     return bcrypt.hashSync(password, salt)
