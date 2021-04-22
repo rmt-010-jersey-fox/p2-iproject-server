@@ -42,7 +42,7 @@ class apiController {
         })
     }
 
-    static memeGenerator(req,res,next) {
+    static memeGacha(req,res,next) {
         const getRandomInt = (max) => {
             return Math.floor(Math.random() * max);
         }

@@ -13,7 +13,7 @@ const authenticate = (req,res, next) => {
             if (!user) {
                 res.status(401).json({ message: "Invalid access token"})    
             } else {
-                req.currentUser = { id: user.id, name: user.name, email: user.mail}
+                req.currentUser = { id: user.id, name: user.name, email: user.email}
                 next()
             }
         })
