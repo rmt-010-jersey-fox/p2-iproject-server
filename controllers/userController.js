@@ -17,7 +17,7 @@ class userController{
                 image: image || ''
             })
             // if (user) {
-                console.log(user)
+                // console.log(user, "MASUK CONTROLLER")
             sendMail(`${user.email}`, 'Forum Games', welcome)
             res.status(201).json({id: user.id, fullname:user.fullname, username: user.username, email: user.email})
             // }
