@@ -11,7 +11,7 @@ class Controller {
             res.status(200).json(data)
         })
         .catch(err => {
-            console.log(err)
+            res.status(500).json(err)
         })
     }
     static worldCaseShow(req,res) {
@@ -36,7 +36,7 @@ class Controller {
             res.status(200).json(caseInAnotherWorld)
         })
         .catch(err => {
-            console.log(err)
+            res.status(500).json(err)
         })
     }
     static news(req,res){
@@ -67,7 +67,7 @@ class Controller {
             
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).json(err)
         })
     }
     static register(req,res){
@@ -86,7 +86,7 @@ class Controller {
             })
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).json(err)
         })
     }
     static login(req,res){
@@ -113,7 +113,7 @@ class Controller {
             }
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).json(err)
         })
     }
 }
