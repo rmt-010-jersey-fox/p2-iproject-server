@@ -40,9 +40,9 @@ class Controller {
 
     static register(req, res, next) {
         let registerUser = {
-            name: req.body.newUser.name,
-            email: req.body.newUser.email,
-            password: req.body.newUser.password,
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
             role: 'customer'
         }
 
