@@ -11,15 +11,6 @@ class MovieController {
         })
         .then((response) => {
             res.status(200).json(response.data.results)
-                // movies.push({
-                //     id: el.id,
-                //     poster_path: el.poster_path,
-                //     title: el.title,
-                //     overview: el.overview,
-                //     popularity: el.popularity,
-                //     vote_average: el.vote_average,
-                //     release_date: el.release_date
-                // })
         })
         .catch((err) => {
             res.status(500).json({message: err.message})
@@ -35,15 +26,6 @@ class MovieController {
         })
         .then((response) => {
             res.status(200).json(response.data.results)
-                // movies.push({
-                //     id: el.id,
-                //     poster_path: el.poster_path,
-                //     title: el.title,
-                //     overview: el.overview,
-                //     popularity: el.popularity,
-                //     vote_average: el.vote_average,
-                //     release_date: el.release_date
-                // })
         })
         .catch((err) => {
             res.status(500).json(err.message)
@@ -86,7 +68,6 @@ class MovieController {
             })
             .then((response) => {
                 dataVideo = response.data.results
-                // console.log(result, dataVideo, 'ini data nya');
                 res.status(200).json({result, dataVideo})
             })
         })
