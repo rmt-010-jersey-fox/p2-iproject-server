@@ -22,6 +22,22 @@ routes.get('/news', (req, res, next) => {
         })
 })
 
+routes.get('/bitcoins', (req, res, next) => {
+    axios({
+        url: 'https://api.coingecko.com/api/v3/coins/bitcoin',
+        methods: 'GET'
+    })
+        .then(response => {
+            const idr = response.data.market_data.price_change_percentage_1h_in_currency.idr
+            const percentage = response.data.sentiment_votes_up_percentage
+            console.log(idr, percentage, 'iniiiii')
+            res.status(200).json({idr, percentage})
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+})
+
 routes.use(authenticate)
 routes.use('/finances', FinanceRoutes)
 

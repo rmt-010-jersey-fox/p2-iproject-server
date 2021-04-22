@@ -6,6 +6,7 @@ const { authorizeFinanceDetail } = require('../middlewares/authorizeFinanceDetai
 
 FinanceRoutes.get('/', FinanceController.findByUser) // get semua dompet user
 FinanceRoutes.post('/', FinanceController.create) // buat dompet
+FinanceRoutes.get('/saldo', FinanceController.getDataSaldo) // ambil semua saldo wallet
 FinanceRoutes.get('/all', FinanceDetailController.readAll) // ambil semua history transaction
 FinanceRoutes.get('/:financeId', authorizeFinance, FinanceDetailController.detail) // get semua transaction di dompet by financeid terseubt
 FinanceRoutes.post('/:financeId', authorizeFinance, FinanceDetailController.create) // buat transaction di dompet user
