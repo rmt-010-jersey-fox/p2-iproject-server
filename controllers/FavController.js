@@ -3,9 +3,8 @@ const axios = require('axios')
 let baseURL = 'https://api.spoonacular.com/recipes/findByNutrients'
 let baseURL1 = 'https://api.spoonacular.com/recipes/complexSearch'
 let baseURL2 = 'https://api.spoonacular.com/recipes/random'
-const apiKey = 'abb6817fb5984c97821b8fbdd27db3fd'
+const apiKey = process.env.apiKey
 // ?apiKey=YOUR-API-KEY&includeNutrition=true
-
 class FavController {
   // * including the food menu
   static getRecipesByNutrient (req,res,next) {

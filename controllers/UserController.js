@@ -30,6 +30,7 @@ class UserController {
 
   static login (req,res,next) {
     const { email,password } = req.body;
+    console.log(email , password, `<< masuk`);
 
     User.findOne ({
       where : {email}
