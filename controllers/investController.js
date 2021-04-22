@@ -1,5 +1,5 @@
 const { Invest, User, Busines } = require('../models')
-const { verifyToken } = require('../helpers/jwt')
+// const { verifyToken } = require('../helpers/jwt')
 
 class InvestController{
     static getInvests (req, res, next) {
