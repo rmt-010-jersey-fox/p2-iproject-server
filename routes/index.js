@@ -12,7 +12,7 @@ router.get('/categorys/recipes/:key', Controller.recipesByCategory)
 router.get('/search/', Controller.searchRecipes)
 
 router.use(Authentication)
-
-
+router.use('/order/:id', Controller.orderRecipe)
+router.use('/payment', Controller.payment)
 
 module.exports = router
