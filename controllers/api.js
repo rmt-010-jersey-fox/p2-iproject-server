@@ -96,7 +96,11 @@ class APIController {
                     arr[i]['weeks on chart'] = Number(arr[i]['weeks on chart'])
                 }
                 res.status(200).json({
-                    info: response.data.info,
+                    info: {
+                        category: response.data.info.category,
+                        chart: response.data.info.chart,
+                        update: response.data.info.date
+                    },
                     content: arr
                 })
             })
