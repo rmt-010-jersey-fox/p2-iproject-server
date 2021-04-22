@@ -10,13 +10,9 @@ class QuranController {
     axios
       .get(`${BaseURL}/surah/${surah}/${ayat}`)
       .then((response) => {
-        // console.log(response.data.data.surah.number, "<<<<< Nomer Surah");
-        // console.log(response.data.data.number.inSurah, "<<<<< Nomer Ayat");
         res.status(200).json(response.data.data);
       })
       .catch((err) => {
-        // console.log(err.response, "<< INI");
-        // console.log(err.response.data, "<< Keterangan");
         if (err.response.status === 404) {
           res.status(404).json(err.response.data)
         } else {
@@ -29,7 +25,17 @@ class QuranController {
     axios
     .get(`${BaseURL}/surah`)
     .then((response) => {
-      res.status(200).json(response.data.data)
+      let data = []
+      response.data.data.forEach((e) => {
+        data.push({
+          SurahId : e.number,
+          surahName : e.name.transliteration.id,
+          surahArti : e.name.translation.id,
+          surahAyat : e.numberOfVerses,
+          surahJenis : e.revelation.id
+        })
+      })
+      res.status(200).json(data)
     })
     .catch((err) => {
       next(err);

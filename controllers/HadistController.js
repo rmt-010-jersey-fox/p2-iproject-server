@@ -10,8 +10,6 @@ class HadistController {
     axios
     .get(`${BaseURL}/api/data/hadith?kitab=${kitab}&nomor=${nomor}`)
     .then((response) => {
-      // console.log(response.data.result.data.id, "<<<<<< Kitab");
-      // console.log(response.data.result.data.contents.number, "<<<<<< Number Hadist");
       res.status(200).json(
         response.data
       //   {
