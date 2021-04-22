@@ -81,6 +81,7 @@ class UserController {
                 const matchPassword = comparePassword(password, foundUser.password)
                 if (matchPassword) {
                     const access_token = signJwt({id: foundUser.id, email: foundUser.email})
+                    res.status(200).json({access_token, username: foundUser.name})
                 } else {
                     next({name: "404", message: "invalid username/password"})
                 }
