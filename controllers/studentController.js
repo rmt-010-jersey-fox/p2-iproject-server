@@ -1,5 +1,6 @@
 const { User, Material, BuddyMaterial, Booking, BuddySchedule, BuddyProfile } = require('../models')
 const axios = require('axios')
+const { addDays } = require('../helper/getDay')
 class StudentController {
     static async getBuddy (req, res, next) {
         try {
@@ -136,11 +137,19 @@ class StudentController {
             /**
              * data needed : UserId, BuddyMaterialId, BuddyScheduleId
              */
+            //findOne BuddySchedule to get day
+            let schedule = await BuddySchedule.findOne({ where : { id : +req.body.BuddyScheduleId}})
+            let bookingDate = addDays(schedule.dataValues.day)
+            console.log("********^^^^^^&&&%%$$****", bookingDate)
+            // console.log("********^^^^^^&&&%%$$**** schedule >>", schedule.dataValues.day)
+
             let data = {
                 UserId : req.loggedUser.id,
                 BuddyMaterialId : +req.body.BuddyMaterialId,
-                BuddyScheduleId : +req.body.BuddyScheduleId
+                BuddyScheduleId : +req.body.BuddyScheduleId,
+                bookingDate : bookingDate
             }
+
             let book = await Booking.create(data)
             if (book) {
                 let dataUpdate = {
