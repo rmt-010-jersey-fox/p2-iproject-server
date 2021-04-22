@@ -29,7 +29,7 @@ class FavController {
     axios 
       .get(`${baseURL1}?apiKey=${apiKey}&includeNutrition=true?query=${meal}&addRecipeNutrition=true`)
       .then(({data}) => {
-        res.status(200).json(data)
+        res.status(200).json(data.results)
       })
       .catch((err) => {
         console.log(err);
@@ -40,9 +40,9 @@ class FavController {
   static getRandomMeal (req,res,next) {
     // https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,vegan,diet&apiKey=abb6817fb5984c97821b8fbdd27db3fd
     axios
-      .get(`${baseURL2}?number=1&tags=vegetarian,vegan,diet&apiKey=${apiKey}`)
+      .get(`${baseURL2}?number=3&tags=vegetarian,vegan,diet&apiKey=${apiKey}`)
       .then(({data}) => {
-        res.status(200).json(data)
+        res.status(200).json(data.recipes)
       })
       .catch((err) => {
         console.log(err);
