@@ -17,14 +17,29 @@ module.exports = {
       gender: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.BOOLEAN
+      },
       date_of_entry: {
         type: Sequelize.DATEONLY
       },
-      DiseaseId: {
-        type: Sequelize.INTEGER
-      },
       UserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      DiseaseId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Diseases',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,

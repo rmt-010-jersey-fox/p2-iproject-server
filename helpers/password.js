@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
 
-const hashPassword = (payload) => {
-    return bcrypt.hashSync(payload, process.env.SECRET_KEY)
+const hashPassword = (password)  => {
+    return bcrypt.hashSync(password, 10 )
 }
 
 
-const comparePassword = (decoded) => {
-    return bcrypt.hashSync(decoded, process.env.SECRET_KEY)
+const comparePassword = (password, hash) => {
+    return bcrypt.compareSync(password, hash)
 }
 
 module.exports = {

@@ -1,5 +1,7 @@
 'use strict';
 
+const { hashPassword } = require("../helpers/password");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -14,38 +16,52 @@ module.exports = {
    await queryInterface.bulkInsert('Users', [
     {
         email: "doctor1@mail.com",
-        password: "1111",
-        role: "doctor"
+        password: hashPassword("1111"),
+        role: "doctor",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "doctor2@mail.com",
-        password: "2222",
-        role: "doctor"
+        password: hashPassword("2222"),
+        role: "doctor",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "doctor3@mail.com",
-        password: "3333",
-        role: "doctor"
+        password: hashPassword("3333"),
+        role: "doctor",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "doctor4@mail.com",
-        password: "4444",
-        role: "doctor"
+        password: hashPassword("4444"),
+        role: "doctor",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "patient1@mail.com",
-        password: "1111",
-        role: "patient"
+        password: hashPassword("1111"),
+        role: "patient",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "patient2@mail.com",
-        password: "2222",
-        role: "patient"
+        password: hashPassword("2222"),
+        role: "patient",
+        createdAt: new Date(),
+        updatedAt: new Date()
     },
     {
         email: "patient3@mail.com",
-        password: "3333",
-        role: "patient"
+        password: hashPassword("3333"),
+        role: "patient",
+        createdAt: new Date(),
+        updatedAt: new Date()
     }
    ])
   },
@@ -57,5 +73,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+     await queryInterface.bulkDelete('Users', null, {});
   }
 };

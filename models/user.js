@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPassword } = require('../helpers/password');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,16 +12,49 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsToMany(model.Disease,{through: models.Patient, foreignKey: 'UserId', sourceKey: 'id'})
+      User.belongsToMany(models.Disease,{through: models.Patient})
     }
   };
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "email cannot be empty"
+        },
+        isEmail: {
+          args: true,
+          msg: "email must not be duplicated"
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "password cannot be empty"
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "role cannot be empty"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
   });
+  User.beforeCreate((instance, options) => {
+    instance.password = hashPassword(instance.password)
+  })
   return User;
 };
