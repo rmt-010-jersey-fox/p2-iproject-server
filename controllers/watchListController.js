@@ -1,7 +1,7 @@
 const { WatchList } = require('../models')
 
 class WatchListController {
-    static showWatchList(req, res) {
+    static showWatchList(req, res, next) {
         const UserId = +req.nowLogged.id
         WatchList.findAll({
             where: {
@@ -13,10 +13,10 @@ class WatchListController {
             res.status(200).json(data)
         })
         .catch((err) => {
-            res.status(500).json(err.message)
+            next(err)
         })
     }
-    static addWatchList(req, res) {
+    static addWatchList(req, res, next) {
         const newData = {
             title: req.body.title,
             poster_path: req.body.poster_path,
@@ -32,7 +32,7 @@ class WatchListController {
             if(!data) {
                 return WatchList.create(newData)
             }else {
-                res.status(401).json({message: 'already have this movie'})
+                throw ({message: 'already have this movie'})
             }
         })
         .then((result) => {
@@ -40,10 +40,10 @@ class WatchListController {
             res.status(201).json(result)
         })
         .catch((err) => {
-            res.status(500).json(err.message)
+            next(err)
         })
     }
-    static deleteWatchList(req, res) {
+    static deleteWatchList(req, res, next) {
         let id = +req.params.id
         WatchList.destroy({
             where: {
@@ -54,7 +54,7 @@ class WatchListController {
             res.status(200).json({message: 'Success deleted list movie'})
         })
         .catch((err) => {
-            res.status(500).json(err.message)
+            next(err)
         })
     }
 }
