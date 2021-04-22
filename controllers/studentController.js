@@ -17,15 +17,15 @@ class StudentController {
     static async getBuddyById (req, res, next) {
         try {
             const gitlabAPI = "https://api.github.com/users/";
-            // const avatarAPI = "https://avatars.dicebear.com/api/human/apaaja.svg";
+            // // const avatarAPI = "https://avatars.dicebear.com/api/human/apaaja.svg";
 
-            const getAvatar = await axios({
-                method : 'get',
-                url : avatarAPI
-            })
+            // const getAvatar = await axios({
+            //     method : 'get',
+            //     url : avatarAPI
+            // })
 
             const id = +req.params.id
-            let data = await BuddyProfile.findOne({
+            let buddyProfile = await BuddyProfile.findOne({
                 where : {
                     UserId : id
                 },
@@ -36,6 +36,8 @@ class StudentController {
                     ]
                 }
             })
+            
+            let data = buddyProfile.dataValues;
 
             let schedule = await BuddySchedule.findAll({
                 where : {
@@ -43,18 +45,22 @@ class StudentController {
                     status : 'available'
                 }
             })
-            if (schedule) {
-                data.dataValues.Schedule = schedule;
-                if (data.GithubUser) {
-                    let repoAPI = gitlabAPI + `${data.GithubUser}/repos`
-    
-                    let listRepo = []
-                    const getRepo = await axios({
+
+            // console.log(schedule, "******^^^^%%%")
+            if (data) {
+                if (schedule) {
+                    data.Schedule = schedule
+                    if (data.GithubUser) {
+                        let repoAPI = gitlabAPI + `${data.GithubUser}/repos`
+                        console.log(repoAPI, "******^^^^%%%")
+                        let listRepo = []
+                        const getRepo = await axios({
                         method : 'get',
                         url : repoAPI
-                    })
-                    if (getRepo.data) {
+                        })
+                        // console.log(getRepo, "getRepo>>><<<")
                         getRepo.data.forEach(el => {
+                            // console.log(el)
                             let repoinfo = {
                                 name : el.name,
                                 fullname : el.full_name,
@@ -65,15 +71,12 @@ class StudentController {
                             }
                             listRepo.push(repoinfo)
                         });
-                        data.dataValues.Github = listRepo
-                        res.status(200).json(data)
-                    } else {
-                        res.status(200).json(data)
-                    } 
-                } else {
-                    res.status(200).json(data)
+                        data.Github = listRepo
+                        // console.log("*****&&&^^^", listRepo)
+                    }
                 }
             }
+            res.status(200).json(data)
         } catch (error) {
             next(error)
         }
