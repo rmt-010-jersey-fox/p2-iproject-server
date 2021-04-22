@@ -154,7 +154,18 @@ class StudentController {
             let schedule = await Booking.findAll({
                 where : {
                     UserId : req.loggedUser.id
-                }
+                },
+                include : [
+                    {
+                        model : User
+                    },
+                    {
+                        model : BuddyMaterial
+                    },
+                    {
+                        model : BuddySchedule
+                    }
+                ]
             })
             res.status(200).json(schedule)
         } catch (error) {
