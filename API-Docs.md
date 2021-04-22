@@ -3,18 +3,8 @@
 - POST /users/signin
 
 
-----------------------------------
-- POST /login
-
-- GET /tasks
-
-- POST /tasks
-- PUT /tasks/:id
-- PATCH /tasks/:id
-- DELETE /tasks/:id
-
-link server : `https://kanban-project-f2.herokuapp.com/` <br />
-link client : `https://kanban-project-f2.web.app/`<br />
+link server : `https://gamming-db.herokuapp.com/` <br />
+link client : `link client https://gammingdb-a9b9c.web.app`<br />
 <hr><br />
 
 **Signup User**

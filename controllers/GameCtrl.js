@@ -22,6 +22,27 @@ class GameCtrl {
 
   }
 
+  static filterGame (req, res, next) {
+    const platform = req.body.platform
+    axios({
+      url: "https://api.igdb.com/v4/games",
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Client-ID': process.env.AXIOS_CLIENT_ID,
+          'Authorization': `Bearer ${process.env.AXIOS_AUTHORIZATION}`
+      },
+      data: `fields name,cover.url,rating_count,genres.name,platforms.name; 
+            limit 100; sort release_dates.date desc; 
+            where rating >= 80 & release_dates.platform = (${platform});`
+    })
+    .then(({ data }) => {
+      res.status(200).json({ data })
+    })
+    .catch(err => next(err))
+
+  }
+
   static wishlist (req, res, next) {
     const wishlist = {
       name  : req.body.name,
@@ -37,7 +58,7 @@ class GameCtrl {
 
   static showWishlist (req, res, next) {
     Game
-      .findAll()
+      .findAll({ where: { UserId: req.currentUser.id}})
       .then(wishlists => {
         if (!wishlists.length) res.status(200).json({ wishlist: [] })
         else {
