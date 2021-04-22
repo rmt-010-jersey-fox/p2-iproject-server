@@ -14,5 +14,6 @@ Router.post('/trips', TripController.createTrips)
 Router.post('/trips/:id/todos', TripController.createTodo)
 Router.get('flights', TripController.showFlights)
 Router.get('places', TripController.showPlaces)
+Router.delete('/trips/:id', TripController.deleteTrip)
 
 module.exports = Router

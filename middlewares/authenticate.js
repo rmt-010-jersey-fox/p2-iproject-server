@@ -14,6 +14,7 @@ function authenticate(req, res, next) {
         })
         .then((currentUser) => {
             if (currentUser) {
+                // console.log(currentUser, "cureeenttt usserr")
                 req.loggedUser = {
                      id: currentUser.id,
                      email: currentUser.email,

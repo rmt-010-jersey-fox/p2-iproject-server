@@ -3,7 +3,6 @@ const axios = require('axios');
 
 class TripController {
     static showTrips(req, res, next) {
-        console.log(req.body)
         Trip.findAll({
             where: {
                 userId: req.loggedUser.id
@@ -80,6 +79,20 @@ class TripController {
             console.log(err)
         })        
 
+    }
+
+    static deleteTrip (req, res, next) {
+        Trip.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then((resp) => {
+            res.status(200).json({message: 'deleted'})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     static showFlights(req, res, next) {
