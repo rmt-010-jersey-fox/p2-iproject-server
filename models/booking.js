@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     status: {
       type : DataTypes.STRING,
       defaultValue : "booked"
-    }
+    },
+    bookingDate: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Booking',

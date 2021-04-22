@@ -33,7 +33,7 @@ function addDays(input) {
     }
     console.log(add, " add this days")
     var result = new Date();
-    result.setDate(result.getDate() + (add + 1));
+    result.setDate(result.getDate() + add);
     return result;
 }
 
