@@ -143,9 +143,9 @@ Response:
 }
 ```
 
-### POST /headlines
+### POST /search
 
-> get all headlines
+> get all news
 
 Request:
 
@@ -153,12 +153,14 @@ Request:
 
 ```json
 {
-    "q": <kewords:string>,
-    "country": <country_code>,
-    "category":  <category>
-}
-```
-more descriptions [here](https://newsapi.org/docs/endpoints/top-headlines)
+        language: language,
+        keywords: keywords,
+        country: country,
+        category: category,
+        start_date: start_date,
+        end_date: end_date,
+      }```
+more descriptions [here](https://currentsapi.services/api/docs/)
 
 Response:
 
@@ -168,86 +170,37 @@ Response:
 
 ```json
 [
+  {
+  "status": "ok",
+  "news": [
     {
-        "source": {
-            "id": "google-news",
-            "name": "Google News"
-        },
-        "author": null,
-        "title": "Bentuk European Super League, Liverpool Ditinggal Sponsor - CNN Indonesia",
-        "description": null,
-        "url": "https://news.google.com/__i/rss/rd/articles/CBMieGh0dHBzOi8vd3d3LmNubmluZG9uZXNpYS5jb20vb2xhaHJhZ2EvMjAyMTA0MjEwODI2MjYtMTQyLTYzMjU4OC9iZW50dWstZXVyb3BlYW4tc3VwZXItbGVhZ3VlLWxpdmVycG9vbC1kaXRpbmdnYWwtc3BvbnNvctIBfGh0dHBzOi8vd3d3LmNubmluZG9uZXNpYS5jb20vb2xhaHJhZ2EvMjAyMTA0MjEwODI2MjYtMTQyLTYzMjU4OC9iZW50dWstZXVyb3BlYW4tc3VwZXItbGVhZ3VlLWxpdmVycG9vbC1kaXRpbmdnYWwtc3BvbnNvci9hbXA?oc=5",
-        "urlToImage": null,
-        "publishedAt": "2021-04-21T03:42:22Z",
-        "content": null
+      "id": "ac4062d1-5fbb-4784-bf1d-6b50f5f643a0",
+      "title": "Tulevaisuustutkija Markku Wilenius tietää, että 10 vuoden päästä elämme täysin erilaisessa maailmassa: \"Suuri herääminen on selvästi tapahtumassa\"",
+      "description": "Elämä on tähän saakka pyörinyt perustarpeiden ympärillä. Meille on riittänyt, että suuhun on saanut syötävää, on ollut paikka missä asua, puoliso, kavereita ja mahdollisuus hiukan toteuttaa itseään.\nT...",
+      "url": "https://yle.fi/uutiset/3-10905769?origin=rss",
+      "author": "yle",
+      "image": "//images.cdn.yle.fi/image/upload/w_960,h_640/13-3-10906278.jpg",
+      "language": "fi",
+      "category": [
+        "general"
+      ],
+      "published": "2019-08-04 14:22:08 +0000"
+    },
+    {
+      "id": "713f0c68-9bac-4168-9880-c94eecaf735f",
+      "title": "Tubettaja muuttaa vuodeksi Sodankylään ja markkinoi kuntaa somessaan – 2 500 euron kuukausipalkka herättänyt närää kuntalaisissa",
+      "description": "Kunnissa tiedostetaan, kuinka tärkeää oikeiden mielikuvien luominen on, kun yritetään houkutella uusia asukkaita\nMuuttoliike suuntautuu useimmin maalta kaupunkiin kuin toisin päin. Kaupunkilaista Fern...",
+      "url": "https://yle.fi/uutiset/3-10908157?origin=rss",
+      "author": "yle",
+      "image": "None",
+      "language": "fi",
+      "category": [
+        "general"
+      ],
+      "published": "2019-08-04 14:22:08 +0000"
     }
-]
-```
-- status: 500
-- body:
-  ​
-
-```json
-{
-  "message": "Internal Server Error"
+  ]
 }
-```
-
-### POST /everything
-
-> get all news with a set configuration
-
-Request:
-
-- data:
-
-```json
-{
-         "q": <keywords:strings>,
-        "sources": <string>,
-        "from":<yyyy-mm-dd>,
-        "to": <yyyy-mm-dd>,
-        "sortBy": <string>,
-
-}
-```
-more descriptions [here](https://newsapi.org/docs/endpoints/everything)
-
-Response:
-
-- status: 200
-- body:
-  ​
-
-```json
-[
-    {
-        "source": {
-            "id": "bbc-news",
-            "name": "BBC News"
-        },
-        "author": null,
-        "title": "Leipzig's Konate on Liverpool centre-half shortlist",
-        "description": "Liverpool are looking at RB Leipzig defender Ibrahima Konate as they seek to strengthen at centre-back this summer.",
-        "url": "https://www.bbc.co.uk/sport/football/56559638",
-        "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/FAA4/production/_117746146_gettyimages-1230029989.jpg",
-        "publishedAt": "2021-03-29T12:36:25Z",
-        "content": "Konate did not play in either of RB Leipzig's games against Liverpool in their Champions League last-16 tie\r\nLiverpool have a five-man shortlist including RB Leipzig defender Ibrahima Konate and Ozan… [+695 chars]"
-    },
-    {
-        "source": {
-            "id": null,
-            "name": "New York Times"
-        },
-        "author": "Tariq Panja",
-        "title": "European Super League to Include Six Premier League Teams",
-        "description": "A group led by Juventus, Manchester United, Liverpool and Real Madrid has agreed in principle on a plan that would upend the sport’s structures and economics.",
-        "url": "https://www.nytimes.com/2021/04/18/sports/soccer/super-league-united-liverpool-juventus-madrid.html",
-        "urlToImage": "https://static01.nyt.com/images/2021/04/18/sports/18soccer-superleague1/merlin_186254121_126f66d1-cf1e-4b22-af2a-9986ce53f925-facebookJumbo.jpg",
-        "publishedAt": "2021-04-18T13:06:25Z",
-        "content": "Still, according to documents reviewed by The Times in January, plans for the breakaway league had gathered pace since the summer. Top clubs sought to take advantage of uncertainty in the soccer indu… [+2541 chars]"
-    },
-]
 ```
 - status: 500
 - body:
