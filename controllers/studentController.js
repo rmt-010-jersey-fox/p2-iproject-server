@@ -17,6 +17,13 @@ class StudentController {
     static async getBuddyById (req, res, next) {
         try {
             const gitlabAPI = "https://api.github.com/users/";
+            // const avatarAPI = "https://avatars.dicebear.com/api/human/apaaja.svg";
+
+            const getAvatar = await axios({
+                method : 'get',
+                url : avatarAPI
+            })
+
             const id = +req.params.id
             let data = await BuddyProfile.findOne({
                 where : {
