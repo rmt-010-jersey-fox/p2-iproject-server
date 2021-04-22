@@ -5,7 +5,8 @@ async function authentication(req, res, next) {
 
     try {
         const {access_token} = req.headers;
-        // console.log(access_token, "<<access_token")
+        // console.log(req.headers.access_token)
+        console.log(access_token, "<<access_token")
 
         if (access_token) {
             const decoded = verify(access_token);

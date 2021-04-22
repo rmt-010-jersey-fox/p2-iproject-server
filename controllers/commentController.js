@@ -2,17 +2,17 @@ const {User, Comment} = require('../models')
 
 class CommentController {
     static showComment(req, res, next) {
-        console.log(req.loggedUser.id)
-        console.log(req.articles.title)
+        // console.log(req.loggedUser.id)
+        console.log(req, "<<req")
         Comment.findAll({
             include: [User],
             where: {
-                UserId: req.loggedUser.id,
-                articleTitle: req.articles.title
+                UserId: req.loggedUser.id
+                
             }
         })
         .then(comments => {
-            console.log(comments)
+            console.log(comments, "<<comments")
             res.status(200).json(comments)
         })
         .catch(err=> {
@@ -22,30 +22,29 @@ class CommentController {
 
     static addComment(req, res, next) {
         // console.log(req.body, "ini req body controller")
-        const id = +req.params.id
-        Article.findOne({
+        Comment.findOne({
             where: {
                 UserId: req.loggedUser.id,
-                articleTitle: req.articles.title
+                articleTitle: req.body.articleTitle
             }
         })
-        .then(articles => {
-            console.log(articles)
-            if (!articles) {
-                throw ({name: "articles not found"})
+        .then(comments => {
+            console.log(comments)
+            if (!comments) {
+                throw ({name: "comments not found"})
             }
             else {
-                return Article.findOne({
+                return Comment.findOne({
                     where: {
                         UserId: req.loggedUser.id,
-                        articleTitle: req.articles.title
+                        articleTitle: req.body.articleTitle
                     }
                 })
             }
         })
         .then(comments => {
             return Comment.create({
-                ArticleId: id,
+                articleTitle: req.body.articleTitle,
                 UserId: req.loggedUser.id,
                 comment: req.body.comment
             })
@@ -66,7 +65,7 @@ class CommentController {
         Comment.findOne({
             where: {
                 UserId: req.loggedUser.id,
-                articleTitle: req.articles.title
+                articleTitle: req.body.articleTitle
             }
         })
         .then(data => {

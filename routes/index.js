@@ -13,5 +13,6 @@ router.get('/action', ActionController.showAll)
 router.use(authentication)
 
 router.get('/comments', authorization, CommentController.showComment)
+router.post('/comments', authorization, CommentController.addComment)
 
 module.exports = router
