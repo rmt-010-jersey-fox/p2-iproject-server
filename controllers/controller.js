@@ -4,7 +4,7 @@ const { User, History } = require('../models')
 const axios = require('axios')
 
 class Controller {
-    static register(req, res) {
+    static register(req, res, next) {
         const {username, email, password, address} = req.body
         User.create({
             username,
@@ -16,11 +16,11 @@ class Controller {
             res.status(201).json({id: data.id, email:data.email})
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static login(req, res) {
+    static login(req, res, next) {
         const {email, password} = req.body
         User.findOne({
             where: {
@@ -44,11 +44,11 @@ class Controller {
             }
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static getUser(req, res) {
+    static getUser(req, res, next) {
         User.findOne({
             where: {
                 id:req.loggedUser.id
@@ -58,11 +58,11 @@ class Controller {
             res.status(200).json(user)
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static editUser(req, res) {
+    static editUser(req, res, next) {
         const {username, address} = req.body
         const input = {
             username,
@@ -77,11 +77,11 @@ class Controller {
             res.status(200).json(user)
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static addHistory(req, res) {
+    static addHistory(req, res, next) {
         const {price, item} = req.body
         History.create({
             price,
@@ -92,11 +92,11 @@ class Controller {
             res.status(200).json(data)
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static getHistory(req, res) {
+    static getHistory(req, res, next) {
         History.findAll({
             where: {
                 UserId:req.loggedUser.id
@@ -106,11 +106,11 @@ class Controller {
             res.status(200).json(data)
         })
         .catch(err => {
-            res.status(500).json({message: 'internal server error'})
+            next(err)
         })
     }
 
-    static fetchProvince(req, res) {
+    static fetchProvince(req, res, next) {
         axios({
             method: 'get',
             url: 'https://api.rajaongkir.com/starter/province',
@@ -122,11 +122,11 @@ class Controller {
               res.status(200).json(response.data.rajaongkir.results)
             })
             .catch(err => {
-              res.status(500).json({message: 'internal server error'})
+                next(err)
             })
     }
 
-    static fetchOngkir(req, res) {
+    static fetchOngkir(req, res, next) {
         const {origin, destination, weight, courier} = req.body
         axios({
             method: 'post',
@@ -145,11 +145,11 @@ class Controller {
               res.status(200).json(response.data.rajaongkir.results[0].costs)
             })
             .catch(err => {
-              res.status(500).json({message: 'internal server error'})
+                next(err)
             })
     }
 
-    static fetchCity(req, res) {
+    static fetchCity(req, res, next) {
         const id = req.params.province
         axios({
             method: 'get',
@@ -162,7 +162,7 @@ class Controller {
               res.status(200).json(response.data.rajaongkir.results)
             })
             .catch(err => {
-              res.status(500).json({message: 'internal server error'})
+                next(err)
             })
     }
 }
