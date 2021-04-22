@@ -21,7 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Disease',
   });
-  Disease.beforeCreate((instance, options) => {
-  })
   return Disease;
 };
