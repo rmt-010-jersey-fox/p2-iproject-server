@@ -13,10 +13,9 @@ class GameCtrl {
           'Client-ID': process.env.AXIOS_CLIENT_ID,
           'Authorization': `Bearer ${process.env.AXIOS_AUTHORIZATION}`
       },
-      data: "fields name,cover.url,rating_count,genres.name; limit 40; where rating > 75;"
+      data: "fields name,cover.url,rating_count,genres.name; limit 250; sort release_dates.date desc; where rating >= 80 & release_dates.y > 2017;"
     })
     .then(({ data }) => {
-      console.log(data)
       res.status(200).json({ data })
     })
     .catch(err => next(err))
@@ -67,7 +66,6 @@ class GameCtrl {
                 where id = ${favorite};`
         })
         .then(({ data }) => {
-          console.log(data)
           res.status(200).json({ data })
         })
         .catch(err => next(err))
