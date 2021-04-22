@@ -42,6 +42,9 @@ class PostController {
 
     static async uploadPost(req, res, next) {
         try {
+            if(!req.file) throw { status: 400, message: "Must Choose an Image"}
+            if(!req.body.caption) throw { status: 400, message: "Must Give a Caption"}
+
             req.file.path = req.file.path.replace('\\', '/')
             const addPost = await Post.create({
                 filePath: req.file.path,

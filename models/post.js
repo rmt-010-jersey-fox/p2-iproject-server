@@ -15,8 +15,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
-    filePath: DataTypes.TEXT,
-    caption: DataTypes.STRING,
+    filePath: {
+      type: DataTypes.TEXT,
+      validate:{
+        notEmpty: {
+          msg: 'Must Choose an Image'
+        }
+      }
+    },
+    caption: {
+      type: DataTypes.STRING,
+      validate:{
+        notEmpty: {
+          msg: 'Must Give a Caption'
+        }
+      }
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
