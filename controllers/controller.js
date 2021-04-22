@@ -49,7 +49,6 @@ class Controller {
     }
 
     static getUser(req, res) {
-        console.log('masuk get')
         User.findOne({
             where: {
                 id:req.loggedUser.id
@@ -59,7 +58,6 @@ class Controller {
             res.status(200).json(user)
         })
         .catch(err => {
-            console.log(err.message)
             res.status(500).json({message: 'internal server error'})
         })
     }
@@ -144,12 +142,9 @@ class Controller {
             }
           })
             .then((response) => {
-                console.log('masuk')
-                console.log(response)
               res.status(200).json(response.data.rajaongkir.results[0].costs)
             })
             .catch(err => {
-                console.log(err.response.data)
               res.status(500).json({message: 'internal server error'})
             })
     }
@@ -164,12 +159,9 @@ class Controller {
             }
           })
             .then((response) => {
-                console.log('masuk')
-                console.log(response)
               res.status(200).json(response.data.rajaongkir.results)
             })
             .catch(err => {
-                console.log(err.response.data)
               res.status(500).json({message: 'internal server error'})
             })
     }
