@@ -2,6 +2,7 @@ const router = require("express").Router();
 const UserControllers = require("../controllers/user.js");
 const CurrentsAPIControllers = require("../controllers/currentsapi.js");
 const NewsControllers = require("../controllers/news.js");
+const ReadlistControllers = require("../controllers/readlists.js");
 const { authentication, authorization } = require("../middlewares/auth");
 //login register
 router.post("/login", UserControllers.login);
@@ -19,9 +20,10 @@ router.put("/news/:id", NewsControllers.update);
 router.delete("/news/:id", NewsControllers.delete);
 
 router.use("/readlists", authorization);
-router.post("/readlists", NewsControllers.create);
-router.get("/readlists", NewsControllers.read);
-router.get("/readlists/:id", NewsControllers.readOne);
-router.put("/news/:id", NewsControllers.update);
-router.delete("/news/:id", NewsControllers.delete);
+router.post("/readlists", ReadlistControllers.create);
+router.get("/readlists", ReadlistControllers.read);
+router.get("/readlists/:id", ReadlistControllers.readOne);
+router.put("/readlists/:id", ReadlistControllers.update);
+router.delete("/readlists/:id", ReadlistControllers.delete);
+
 module.exports = router;

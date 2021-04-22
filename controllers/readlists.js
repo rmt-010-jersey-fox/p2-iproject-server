@@ -1,4 +1,4 @@
-const { Readlist } = require("../models");
+const { Readlist, News } = require("../models");
 
 class ReadlistControllers {
   static async create(req, res, next) {
@@ -17,7 +17,9 @@ class ReadlistControllers {
   }
   static async read(req, res, next) {
     try {
-      const read = await Readlist.findAll();
+      const read = await Readlist.findAll({
+        include: News,
+      });
       res.status(200).json(read);
     } catch (err) {
       next(err);
@@ -40,6 +42,7 @@ class ReadlistControllers {
     const id = +req.params.id;
     const { status } = req.body;
 
+    console.log(id, req.body);
     try {
       const updated = await Readlist.update(
         {
@@ -67,6 +70,7 @@ class ReadlistControllers {
           id: id,
         },
       });
+      res.status(200).json({ message: "succeed delete" });
     } catch (err) {
       next(err);
     }

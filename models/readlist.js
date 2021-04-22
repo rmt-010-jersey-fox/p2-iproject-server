@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Readlist.init(
     {
-      NewsId: DataTypes.INTEGER,
+      NewsId: {
+        type: DataTypes.INTEGER,
+        unique: {
+          msg: "You've added this news",
+        },
+      },
       UserId: DataTypes.INTEGER,
       status: DataTypes.STRING,
     },
@@ -26,4 +31,3 @@ module.exports = (sequelize, DataTypes) => {
   );
   return Readlist;
 };
-

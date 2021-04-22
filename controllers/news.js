@@ -1,6 +1,7 @@
 const { News } = require("../models");
 class NewsControllers {
   static async create(req, res, next) {
+    console.log(req.body);
     const {
       title,
       description,
@@ -12,17 +13,27 @@ class NewsControllers {
       published,
     } = req.body;
     try {
-      const created = await News.create({
-        title: title,
-        description: description,
-        url: url,
-        author: author,
-        image: image,
-        category: category,
-        published: published,
+      const foundUser = await News.findOne({
+        where: {
+          title: title,
+        },
       });
 
-      res.status(201).json({ message: "succeed" });
+      if (foundUser) {
+        next({ name: "news", message: "You've added this news" });
+      } else {
+        const created = await News.create({
+          title: title,
+          description: description,
+          url: url,
+          author: author,
+          image: image,
+          language: language,
+          category: category,
+          published: published,
+        });
+        res.status(201).json({ message: "succeed" });
+      }
     } catch (err) {
       next(err);
     }

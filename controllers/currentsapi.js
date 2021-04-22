@@ -24,6 +24,9 @@ class CurrentsAPIControllers {
         if (response.status === "ok") {
           res.status(200).json(response.news);
         }
+      })
+      .catch((err) => {
+        next(err);
       });
   }
 }

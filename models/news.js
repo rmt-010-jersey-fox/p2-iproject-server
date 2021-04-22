@@ -17,11 +17,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   News.init(
     {
-      title: DataTypes.STRING,
-      description: DataTypes.STRING,
+      title: {
+        type: DataTypes.STRING,
+        unique: {
+          msg: "You've added this news",
+        },
+      },
+      description: DataTypes.TEXT,
       url: DataTypes.STRING,
       author: DataTypes.STRING,
-      image: DataTypes.STRING,
+      image: DataTypes.TEXT,
       language: DataTypes.STRING,
       category: DataTypes.STRING,
       published: DataTypes.STRING,
