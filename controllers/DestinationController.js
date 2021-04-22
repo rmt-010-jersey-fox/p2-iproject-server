@@ -26,13 +26,19 @@ class DestinationController {
       let data = await Destination.create({ place_name, lat, lng, vacationId: req.params.vacationId })
       res.status(201).json(data)
     } catch (error) {
+      console.log(error, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<wew')
       next(error)
     }
   }
 
   static async getUserDestination(req, res, next) {
     try {
-      let data = await Destination.findAll()
+      let data = await Destination.findAll({
+        where: {
+          vacationId: req.params.vacationId
+        },
+        order: [['id', 'ASC']]
+      })
       res.status(200).json(data)
     } catch (error) {
       next(error)

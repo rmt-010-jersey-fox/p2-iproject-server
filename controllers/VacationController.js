@@ -4,7 +4,9 @@ const axios = require('axios')
 class VacationController {
   static async getVacation(req, res, next) {
     try {
-      let data = await Vacation.findAll()
+      let data = await Vacation.findAll({
+        order: [['id', 'ASC']]
+      })
       res.status(200).json(data)
     } catch (error) {
       next(error)
@@ -63,6 +65,20 @@ class VacationController {
       })
       res.status(200).json({ message: "vacation's deleted" })
     } catch (error) {
+      next(error)
+    }
+  }
+
+  static async getVacById(req, res, next) {
+    try {
+      let data = await Vacation.findByPk(req.params.id)
+      if (data) {
+        res.status(200).json(data)
+      } else {
+        next({ name: 'notFound' })
+      }
+    } catch (error) {
+      console.log(error);
       next(error)
     }
   }
