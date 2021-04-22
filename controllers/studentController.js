@@ -1,4 +1,5 @@
 const { User, Material, BuddyMaterial, Booking, BuddySchedule, BuddyProfile } = require('../models')
+const axios = require('axios')
 class StudentController {
     static async getBuddy (req, res, next) {
         try {
@@ -15,6 +16,7 @@ class StudentController {
 
     static async getBuddyById (req, res, next) {
         try {
+            const gitlabAPI = "https://api.github.com/users/";
             const id = +req.params.id
             let data = await BuddyProfile.findOne({
                 where : {
@@ -27,7 +29,43 @@ class StudentController {
                     ]
                 }
             })
-            res.status(200).json(data)
+
+            let schedule = await BuddySchedule.findAll({
+                where : {
+                    UserId : id
+                }
+            })
+            if (schedule) {
+                data.dataValues.Schedule = schedule;
+                if (data.GithubUser) {
+                    let repoAPI = gitlabAPI + `${data.GithubUser}/repos`
+    
+                    let listRepo = []
+                    const getRepo = await axios({
+                        method : 'get',
+                        url : repoAPI
+                    })
+                    if (getRepo.data) {
+                        getRepo.data.forEach(el => {
+                            let repoinfo = {
+                                name : el.name,
+                                fullname : el.full_name,
+                                owner : el.owner.login,
+                                avatar_url : el.owner.avatar_url,
+                                link : el.html_url,
+                                description : el.description
+                            }
+                            listRepo.push(repoinfo)
+                        });
+                        data.dataValues.Github = listRepo
+                        res.status(200).json(data)
+                    } else {
+                        res.status(200).json(data)
+                    } 
+                } else {
+                    res.status(200).json(data)
+                }
+            }
         } catch (error) {
             next(error)
         }
@@ -116,7 +154,18 @@ class StudentController {
             let schedule = await Booking.findAll({
                 where : {
                     UserId : req.loggedUser.id
-                }
+                },
+                include : [
+                    {
+                        model : User
+                    },
+                    {
+                        model : BuddyMaterial
+                    },
+                    {
+                        model : BuddySchedule
+                    }
+                ]
             })
             res.status(200).json(schedule)
         } catch (error) {
