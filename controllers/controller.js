@@ -3,6 +3,7 @@ const { generateToken } = require('../helpers/jwt')
 const baseUrl = require('../constants/url')
 const services = require('../helpers/service')
 const cheerio = require('cheerio')
+const nodemailer = require("nodemailer")
 const { User, Recipe, Transaction } = require('../models')
 
 const fetchRecipes = (req, res, response) => {
@@ -293,10 +294,10 @@ class Controller {
 
             // console.log(item)
             Recipe.findOne({
-                where: {q: req.params.q}
+                where: {q: req.query.q}
             })
             .then(data => {
-                res.status(200).json(data)
+                console.log(data)
             })
             .catch(err => res.status(500).json({message: 'Internal Server Error'}))
 
@@ -305,7 +306,70 @@ class Controller {
         }
     }
 
+    static orderRecipe(req, res) {
+        Transaction.create({
+            UserId: +req.loggedUser.id,
+            RecipeId: +req.params.id 
+        })
+        .then(data => {
+            res.status(201).json(data)
+        })
+        .catch(err => {
+            res.status(500).json({message: 'Internal Server Error'})
+        })
+    }
+
+    static payment(req, res) {
+        Transaction.findOne({
+          where: { 
+            UserId: +req.loggedUser.id,
+            RecipeId: +req.params.id  
+            }
+        })
+          .then((data) => {
     
+            nodemailer.createTestAccount((err, account) => {
+              if (err) {
+                console.log("failed to create testing account" + err.message);
+                return process.exit(1);
+              }
+    
+              console.log("sending message");
+    
+              const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                  user: "MakanYuk",
+                  pass: "MakanYuk",
+                },
+              });
+    
+              let message = {
+                from: "MakanYuk",
+                to: req.loggedUser.email,
+                subject: "Thank You For Your Order! - MakanYuk",
+                html: "<b><h3>Our admin will contact you soon</h3></b>",
+              };
+    
+              transporter.sendMail(message, (err, info) => {
+                if (err) {
+                  console.log("error : " + err.message);
+                  return process.exit(1);
+                }
+    
+                console.log("Message sent: $s" + info.messageId);
+                // console.log('Message sent: $s' + info.messageId)
+              });
+            });
+    
+            data.paid_status = true;
+            data.save();
+            res.status(200).json({message: 'email sent'})
+          })
+          .catch(err => {
+            res.status(500).json({message: 'Internal Server Error'})
+        })
+      }
 
 }
 
