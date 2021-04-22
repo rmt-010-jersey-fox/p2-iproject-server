@@ -3,11 +3,63 @@ const { User, Meme } = require('../models')
 class Controller {
     static showAll(req, res, next) {
         Meme.findAll({
-            include: { 
+            where: {
+                reported: { [lte]: 5 } // less then equal
+            },
+            include: {
                 model: User,
-                attributes: ["id", "name"]},
-                order: [['createdAt', 'DESC']]
+                attributes: ["id", "name"]
+            },
+            order: [['createdAt', 'DESC']]
         })
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch((err) => {
+                next({
+                    code: 500,
+                    message: "Internal server error"
+                })
+            })
+    }
+
+    static showAllReported(req, res, next) {
+        Meme.findAll(
+            {
+                where: {
+                    reported: { [gt]: 5 } //greater then
+                },
+                include: {
+                    model: User,
+                    attributes: ["id", "name"]
+                },
+                order: [['createdAt', 'DESC']]
+            }
+        )
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch((err) => {
+                next({
+                    code: 500,
+                    message: "Internal server error"
+                })
+            })
+    }
+
+    static showAllHot(req, res, next) {
+        Meme.findAll(
+            {
+                where: {
+                    reported: { [lte]: 5 } // less then equel
+                },
+                include: {
+                    model: User,
+                    attributes: ["id", "name"]
+                },
+                order: [['likes', 'DESC']]
+            }
+        )
             .then((data) => {
                 res.status(200).json(data)
             })
@@ -50,9 +102,10 @@ class Controller {
             where: {
                 id: +req.params.id
             },
-            include: { 
+            include: {
                 model: User,
-                attributes: ["id", "name"]}
+                attributes: ["id", "name"]
+            }
         })
             .then((data) => {
                 res.status(200).json(data)
@@ -95,6 +148,18 @@ class Controller {
                     message: "Data not found"
                 })
             })
+    }
+
+    static likes(req,res,next) {
+        Meme.findOne({
+            where: { id: req.params.id}
+        })
+        .then((data) => {
+            if(data) {
+                console.log(data)
+                // return 
+            }
+        })
     }
 
 }

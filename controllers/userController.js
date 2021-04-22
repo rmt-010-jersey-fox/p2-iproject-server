@@ -8,11 +8,12 @@ class UserController {
         const newUser = {
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            roles: req.body.roles
         }
         User.create(newUser)
             .then((user) => {
-                res.status(201).json({ name: user.name, email: user.email })
+                res.status(201).json({ name: user.name, email: user.email, roles: user.roles })
             })
             .catch((err) => {
                 console.log(err)
@@ -38,7 +39,7 @@ class UserController {
                     if (user) {
                         const isValidPassword = bcrypt.compareSync(password, user.password)
                         if (isValidPassword) {
-                            let payload = { id: user.id, name: user.name, email: user.email }
+                            let payload = { id: user.id, name: user.name, email: user.email, roles: user.roles }
                             res.status(200).json({ name:payload.name, access_token: generateToken(payload) })
 
                         } else {

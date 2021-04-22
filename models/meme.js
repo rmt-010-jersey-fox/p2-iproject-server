@@ -11,14 +11,37 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Meme.belongsToMany(models.User, { through: 'Favorite', foreignKey: 'MemeId'})
     }
   };
   Meme.init({
-    title: DataTypes.STRING,
-    imageUrl: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Cannot be empty'
+        }
+      }
+    },
+    image_url: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Cannot be empty'
+        }
+      }
+    },
+    likes: DataTypes.INTEGER,
+    reported: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Meme',
+  })
+  Meme.beforeCreate((meme, option) => {
+    meme.likes = 0,
+    meme.reported = 0
   });
   return Meme;
 };
