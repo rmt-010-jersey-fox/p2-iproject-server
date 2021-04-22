@@ -29,36 +29,42 @@ class StudentController {
                     ]
                 }
             })
-            if (data.GithubUser) {
-                // let repoAPI = gitlabAPI + `ekhaer/repos`
-                let repoAPI = gitlabAPI + `${data.GithubUser}/repos`
-                console.log("API ::: ", repoAPI)
 
-                let listRepo = []
-                const getRepo = await axios({
-                    method : 'get',
-                    url : repoAPI
-                })
-                if (getRepo.data) {
-                    getRepo.data.forEach(el => {
-                        let repoinfo = {
-                            name : el.name,
-                            fullname : el.full_name,
-                            owner : el.owner.login,
-                            avatar_url : el.owner.avatar_url,
-                            link : el.html_url,
-                            description : el.description
-                        }
-                        listRepo.push(repoinfo)
-                    });
-                    data.dataValues.Github = listRepo
-                    res.status(200).json(data)
+            let schedule = await BuddySchedule.findAll({
+                where : {
+                    UserId : id
+                }
+            })
+            if (schedule) {
+                data.dataValues.Schedule = schedule;
+                if (data.GithubUser) {
+                    let repoAPI = gitlabAPI + `${data.GithubUser}/repos`
+    
+                    let listRepo = []
+                    const getRepo = await axios({
+                        method : 'get',
+                        url : repoAPI
+                    })
+                    if (getRepo.data) {
+                        getRepo.data.forEach(el => {
+                            let repoinfo = {
+                                name : el.name,
+                                fullname : el.full_name,
+                                owner : el.owner.login,
+                                avatar_url : el.owner.avatar_url,
+                                link : el.html_url,
+                                description : el.description
+                            }
+                            listRepo.push(repoinfo)
+                        });
+                        data.dataValues.Github = listRepo
+                        res.status(200).json(data)
+                    } else {
+                        res.status(200).json(data)
+                    } 
                 } else {
                     res.status(200).json(data)
                 }
-            
-            } else {
-                res.status(200).json(data)
             }
         } catch (error) {
             next(error)
