@@ -112,6 +112,20 @@ class CustomerController{
       })
   }
 
+  static getAppointment(req,res,next){
+    Appointment.findOne({ where: {
+      UserId: req.loggedUser.id,
+      status: 'progress'
+    }
+    })
+      .then((data)=>{
+        res.status(200).json(data)
+      })
+      .catch((err)=>{
+        next(err)
+      })
+  }
+
   static reschedule(req,res,next){
     let {date,scheduleStart,scheduleEnd} = req.body
     Appointment.update({date,scheduleStart,scheduleEnd},{where:{id:req.params.id},returning:true})

@@ -10,6 +10,7 @@ routerCustomer.get('/barbershops',CustomerController.getBarberShops)
 routerCustomer.post('/barbers/',CustomerController.postBarbers)
 
 routerCustomer.use('/',autenticate)
+routerCustomer.get('/appointments',CustomerController.getAppointment)
 routerCustomer.post('/appointments/:barbershopid',CustomerController.postAppointments)
 
 routerCustomer.use('/appointments/:id',authorizeCustomer)
