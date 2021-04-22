@@ -1,32 +1,32 @@
 [
     {
-        "username" : "tes",
-        "email": "tes@gmail.com",
+        "username" : "budi",
+        "email": "budi@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     },
     {
-        "username" : "tes1",
-        "email": "tes1@gmail.com",
+        "username" : "acong",
+        "email": "acong@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     },
     {
-        "username" : "tes2",
-        "email": "tes2@gmail.com",
+        "username" : "alan",
+        "email": "alan@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     },
     {
-        "username" : "tes3",
-        "email": "tes3@gmail.com",
+        "username" : "kevin",
+        "email": "kevin@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     },
     {
-        "username" : "tes4",
-        "email": "tes3@gmail.com",
+        "username" : "mario",
+        "email": "mario@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     },
     {
-        "username" : "tes5",
-        "email": "tes3@gmail.com",
+        "username" : "susi",
+        "email": "susi@gmail.com",
         "password": "$2b$10$Eiu3t2H1HA/PmNjewluPMeVpJMtDctBLBCfx90Gmn9.fX.8O9GEEe"
     }
 ]

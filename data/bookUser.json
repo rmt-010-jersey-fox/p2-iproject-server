@@ -4,7 +4,7 @@
         "userId": 1,
         "wished": true,
         "liked" : false,
-        "comment" : "bukunya bagus"
+        "comment" : "bukunya bagus, aku sangat suka"
     },
     {
         "isbn": "1421590158",
@@ -18,6 +18,6 @@
         "userId": 1,
         "wished": false,
         "liked" : false,
-        "comment" : "bukunya jelek"
+        "comment" : "bukunya mendidik banget, aku rekomendasi kalian baca ini"
     }
 ]

@@ -1,12 +1,17 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const axios = require('axios');
 
 // AWAL CRON
 var CronJob = require('cron').CronJob;
 var job = new CronJob('0 0 0 * * SUN', function () {
+    // 'http://localhost:3000/nytimes'
+    // https://book-lovers-hansel.herokuapp.com
     axios({
         method: 'POST',
-        url: 'http://localhost:3000/nytimes',
+        url: 'https://book-lovers-hansel.herokuapp.com/nytimes',
         data : {
             key: process.env.NYkey
         }
@@ -25,7 +30,7 @@ const express = require('express')
 const app = express()
 app.use(cors())
 
-const port = 3000
+const port = process.env.PORT || 3000
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 const router = require('./routes/index')
