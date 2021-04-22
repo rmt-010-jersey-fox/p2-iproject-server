@@ -6,7 +6,7 @@ router.post('/register', Controller.register)
 router.post('/login', Controller.login)
 
 router.get('/recipes', Controller.newRecipes)
-router.get('/recipe/:key', Controller.recipesDetail);
+router.get('/recipe/:key', Controller.recipesDetail)
 router.get('/categorys/recipes', Controller.category)
 router.get('/categorys/recipes/:key', Controller.recipesByCategory)
 router.get('/search/', Controller.searchRecipes)
