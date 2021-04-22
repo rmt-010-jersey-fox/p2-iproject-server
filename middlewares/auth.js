@@ -105,19 +105,21 @@ async function userAuthorization(req, res, next) {
 
 async function friendAuthorization(req, res, next) {
     try {
-        const friendFound = await Friend.findOne({
+        const friendFound = await Friend.findAll({
             where: {
                 FriendId: req.params.id
             }
         })
-
+        const ids = []
+        friendFound.forEach(f => ids.push(f.UserId))
+        console.log(ids)
         if (!friendFound) {
             throw {
                 status: 404,
             }
         }
 
-        if (friendFound.UserId == req.loggedUser.id) {
+        if (ids.includes(req.loggedUser.id)) {
             next()
         } else {
             throw {

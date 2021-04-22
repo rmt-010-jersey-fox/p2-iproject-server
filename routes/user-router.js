@@ -9,6 +9,8 @@ userRouter.post('/register', UserController.register)
 
 userRouter.post('/login', UserController.login)
 
+userRouter.post('/googleLogin', UserController.googleLogin)
+
 userRouter.get('/users/:id', authentication, UserController.getUserById)
 
 userRouter.get('/users', authentication, UserController.getUsers)

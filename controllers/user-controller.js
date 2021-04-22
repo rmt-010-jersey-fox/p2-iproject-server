@@ -13,9 +13,9 @@ const {
     verifyToken
 } = require("../helpers/jwt");
 
-// const {
-//     OAuth2Client
-// } = require('google-auth-library');
+const {
+    OAuth2Client
+} = require('google-auth-library');
 
 class UserController {
     static async register(req, res, next) {
@@ -200,59 +200,64 @@ class UserController {
         }
     }
 
-    // static async googleLogin(req, res, next) {
+    static async googleLogin(req, res, next) {
 
-    //     try {
-    //         const CLIENT_ID = process.env.CLIENT_ID
-    //         const client = new OAuth2Client(CLIENT_ID);
-    //         const ticket = await client.verifyIdToken({
-    //             idToken: req.body.id_token,
-    //             audience: CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
-    //             // Or, if multiple clients access the backend:
-    //             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-    //         });
+        try {
+            const CLIENT_ID = process.env.CLIENT_ID
+            const client = new OAuth2Client(CLIENT_ID);
+            const ticket = await client.verifyIdToken({
+                idToken: req.body.idToken,
+                audience: CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
+                // Or, if multiple clients access the backend:
+                //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+            });
 
-    //         const payload = ticket.getPayload();
+            const payload = ticket.getPayload();
 
-    //         const findUser = await User.findOne({
-    //             where: {
-    //                 email: payload.email
-    //             }
-    //         })
+            const findUser = await User.findOne({
+                where: {
+                    email: payload.email
+                }
+            })
 
-    //         let access_token;
+            let access_token;
 
-    //         if (!findUser) {
-    //             const username = payload.email.split('@')[0]
-    //             const newUser = await User.create({
-    //                 username,
-    //                 email: payload.email,
-    //                 password: (Math.random() * 10000000) + 1 + "<<GoogleLoginPw"
-    //             })
+            if (!findUser) {
+                const username = payload.email.split('@')[0]
+                const newUser = await User.create({
+                    username,
+                    email: payload.email,
+                    password: (Math.random() * 10000000) + 1 + "<<GoogleLoginPw"
+                })
 
-    //             access_token = generateToken({
-    //                 id: newUser.id,
-    //                 email: newUser.email
-    //             })
+                access_token = generateToken({
+                    id: newUser.id,
+                    email: newUser.email
+                })
 
-    //         } else {
+                res.status(200).json({
+                    id:newUser.id,
+                    email: newUser.email,
+                    access_token
+                })
 
-    //             access_token = generateToken({
-    //                 id: findUser.id,
-    //                 email: findUser.email
-    //             })
-    //         }
+            } else {
+                access_token = generateToken({
+                    id: findUser.id,
+                    email: findUser.email
+                })
+            }
 
-    //         res.status(200).json({
-    //             access_token
-    //         })
+            res.status(200).json({
+                id:findUser.id,
+                email: findUser.email,
+                access_token
+            })
 
-    //     } catch (err) {
-
-    //         next(err)
-
-    //     }
-    // }
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = UserController
