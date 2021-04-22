@@ -89,7 +89,6 @@ class PlaylistController {
             next(err)
         }
     }
-    
 }
 
 module.exports = PlaylistController

@@ -9,11 +9,12 @@ const playlistRouter = require('./playlistRouter')
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
 
-router.get('/songs', SongController.findAll)
-// router.post('/songs', SongController.create)
+router.get('/search', APIController.dataToFetch)
+router.get('/lyrics', APIController.geniusLyrics)
 
-router.get('/search-lyrics', APIController.geniusLyrics)
-router.get('/recommendations', APIController.spotifyData)
+router.get('/songs', SongController.findAll)
+router.post('/songs', SongController.create)
+router.get('/songs/:id', SongController.findOne)
 
 router.use(authentication)
 router.use('/', playlistRouter)
