@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Room.belongsTo(models.User)
+      Room.hasMany(models.Booking)
     }
   };
   Room.init({
@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
         msg:"Price cannot be Minus"
       }
     }},
-    UserId: DataTypes.INTEGER,
     availableRoom:{type:DataTypes.INTEGER,
     validate:{
       isInt:{

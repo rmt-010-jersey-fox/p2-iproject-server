@@ -11,15 +11,16 @@ class RoomController{
     }
 
     static postRoom(req,res,next){
-        let createRoom = {
+        let cRoom = {
             name:req.body.name,
             image_url:req.body.image_url,
             price:req.body.price,
-            Userid:req.user.id
+            availableRoom:req.body.availableRoom
         }
-        Room.create(createRoom)
+        Room.create(cRoom)
         .then(room=>{
-            res.status(201).json({product})
+            console.log(room, "<<<<<<<<<<<<<<<<<<") 
+            res.status(201).json({room})
         }).catch(err=>{
             next(err)
         })
@@ -31,7 +32,7 @@ class RoomController{
             name:req.body.name,
             image_url:req.body.image_url,
             price:req.body.price,
-            Userid:req.user.id
+            availableRoom:req.body.availableRoom,
         }
         Room.update(updateRoom,{where:{id},returning:true})
         .then(data=>{

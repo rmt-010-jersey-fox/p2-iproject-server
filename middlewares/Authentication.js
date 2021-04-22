@@ -4,11 +4,12 @@ function authentic (req,res,next){
     const access_token = req.headers.access_token
     try{
         const payload = verifyJwt(access_token)
+        // console.log(payload,"<<<<<<<<<<<") 
         User.findByPk(payload.id)
         .then(user=>{
             if(user){
                 req.user = user
-                next
+                next()
             }else{
                 res.status(401).json({message:"Not Authorized"})
             }

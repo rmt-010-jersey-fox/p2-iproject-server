@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const UserController = require('../controllers/UserControllers')
 const RoomController = require('../controllers/RoomControllers')
+const BookController = require('../controllers/BookingControllers')
 const {authentic} = require('../middlewares/Authentication')
 const {authorization} = require('../middlewares/authorization')
 const {authorizationCustomer} = require ('../middlewares/authorization')
@@ -12,13 +13,15 @@ router.get('/rooms', RoomController.getRoom)
 
 router.use(authentic)
 router.post('/rooms', RoomController.postRoom)
+router.post('/books', BookController.addBook)
+router.get('/books', BookController.getBook)
+router.delete('/books/:id', authorizationCustomer, BookController.deleteBook)
+
+
 
 router.use('/rooms/:id', authorization)
 router.delete('/rooms/:id', RoomController.deleteRoom)
 router.put('/rooms/:id', RoomController.putRoom)
-
-router.use('/rooms/:id', authorizationCustomer)
-router.get('/rooms/:id', RoomController.getRoomId)
-
+router.get('/rooms/:id',RoomController.getRoomId)
 
 module.exports = router
