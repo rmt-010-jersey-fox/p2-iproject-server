@@ -9,13 +9,13 @@ class Controller {
         let userLogin
         User.findOne({
             where: {
-                email: req.body.loginUser.email
+                email: req.body.email
             }
         })
             .then(user => {
                 if (user) {
                     userLogin = user.dataValues
-                    return verifyPassword(req.body.loginUser.password, user.password)
+                    return verifyPassword(req.body.password, user.password)
                 }
             })
             .then(result => {
