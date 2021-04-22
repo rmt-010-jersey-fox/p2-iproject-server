@@ -6,6 +6,7 @@ const RentalController = require('../controllers/rentalControllers')
 const TransactionController = require('../controllers/transactionController')
 router.post('/register', CustomerController.register);
 router.post('/login', CustomerController.login);
+router.post('/googleLogin', CustomerController.googleLogin);
 router.get('/cars', CarController.getCars)
 router.post('/rentals', RentalController.getRentals)
 
