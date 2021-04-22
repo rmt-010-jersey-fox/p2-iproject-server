@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const { comparePsw } = require('../helper/bcrypt')
 const { generateToken } = require('../helper/jwt')
+const { sendEmail } = require('../helper/sendmail')
 class UserController {
     static async register(req, res, next) {
         console.log(req.body)
@@ -16,6 +17,7 @@ class UserController {
                 first_name : created.first_name,
                 last_name : created.last_name
             })
+            sendEmail(created.email)
         } catch (error) {
             next(error)
         } 
