@@ -2,6 +2,18 @@
 
 Individual Project server site
 
+# Third Party API
+
+1. https://thecatapi.com/ (apikey:15fe0aa8-021b-4ce9-a8a4-33e5214d183d)
+2. 'https://api.quotable.io/random?tags=technology,famous-quotes'(tanpa apikey)
+3. `https://avatars.dicebear.com/api/avataaars/${user.username}.svg` (untuk generate user avatar)
+
+# Websocket
+
+Disini menggunakan websocket untuk komunikasi antara client melalu chat,
+Untuk pengimplementasiaannya terdapat 2 jenis yaitu chat global atau yang livechat, dan
+chat yang dimiliki tiap user berupa room yang juga mengimplementasikan socket room.
+
 # RESTAPI
 
 ## Login User
