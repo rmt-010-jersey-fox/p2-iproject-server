@@ -3,7 +3,7 @@
 * RESTful endpoint for card, deck, and user CRUD operation
 * powered with express and postgres (with sequelize)
 
-## Deployed at: -
+## Deployed at: https://flashero-02azure-server.herokuapp.com
 
 ## Endpoints 
 
