@@ -16,12 +16,13 @@ class userController{
                 password: password || '',
                 image: image || ''
             })
-            if (user) {
-
-                sendMail(`${user.email}`, 'Forum Games', welcome)
-                res.status(201).json({id: user.id, fullname:user.fullname, username: user.username, email: user.email})
-            }
+            // if (user) {
+                console.log(user)
+            sendMail(`${user.email}`, 'Forum Games', welcome)
+            res.status(201).json({id: user.id, fullname:user.fullname, username: user.username, email: user.email})
+            // }
         } catch (err) {
+            console.log(err, "MASUUUUK")
             next(err)
         }
     }
