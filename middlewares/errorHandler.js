@@ -12,9 +12,6 @@ const errorHandler = (err,req,res,next) => {
         case 'WrongEmail/Password':
             res.status(400).json({message: 'Invalid Email or Password'})
             break;
-        case 'StockNull':
-                res.status(400).json({message: 'You have reach the stock limit'})
-            break;
         case 'UserNotFound':
             res.status(404).json({message: "User cannot be found"})
             break;
