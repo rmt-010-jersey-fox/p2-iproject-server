@@ -23,6 +23,22 @@ class FinanceDetailsController {
             })
     }
 
+    static getDataSaldo(req, res, next) {
+        Finance.findAll({attributes: ['saldo']},
+        {where: {UserId: +req.currentUser.id}})
+            .then(response => {
+                let data = []
+                console.log(response)
+                response.forEach(el => {
+                    data.push(el.saldo)
+                })
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                next(err)
+            })
+    }
+
     // static detail(req, res, next) {
     //     Finance.findByPk(+req.params.id)
     //         .then(response => {

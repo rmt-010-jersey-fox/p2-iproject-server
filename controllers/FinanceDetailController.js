@@ -51,6 +51,12 @@ class FinanceDetailController {
     static async delete(req, res, next) {
         try {
             const financeId = +req.params.financeDetailId
+            const foundFinanceDetails = await FinanceDetail.findOne({where: { id: financeId }})
+            const foundFinances = await Finance.findOne({where: { id: Number(foundFinanceDetails.FinanceId) }})
+            console.log(foundFinances, 'InI foundFInances')
+            const update = await Finance.update({ saldo: Number(foundFinances.saldo) - Number(foundFinanceDetails.amount)},{ 
+                where : { id : Number(foundFinanceDetails.FinanceId) }})
+            console.log(foundFinances, 'InI foundFInances')
             const deleteFinance = await FinanceDetail.destroy({
                 where: {id : financeId}
             })

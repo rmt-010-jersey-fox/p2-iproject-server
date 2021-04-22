@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   FinanceDetail.init({
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     TransactionsType: {
       type: DataTypes.STRING,
       validate: {
