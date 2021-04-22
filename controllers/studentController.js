@@ -160,10 +160,20 @@ class StudentController {
                         model : User
                     },
                     {
-                        model : BuddyMaterial
+                        model : BuddyMaterial,
+                        include : [
+                            {
+                                model : Material
+                            }
+                        ]
                     },
                     {
-                        model : BuddySchedule
+                        model : BuddySchedule,
+                        include : [
+                            {
+                                model : User
+                            }
+                        ]
                     }
                 ]
             })
