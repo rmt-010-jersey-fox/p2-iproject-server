@@ -2,6 +2,7 @@ const { User } = require("../models");
 const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
 const { OAuth2Client } = require("google-auth-library");
+const sendEmail = require("../helpers/nodeMail")
 
 class UserController {
   static register(req, res, next) {
@@ -10,6 +11,7 @@ class UserController {
     User.create({ email, password })
       .then((userCreate) => {
         // console.log(userCreate, "<<<<<<<<<<<< INI DI USER CREATE");
+        sendEmail(userCreate.email)
         res.status(201).json({
           id: userCreate.id,
           email: userCreate.email,
