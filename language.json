@@ -1,0 +1,654 @@
+[
+  {
+    "aa": "ab",
+    "Afar": "Abkhazian"
+  },
+  {
+    "aa": "af",
+    "Afar": "Afrikaans"
+  },
+  {
+    "aa": "ak",
+    "Afar": "Akan"
+  },
+  {
+    "aa": "am",
+    "Afar": "Amharic"
+  },
+  {
+    "aa": "ar",
+    "Afar": "Arabic"
+  },
+  {
+    "aa": "as",
+    "Afar": "Assamese"
+  },
+  {
+    "aa": "ay",
+    "Afar": "Aymara"
+  },
+  {
+    "aa": "az",
+    "Afar": "Azerbaijani"
+  },
+  {
+    "aa": "ba",
+    "Afar": "Bashkir"
+  },
+  {
+    "aa": "be",
+    "Afar": "Belarusian"
+  },
+  {
+    "aa": "bg",
+    "Afar": "Bulgarian"
+  },
+  {
+    "aa": "bh",
+    "Afar": "Bihari"
+  },
+  {
+    "aa": "bi",
+    "Afar": "Bislama"
+  },
+  {
+    "aa": "bn",
+    "Afar": "Bengali"
+  },
+  {
+    "aa": "bo",
+    "Afar": "Tibetan"
+  },
+  {
+    "aa": "br",
+    "Afar": "Breton"
+  },
+  {
+    "aa": "bs",
+    "Afar": "Bosnian"
+  },
+  {
+    "aa": "bug",
+    "Afar": "Buginese"
+  },
+  {
+    "aa": "ca",
+    "Afar": "Catalan"
+  },
+  {
+    "aa": "ceb",
+    "Afar": "Cebuano"
+  },
+  {
+    "aa": "chr",
+    "Afar": "Cherokee"
+  },
+  {
+    "aa": "co",
+    "Afar": "Corsican"
+  },
+  {
+    "aa": "crs",
+    "Afar": "Seselwa"
+  },
+  {
+    "aa": "cs",
+    "Afar": "Czech"
+  },
+  {
+    "aa": "cy",
+    "Afar": "Welsh"
+  },
+  {
+    "aa": "da",
+    "Afar": "Danish"
+  },
+  {
+    "aa": "de",
+    "Afar": "German"
+  },
+  {
+    "aa": "dv",
+    "Afar": "Dhivehi"
+  },
+  {
+    "aa": "dz",
+    "Afar": "Dzongkha"
+  },
+  {
+    "aa": "egy",
+    "Afar": "Egyptian"
+  },
+  {
+    "aa": "el",
+    "Afar": "Greek"
+  },
+  {
+    "aa": "en",
+    "Afar": "English"
+  },
+  {
+    "aa": "eo",
+    "Afar": "Esperanto"
+  },
+  {
+    "aa": "es",
+    "Afar": "Spanish"
+  },
+  {
+    "aa": "et",
+    "Afar": "Estonian"
+  },
+  {
+    "aa": "eu",
+    "Afar": "Basque"
+  },
+  {
+    "aa": "fa",
+    "Afar": "Persian"
+  },
+  {
+    "aa": "fi",
+    "Afar": "Finnish"
+  },
+  {
+    "aa": "fj",
+    "Afar": "Fijian"
+  },
+  {
+    "aa": "fo",
+    "Afar": "Faroese"
+  },
+  {
+    "aa": "fr",
+    "Afar": "French"
+  },
+  {
+    "aa": "fy",
+    "Afar": "Frisian"
+  },
+  {
+    "aa": "ga",
+    "Afar": "Irish"
+  },
+  {
+    "aa": "gd",
+    "Afar": "Scots Gaelic"
+  },
+  {
+    "aa": "gl",
+    "Afar": "Galician"
+  },
+  {
+    "aa": "gn",
+    "Afar": "Guarani"
+  },
+  {
+    "aa": "got",
+    "Afar": "Gothic"
+  },
+  {
+    "aa": "gu",
+    "Afar": "Gujarati"
+  },
+  {
+    "aa": "gv",
+    "Afar": "Manx"
+  },
+  {
+    "aa": "ha",
+    "Afar": "Hausa"
+  },
+  {
+    "aa": "haw",
+    "Afar": "Hawaiian"
+  },
+  {
+    "aa": "hi",
+    "Afar": "Hindi"
+  },
+  {
+    "aa": "hmn",
+    "Afar": "Hmong"
+  },
+  {
+    "aa": "hr",
+    "Afar": "Croatian"
+  },
+  {
+    "aa": "ht",
+    "Afar": "Haitian Creole"
+  },
+  {
+    "aa": "hu",
+    "Afar": "Hungarian"
+  },
+  {
+    "aa": "hy",
+    "Afar": "Armenian"
+  },
+  {
+    "aa": "ia",
+    "Afar": "Interlingua"
+  },
+  {
+    "aa": "id",
+    "Afar": "Indonesian"
+  },
+  {
+    "aa": "ie",
+    "Afar": "Interlingue"
+  },
+  {
+    "aa": "ig",
+    "Afar": "Igbo"
+  },
+  {
+    "aa": "ik",
+    "Afar": "Inupiak"
+  },
+  {
+    "aa": "is",
+    "Afar": "Icelandic"
+  },
+  {
+    "aa": "it",
+    "Afar": "Italian"
+  },
+  {
+    "aa": "iu",
+    "Afar": "Inuktitut"
+  },
+  {
+    "aa": "iw",
+    "Afar": "Hebrew"
+  },
+  {
+    "aa": "ja",
+    "Afar": "Japanese"
+  },
+  {
+    "aa": "jw",
+    "Afar": "Javanese"
+  },
+  {
+    "aa": "ka",
+    "Afar": "Georgian"
+  },
+  {
+    "aa": "kha",
+    "Afar": "Khasi"
+  },
+  {
+    "aa": "kk",
+    "Afar": "Kazakh"
+  },
+  {
+    "aa": "kl",
+    "Afar": "Greenlandic"
+  },
+  {
+    "aa": "km",
+    "Afar": "Khmer"
+  },
+  {
+    "aa": "kn",
+    "Afar": "Kannada"
+  },
+  {
+    "aa": "ko",
+    "Afar": "Korean"
+  },
+  {
+    "aa": "ks",
+    "Afar": "Kashmiri"
+  },
+  {
+    "aa": "ku",
+    "Afar": "Kurdish"
+  },
+  {
+    "aa": "ky",
+    "Afar": "Kyrgyz"
+  },
+  {
+    "aa": "la",
+    "Afar": "Latin"
+  },
+  {
+    "aa": "lb",
+    "Afar": "Luxembourgish"
+  },
+  {
+    "aa": "lg",
+    "Afar": "Ganda"
+  },
+  {
+    "aa": "lif",
+    "Afar": "Limbu"
+  },
+  {
+    "aa": "ln",
+    "Afar": "Lingala"
+  },
+  {
+    "aa": "lo",
+    "Afar": "Laothian"
+  },
+  {
+    "aa": "lt",
+    "Afar": "Lithuanian"
+  },
+  {
+    "aa": "lv",
+    "Afar": "Latvian"
+  },
+  {
+    "aa": "mfe",
+    "Afar": "Mauritian Creole"
+  },
+  {
+    "aa": "mg",
+    "Afar": "Malagasy"
+  },
+  {
+    "aa": "mi",
+    "Afar": "Maori"
+  },
+  {
+    "aa": "mk",
+    "Afar": "Macedonian"
+  },
+  {
+    "aa": "ml",
+    "Afar": "Malayalam"
+  },
+  {
+    "aa": "mn",
+    "Afar": "Mongolian"
+  },
+  {
+    "aa": "mr",
+    "Afar": "Marathi"
+  },
+  {
+    "aa": "ms",
+    "Afar": "Malay"
+  },
+  {
+    "aa": "mt",
+    "Afar": "Maltese"
+  },
+  {
+    "aa": "my",
+    "Afar": "Burmese"
+  },
+  {
+    "aa": "na",
+    "Afar": "Nauru"
+  },
+  {
+    "aa": "ne",
+    "Afar": "Nepali"
+  },
+  {
+    "aa": "nl",
+    "Afar": "Dutch"
+  },
+  {
+    "aa": "no",
+    "Afar": "Norwegian"
+  },
+  {
+    "aa": "nr",
+    "Afar": "Ndebele"
+  },
+  {
+    "aa": "nso",
+    "Afar": "Pedi"
+  },
+  {
+    "aa": "ny",
+    "Afar": "Nyanja"
+  },
+  {
+    "aa": "oc",
+    "Afar": "Occitan"
+  },
+  {
+    "aa": "om",
+    "Afar": "Oromo"
+  },
+  {
+    "aa": "or",
+    "Afar": "Oriya"
+  },
+  {
+    "aa": "pa",
+    "Afar": "Punjabi"
+  },
+  {
+    "aa": "pl",
+    "Afar": "Polish"
+  },
+  {
+    "aa": "ps",
+    "Afar": "Pashto"
+  },
+  {
+    "aa": "pt",
+    "Afar": "Portuguese"
+  },
+  {
+    "aa": "qu",
+    "Afar": "Quechua"
+  },
+  {
+    "aa": "rm",
+    "Afar": "Rhaeto Romance"
+  },
+  {
+    "aa": "rn",
+    "Afar": "Rundi"
+  },
+  {
+    "aa": "ro",
+    "Afar": "Romanian"
+  },
+  {
+    "aa": "ru",
+    "Afar": "Russian"
+  },
+  {
+    "aa": "rw",
+    "Afar": "Kinyarwanda"
+  },
+  {
+    "aa": "sa",
+    "Afar": "Sanskrit"
+  },
+  {
+    "aa": "sco",
+    "Afar": "Scots"
+  },
+  {
+    "aa": "sd",
+    "Afar": "Sindhi"
+  },
+  {
+    "aa": "sg",
+    "Afar": "Sango"
+  },
+  {
+    "aa": "si",
+    "Afar": "Sinhalese"
+  },
+  {
+    "aa": "sk",
+    "Afar": "Slovak"
+  },
+  {
+    "aa": "sl",
+    "Afar": "Slovenian"
+  },
+  {
+    "aa": "sm",
+    "Afar": "Samoan"
+  },
+  {
+    "aa": "sn",
+    "Afar": "Shona"
+  },
+  {
+    "aa": "so",
+    "Afar": "Somali"
+  },
+  {
+    "aa": "sq",
+    "Afar": "Albanian"
+  },
+  {
+    "aa": "sr",
+    "Afar": "Serbian"
+  },
+  {
+    "aa": "ss",
+    "Afar": "Siswant"
+  },
+  {
+    "aa": "st",
+    "Afar": "Sesotho"
+  },
+  {
+    "aa": "su",
+    "Afar": "Sundanese"
+  },
+  {
+    "aa": "sv",
+    "Afar": "Swedish"
+  },
+  {
+    "aa": "sw",
+    "Afar": "Swahili"
+  },
+  {
+    "aa": "syr",
+    "Afar": "Syriac"
+  },
+  {
+    "aa": "ta",
+    "Afar": "Tamil"
+  },
+  {
+    "aa": "te",
+    "Afar": "Telugu"
+  },
+  {
+    "aa": "tg",
+    "Afar": "Tajik"
+  },
+  {
+    "aa": "th",
+    "Afar": "Thai"
+  },
+  {
+    "aa": "ti",
+    "Afar": "Tigrinya"
+  },
+  {
+    "aa": "tk",
+    "Afar": "Turkmen"
+  },
+  {
+    "aa": "tl",
+    "Afar": "Tagalog"
+  },
+  {
+    "aa": "tlh",
+    "Afar": "Klingon"
+  },
+  {
+    "aa": "tn",
+    "Afar": "Tswana"
+  },
+  {
+    "aa": "to",
+    "Afar": "Tonga"
+  },
+  {
+    "aa": "tr",
+    "Afar": "Turkish"
+  },
+  {
+    "aa": "ts",
+    "Afar": "Tsonga"
+  },
+  {
+    "aa": "tt",
+    "Afar": "Tatar"
+  },
+  {
+    "aa": "ug",
+    "Afar": "Uighur"
+  },
+  {
+    "aa": "uk",
+    "Afar": "Ukrainian"
+  },
+  {
+    "aa": "ur",
+    "Afar": "Urdu"
+  },
+  {
+    "aa": "uz",
+    "Afar": "Uzbek"
+  },
+  {
+    "aa": "ve",
+    "Afar": "Venda"
+  },
+  {
+    "aa": "vi",
+    "Afar": "Vietnamese"
+  },
+  {
+    "aa": "vo",
+    "Afar": "Volapuk"
+  },
+  {
+    "aa": "war",
+    "Afar": "Waray Philippines"
+  },
+  {
+    "aa": "wo",
+    "Afar": "Wolof"
+  },
+  {
+    "aa": "xh",
+    "Afar": "Xhosa"
+  },
+  {
+    "aa": "yi",
+    "Afar": "Yiddish"
+  },
+  {
+    "aa": "yo",
+    "Afar": "Yoruba"
+  },
+  {
+    "aa": "za",
+    "Afar": "Zhuang"
+  },
+  {
+    "aa": "zh",
+    "Afar": "Chinese Simplified"
+  },
+  {
+    "aa": "zh-Hant",
+    "Afar": "Chinese Traditional"
+  },
+  {
+    "aa": "zu",
+    "Afar": "Zulu"
+  }
+]

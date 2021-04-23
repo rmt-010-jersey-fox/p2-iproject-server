@@ -32,6 +32,7 @@ class UserController {
                     email: email
                 }
             })
+            console.log(user);
             if(!user) {
                 res.status(401).json({
                     msg: "Invalid email or password"

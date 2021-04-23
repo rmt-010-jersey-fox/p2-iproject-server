@@ -4,11 +4,14 @@ const FavoriteCtr = require('../../controllers/FavoriteController')
 const  Authentication = require('../../middlewares/authentication')
 const {AuthorizationTimeline, AuthorizationFavorite} = require('../../middlewares/authorization')
 const NyTimesCtr = require('../../controllers/NyTimesController')
+const SentimController = require('../../controllers/SentimController')
 
 router.get('/timeline', TimelineCtr.getStatus)
 
 router.use(Authentication)
 router.get('/nytimes', NyTimesCtr.rssFeeds)
+
+router.post('/sentim', SentimController.textAnalysis)
 router.post('/timeline', TimelineCtr.postStatus)
 router.put('/timeline/:id',AuthorizationTimeline, TimelineCtr.putStatus)
 router.patch('/timeline/:id', AuthorizationTimeline, TimelineCtr.patchLike)

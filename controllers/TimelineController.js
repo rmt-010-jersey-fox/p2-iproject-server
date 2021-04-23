@@ -3,7 +3,10 @@ const {Timeline, User} = require('../models/index')
 class TimelineController {
     static async getStatus (req, res, next) {
         try {
-            const status = await Timeline.findAll()
+            const status = await Timeline.findAll({
+                include: [ User ]
+            })
+            console.log(status);
             res.status(200).json({
                 status
             }) 
@@ -21,7 +24,11 @@ class TimelineController {
             UserId: id
         }
         try {
-            const postStatus = await Timeline.create(payload)
+            const postStatus = await Timeline.create(payload,{
+                include: {
+                    model: User
+                }
+            })
             res.status(200).json({postStatus})
         }
         catch(err) {
