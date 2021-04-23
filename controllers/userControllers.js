@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { sign } = require('../helpers/jwt')
+const transporter = require('../helpers/nodemailer')
 
 class UserController {
     static async register(req, res, next) {
@@ -9,6 +10,21 @@ class UserController {
             let data = await User.create({
                 email,
                 password
+            })
+            let mailOptions = {
+                from: '"LayarTancepWeb <info@layartancepweb.com>',
+                to: "abdul@mail.com",
+                subject: "register Information",
+                text: "success register!",
+                html: `<b> successfully register <\b>`,
+            };
+
+            transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
             })
             res.status(201).json({id: data.id, email: data.email}) 
         }

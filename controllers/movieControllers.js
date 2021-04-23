@@ -42,21 +42,21 @@ class MovieController {
         })
     }
     static detailMovies(req, res, next) {
-        let movieId = +req.params.id
+        let id = +req.params.id
         let dataVideo
         let result
             axios({
             method: 'GET',
-            url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
+            url: `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`,
         })
         .then((response) => {
             result = response.data
             return axios({
                 method: 'GET',
-                url: `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`,
+                url: `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`,
             })
             .then((response) => {
-                dataVideo = response.data.results
+                console.log(response.data.results);
                 res.status(200).json({result, dataVideo})
             })
         })

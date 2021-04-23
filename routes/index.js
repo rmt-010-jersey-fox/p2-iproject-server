@@ -15,6 +15,7 @@ router.get('/movies/upcoming', MovieController.moviesUpcoming)
 // router data movies & watchList
 router.use(authentication)
 router.get('/movies/:id', MovieController.detailMovies)
+// router.get('/movies/:id', MovieController.showVideo)
 router.post('/addWatchList/:MovieId', WatchListController.addWatchList)
 router.get('/watchList', WatchListController.showWatchList)
 router.delete('/watchList/:id', WatchListController.deleteWatchList)
