@@ -55,7 +55,7 @@ class Controller {
             }
         })
         .then(user => {
-            res.status(200).json(user)
+            res.status(200).json({username: user.username, email:user.email, address: user.address})
         })
         .catch(err => {
             next(err)

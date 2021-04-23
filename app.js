@@ -18,7 +18,6 @@ app.post('/login', Controller.login)
 
 app.use(authentication)
 app.get('/user', Controller.getUser)
-app.put('/user', Controller.editUser)
 app.post('/history', Controller.addHistory)
 app.get('/history', Controller.getHistory)
 app.get('/location', Controller.fetchProvince)
