@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "masghi63",
+    "password": "jamweker123",
+    "database": "database_development_lalappan1",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "masghi63",
+    "password": "jamweker123",
+    "database": "database_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
