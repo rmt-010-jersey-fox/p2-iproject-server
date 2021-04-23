@@ -3,7 +3,7 @@ const {Patient, Disease, User} = require('../models/')
 class PatientController {
     static async inputPatientData(req,res, next) {
         const {name, date_of_birth, gender, status, DiseaseId} = req.body
-        // console.log(req.user.id);
+        // console.log(req.user.role);
         try {
             const patient = await Patient.create({
                 name,
@@ -35,10 +35,10 @@ class PatientController {
                 include: [{model: User, attributes: {exclude: ['createdAt', 'updatedAt','password']}, 
             }, {model: Disease, attributes: {exclude: ['createdAt', 'updatedAt']},
             }]
-            })
+            }) 
             res.status(200).json(patient)
         } catch (err) {
-            console.log(err);
+            // console.log(err);
            next(err)
         }
     }

@@ -10,9 +10,10 @@ const { authentication, authorizationPatient } = require('../middlewares/auth');
 route.post('/register', UserController.register)
 route.post('/login', UserController.login)
 
-route.get('/calendar', APIController.getCalendar)
 route.get('/covid', APIController.getCovidCases)
 route.get('/weather', APIController.getWeather)
+route.get('/news', APIController.getNews)
+
 
 
 route.use(authentication)

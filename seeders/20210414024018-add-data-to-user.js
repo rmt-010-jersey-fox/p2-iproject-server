@@ -17,49 +17,28 @@ module.exports = {
     {
         email: "doctor1@mail.com",
         password: hashPassword("1111"),
-        role: "doctor",
+        role: "Intensive Care",
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
         email: "doctor2@mail.com",
         password: hashPassword("2222"),
-        role: "doctor",
+        role: "Surgeons",
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
         email: "doctor3@mail.com",
         password: hashPassword("3333"),
-        role: "doctor",
+        role: "Primary Care",
         createdAt: new Date(),
         updatedAt: new Date()
     },
     {
         email: "doctor4@mail.com",
         password: hashPassword("4444"),
-        role: "doctor",
-        createdAt: new Date(),
-        updatedAt: new Date()
-    },
-    {
-        email: "patient1@mail.com",
-        password: hashPassword("1111"),
-        role: "patient",
-        createdAt: new Date(),
-        updatedAt: new Date()
-    },
-    {
-        email: "patient2@mail.com",
-        password: hashPassword("2222"),
-        role: "patient",
-        createdAt: new Date(),
-        updatedAt: new Date()
-    },
-    {
-        email: "patient3@mail.com",
-        password: hashPassword("3333"),
-        role: "patient",
+        role: "Surgeons",
         createdAt: new Date(),
         updatedAt: new Date()
     }
