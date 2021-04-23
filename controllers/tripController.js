@@ -6,12 +6,8 @@ class TripController {
         Trip.findAll({
             where: {
                 userId: req.loggedUser.id
-<<<<<<< HEAD
             },
             include: Todo
-=======
-            }
->>>>>>> 2b9cb839b6ed40ad1a19e7fd55f358d3d8f5e3cd
         })
         .then(allTrips => {
             res.status(200).json(allTrips)
@@ -21,12 +17,8 @@ class TripController {
         })
     }
 
-<<<<<<< HEAD
     static createTrips(req, res, next) {
         console.log(req.body)
-=======
-    static create(req, res, next) {
->>>>>>> 2b9cb839b6ed40ad1a19e7fd55f358d3d8f5e3cd
         const {title, origin, destination, depatureDate, hotels} = req.body
         Trip.create({
             title,
