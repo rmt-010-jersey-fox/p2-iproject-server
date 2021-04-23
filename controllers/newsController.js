@@ -15,12 +15,17 @@ class newsController {
                         author: e.author,
                         title: e.title,
                         description: e.description,
+                        url: e.url,
                         urlToImage: e.urlToImage,
-                        publishedAt: e.publishedAt
+                        publishedAt: e.publishedAt,
+                        source: e.source.name,
+                        content: e.content
                     })
                 })
                 res.status(200).json(news)
-                    // console.log(response.data);
+                    // res.status(200).json(response.data.articles)
+
+                // console.log(response.data);
             })
             .catch(err => {
                 res.status(500).json({ message: err.message })
