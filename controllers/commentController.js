@@ -3,16 +3,16 @@ const {User, Comment} = require('../models')
 class CommentController {
     static showComment(req, res, next) {
         // console.log(req.loggedUser.id)
-        console.log(req, "<<req")
+        // console.log(req.query.title, "<<req")
         Comment.findAll({
             include: [User],
+            // group: 'articleTitle'
             where: {
                 UserId: req.loggedUser.id
-                
             }
         })
         .then(comments => {
-            console.log(comments, "<<comments")
+            // console.log(comments, "<<comments")
             res.status(200).json(comments)
         })
         .catch(err=> {
@@ -22,33 +22,26 @@ class CommentController {
 
     static addComment(req, res, next) {
         // console.log(req.body, "ini req body controller")
-        Comment.findOne({
-            where: {
-                UserId: req.loggedUser.id,
-                articleTitle: req.body.articleTitle
-            }
-        })
-        .then(comments => {
-            console.log(comments)
-            if (!comments) {
-                throw ({name: "comments not found"})
-            }
-            else {
-                return Comment.findOne({
-                    where: {
-                        UserId: req.loggedUser.id,
-                        articleTitle: req.body.articleTitle
-                    }
+        // Comment.findOne({
+        //     where: {
+        //         UserId: req.loggedUser.id,
+        //         articleTitle: req.query.title
+        //     }
+        // })
+        // .then(comments => {
+        //     console.log(comments)
+        //     if (!comments) {
+        //         throw ({name: "comments not found"})
+        //     }
+        //     else {
+        //         return 
+                Comment.create({
+                    articleTitle: req.body.articleTitle,
+                    UserId: req.loggedUser.id,
+                    comment: req.body.comment
                 })
-            }
-        })
-        .then(comments => {
-            return Comment.create({
-                articleTitle: req.body.articleTitle,
-                UserId: req.loggedUser.id,
-                comment: req.body.comment
-            })
-        })
+        //     }
+        // })
         .then(newcomments => {
             // console.log(newcomments)
             res.status(201).json(newcomments)
@@ -64,8 +57,7 @@ class CommentController {
         // console.log(id, "ini id")
         Comment.findOne({
             where: {
-                UserId: req.loggedUser.id,
-                articleTitle: req.body.articleTitle
+                id
             }
         })
         .then(data => {
@@ -93,10 +85,10 @@ class CommentController {
     }
 
     static deleteComment(req, res, next) {
+
         Comment.destroy({
             where: {
-                UserId: req.loggedUser.id,
-                articleTitle: req.articles.title
+               id: req.params.id
             }
         })
         .then(() => {

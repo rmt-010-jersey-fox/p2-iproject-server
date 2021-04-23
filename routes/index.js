@@ -14,5 +14,8 @@ router.use(authentication)
 
 router.get('/comments', authorization, CommentController.showComment)
 router.post('/comments', authorization, CommentController.addComment)
+router.delete('/comments/:id', authorization, CommentController.deleteComment)
+router.get('/comments/:id', authorization, CommentController.showSpecificId)
+router.put('/comments/:id', authorization, CommentController.updateComment)
 
 module.exports = router

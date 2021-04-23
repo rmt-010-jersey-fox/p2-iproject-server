@@ -4,10 +4,10 @@ class ArticleController {
     static showArticle(req, res, next) {
         axios({
             method: 'GET',
-            url: 'https://newsapi.org/v2/everything?q=climate&from=2021-03-21&sortBy=publishedAt&apiKey=83e2af908d864203b857121c14e2432b'
+            url: 'https://newsapi.org/v2/everything?q=climate&sortBy=publishedAt&apiKey=6f676d3ba598444a9df977b2ec1cefc7'
         })
         .then(({data}) => {
-            // console.log(data)
+            // console.log(data, "<<data")
             const articles = []
             data.articles.forEach(article => {
                articles.push({
