@@ -9,6 +9,7 @@ const { Authentication, Authorization } = require("../middlewares/auth")
 router.use("/", UserRouter);
 
 router.use(Authentication)
+
 // Quran
 router.get("/quran", QuranController.allSurah);
 router.post("/surah", QuranController.getQuranbyAyat);
