@@ -92,7 +92,7 @@ class CustomerController{
      next(err)
     })
   }
-
+// done
   static getBarberShops(req,res,next){
     BarberShop.findAll({ attributes: {exclude: ['password']},
       include: [
