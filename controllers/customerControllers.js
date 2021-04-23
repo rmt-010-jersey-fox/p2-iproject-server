@@ -1,6 +1,7 @@
 const {BarberShop,Barber,Service,User,Appointment} = require('../models')
 const {comparePassword,hashPassword} = require('../helper/bcrypt')
 const {generateToken} = require('../helper/jwt')
+const sendMail = require('../helper/nodemail')
 class CustomerController{
   static postRegister(req,res,next){
     const {username,email,phone,password} = req.body
@@ -110,6 +111,9 @@ class CustomerController{
       .catch((err)=>{
         next(err)
       })
+  }
+  static nodemailer(req,res,next){
+    sendMail(req.loggedUser.email, 'Appointment', 'Thank to Makes an Appointment. dont forget to come 15 minutes before the appointment time')
   }
 
   static getAppointment(req,res,next){
