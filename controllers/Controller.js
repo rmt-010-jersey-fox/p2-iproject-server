@@ -130,7 +130,7 @@ class Controller {
                         episodes: episodes,
                         status: 'Completed'
                     })
-                } else if (oldAnime.totalEpisodes > episodes) {
+                } else if (oldAnime.totalEpisodes >= episodes) {
                     return oldAnime.update({
                         episodes: episodes,
                         status: 'On-Going'
