@@ -15,10 +15,6 @@ module.exports = (err, req, res, next) => {
       res.status(400).json({ message: "invalid id or password" })
     } else if (err.name === "SequelizeUniqueConstraintError"){
       res.status(400).json({ message: "The Email Account Already Exists"})
-    } else if (err.name === "no cart"){
-      res.status(404).json({message: 'no cart'})
-    } else if (err.name === 'Stock is less than in the cart') {
-      res.status(404).json({message: 'Stock is less than in the cart'})
     } else {
       res.status(500).json({ message: "internal server error" });
     }
