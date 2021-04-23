@@ -6,7 +6,8 @@ class TripController {
         Trip.findAll({
             where: {
                 userId: req.loggedUser.id
-            }
+            },
+            include: Todo
         })
         .then(allTrips => {
             res.status(200).json(allTrips)
@@ -91,7 +92,7 @@ class TripController {
             res.status(200).json({message: 'deleted'})
         })
         .catch(err => {
-            console.log(err)
+            next({name: err.name, message: err.message})
         })
     }
 
@@ -105,6 +106,22 @@ class TripController {
 
     static showHotels (req, res, next) {
         
+    }
+
+    static deleteTodo (req, res, next) {
+
+        Todo.destroy({
+            where: {
+                id: +req.params.id
+            }
+        })
+        .then((resp) => {
+            console.log(resp)
+        })
+        .catch(err => {
+            console.log(err)
+            next({name: err.name, message: err.message})
+        })
     }
 }
 
