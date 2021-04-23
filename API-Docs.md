@@ -4,7 +4,7 @@
 
 
 link server : `https://gamming-db.herokuapp.com/` <br />
-link client : `link client https://gammingdb-a9b9c.web.app`<br />
+link client : `https://gammingdb-a9b9c.web.app`<br />
 <hr><br />
 
 **Signup User**

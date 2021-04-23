@@ -2,6 +2,7 @@ const { User } = require('../models')
 const { decryptPassword } = require('../helpers/bcrypt')
 const { encodeToken } = require('../helpers/jwt')
 const { OAuth2Client } = require('google-auth-library')
+const sendMail = require('../helpers/nodeMailer')
 
 class UserCtrl {
 
@@ -11,14 +12,13 @@ class UserCtrl {
       email   : req.body.email,
       password: req.body.password
     }
-
     User
       .create({ ...newUser })
       .then(data => res.status(201).json({ 
         id        : data.id,
         username  : data.username,
         email     : data.email
-      }))
+      }), sendMail(newUser.username, newUser.email))
       .catch(err => next(err))
   }
 
@@ -74,6 +74,7 @@ class UserCtrl {
         email   : newUser.email, 
         access_token 
       })
+      sendMail(newUser.username, newUser.email)
     })
     .catch(err => next(err))
   }
