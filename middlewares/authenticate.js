@@ -3,10 +3,8 @@ const {verifyJwt} = require('../helpers/jwt');
 
 function authenticate(req, res, next) {
     const token = req.headers.access_token
-    // console.log(token)
     if (token) {
         const decoded = verifyJwt(token)
-        // console.log(decoded)
         User.findOne({
             where: {
                 email: decoded.email
@@ -14,7 +12,6 @@ function authenticate(req, res, next) {
         })
         .then((currentUser) => {
             if (currentUser) {
-                // console.log(currentUser, "cureeenttt usserr")
                 req.loggedUser = {
                      id: currentUser.id,
                      email: currentUser.email,

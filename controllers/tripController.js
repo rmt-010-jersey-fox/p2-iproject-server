@@ -72,12 +72,10 @@ class TripController {
             // url: 'http://api.openweathermap.org/data/2.5/forecast?q=jakarta&appid=688c326da0a9f61cf43fff4b42c4eccd'
         })
         .then((response) => {
-            console.log(response.data)
             res.status(200).json(response.data)
         })
         .catch((err) => {
             res.status(500).json({message: err.message})
-            console.log(err)
         })        
 
     }
