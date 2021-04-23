@@ -116,7 +116,15 @@ class CustomerController{
     Appointment.findOne({ where: {
       UserId: req.loggedUser.id,
       status: 'progress'
-    }
+    },
+    include: [
+      {
+        model:  Service
+      },
+      {
+        model:  Barber
+      }
+    ]
     })
       .then((data)=>{
         res.status(200).json(data)
