@@ -37,17 +37,11 @@ class TripController {
             userId: req.loggedUser.id
         })
         .then(createdTrip => {
-<<<<<<< HEAD
             console.log(createdTrip)
             res.status(201).json(createdTrip)
         })
         .catch(err => {
             console.log(err)
-=======
-            res.status(201).json(createdTrip)
-        })
-        .catch(err => {
->>>>>>> 2b9cb839b6ed40ad1a19e7fd55f358d3d8f5e3cd
             next({name: 'internal server error', message: err.message})
         })
     }
