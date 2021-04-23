@@ -1,6 +1,6 @@
 const { confirmPassword } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
-const { User, Anime, Pick } = require('../models')
+const { User, Anime } = require('../models')
 const axios = require('axios')
 
 class Controller {
@@ -40,12 +40,12 @@ class Controller {
                     const compare = confirmPassword(password, user.password)
                     if (compare) {
                         const access_token = generateToken({ id: user.id, email: user.email })
-                        res.status(200).json({ access_token, newUser: user.email })
+                        res.status(200).json({ access_token, email: user.email })
                     } else {
-                        next({ name: "Error400" })
+                        next({ name: "Error401" })
                     }
                 } else {
-                    next({ name: "Error400" })
+                    next({ name: "Error401" })
                 }
             })
             .catch(err => {
@@ -54,12 +54,11 @@ class Controller {
     }
     static showAnime(req, res, next) {
         Anime.findAll({
-            where: { id: req.userData.id },
+            where: { UserId: req.userData.id },
             order: [['id', 'ASC']]
         })
             .then(data => {
-                if (data.length >= 1) res.status(200).json(data)
-                else res.status(200).json({ message: "You Dont Have Any Anime" })
+                res.status(200).json(data)
             })
             .catch(err => {
                 console.log(err)
@@ -70,29 +69,37 @@ class Controller {
         Anime.findOne({ where: { name: req.body.name.toLowerCase() } })
             .then(uniqueAnime => {
                 if (uniqueAnime) res.status(400).json({ name: 'errorAdding', message: `there's Already ${req.body.name} in the Anime List` })
-                else Anime.create({
-                    name: req.body.name || '',
-                    imageURL: req.body.imageURL || '',
-                    episodes: +req.body.episodes,
-                    totalEpisodes: req.body.totalEpisodes || '',
-                    status: req.body.status,
-                    UserId: req.userData.id
-                })
-                    .then(data => {
-                        res.status(201).json(data)
+                else {
+                    let status = ''
+                    if (req.body.episodes === req.body.totalEpisodes) status = 'Completed'
+                    else status = 'On-Going'
+                    Anime.create({
+                        name: req.body.name || '',
+                        imageURL: req.body.imageURL || '',
+                        episodes: +req.body.episodes,
+                        totalEpisodes: req.body.totalEpisodes || '',
+                        status: status,
+                        UserId: req.userData.id
+
                     })
-                    .catch(err => {
-                        next(err)
-                    })
+                        .then(data => {
+                            res.status(201).json(data)
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            next(err)
+                        })
+                }
             })
             .catch(err => {
+                console.log(err)
                 next(err)
             })
 
     }
 
     static editAnime(req, res, next) {
-        const { name, imageURL, episodes, totalEpisodes, status } = req.body
+        const { name, imageURL, episodes, totalEpisodes } = req.body
         const id = req.params.id
         Anime.findByPk(id)
             .then(oldAnime => {
@@ -101,8 +108,7 @@ class Controller {
                         name,
                         imageURL,
                         episodes,
-                        totalEpisodes,
-                        status
+                        totalEpisodes
                     })
                 } else next({ name: "Error404" })
             })
@@ -122,13 +128,15 @@ class Controller {
                 if (oldAnime.totalEpisodes === episodes) {
                     return oldAnime.update({
                         episodes: episodes,
-                        status: true
+                        status: 'Completed'
                     })
-                } else {
+                } else if (oldAnime.totalEpisodes > episodes) {
                     return oldAnime.update({
                         episodes: episodes,
-                        status: false
+                        status: 'On-Going'
                     })
+                } else {
+                    res.status(400).json({ name: 'errorUpdate', message: `Cannot Input Episode More Than Anime's Total Episodes` })
                 }
             })
             .then(newAnime => {
@@ -169,6 +177,39 @@ class Controller {
                 else res.status(200).json(news.data.sunday)
             })
             .catch(err => {
+                next(err)
+            })
+    }
+
+    static showCompleted(req, res, next) {
+        Anime.findAll({
+            where: {
+                UserId: req.userData.id,
+                status: 'Completed'
+            },
+            order: [['id', 'ASC']]
+        })
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                console.log(err)
+                next(err)
+            })
+    }
+
+    static showAnimeById(req, res, next) {
+        Anime.findAll({
+            where: {
+                id: req.params.id
+            },
+            order: [['id', 'ASC']]
+        })
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                console.log(err)
                 next(err)
             })
     }

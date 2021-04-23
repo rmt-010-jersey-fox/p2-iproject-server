@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     imageURL: DataTypes.STRING,
     episodes: DataTypes.STRING,
     totalEpisodes: DataTypes.STRING,
-    status: DataTypes.BOOLEAN
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Anime',
