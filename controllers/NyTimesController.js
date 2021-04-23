@@ -10,8 +10,7 @@ class NyTimes {
             }
         })
         .then(data =>{
-            let result = JSON.stringify(data)
-            res.status(200).json(result)
+            res.status(200).json(data.data.results)
         })
         .catch(err=>{
             next(err)
