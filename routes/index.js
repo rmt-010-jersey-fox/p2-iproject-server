@@ -9,7 +9,9 @@ router.get('/', (req, res) => {
 })
 
 router.use(userRoutes)
+
 router.use(authentication)
+
 router.use(vacationRoute)
 router.use(destinationRoute)
 

@@ -7,7 +7,7 @@ class UserController {
   static postRegister(req, res, next) {
     const { name, username, email, password } = req.body
 
-    User.create(req.body)
+    User.create({name, username, email, password})
     .then(data => {
       const payload = {
         id: data.id,
