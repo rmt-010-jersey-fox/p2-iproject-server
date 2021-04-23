@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { generateToken } = require('../helpers/jwt')
+const sendMail = require('../helpers/nodemailer')
 
 
 class UserController {
@@ -14,6 +15,7 @@ class UserController {
     },{returning : true})
 
     .then ((data) => {
+      sendMail(data.email)
       let user = {
         id : data.id,
         email : data.email,
@@ -47,7 +49,7 @@ class UserController {
           }
 
           const access_token = generateToken(payload)
-          res.status(200).json({access_token})
+          res.status(200).json({payload,access_token})
 
         } else {
           res.status(401).json({msg: `Invalid email/password`})
