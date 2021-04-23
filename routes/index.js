@@ -9,8 +9,8 @@ const playlistRouter = require('./playlistRouter')
 router.post('/register', UserController.register)
 router.post('/login', UserController.login)
 
-router.get('/search', APIController.dataToFetch)
-router.get('/lyrics', APIController.geniusLyrics)
+router.post('/search', APIController.dataToFetch)
+router.post('/lyrics', APIController.geniusLyrics)
 
 router.get('/songs', SongController.findAll)
 router.post('/songs', SongController.create)
