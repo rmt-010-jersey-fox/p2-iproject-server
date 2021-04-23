@@ -113,13 +113,13 @@ class CustomerController{
   }
 
   static getAppointment(req,res,next){
-    Appointment.findOne({ where: {
+    Appointment.findAll({ where: {
       UserId: req.loggedUser.id,
       status: 'progress'
     }
     })
       .then((data)=>{
-        res.status(200).json(data)
+        res.status(200).json(data[0])
       })
       .catch((err)=>{
         next(err)
