@@ -158,7 +158,7 @@ class CustomerController{
 
   static deleteAppointments(req,res,next){
     Appointment.destroy({where:{
-      id: +req.params.id
+      status: 'progress'
     }})
       .then((data)=>{
         if(data){

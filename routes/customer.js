@@ -16,7 +16,7 @@ routerCustomer.post('/appointments/:barbershopid',CustomerController.postAppoint
 routerCustomer.use('/appointments/:id',authorizeCustomer)
 routerCustomer.patch('/appointments/:id/reschedule',CustomerController.reschedule)
 routerCustomer.patch('/appointments/:id/rating',CustomerController.rating)
-routerCustomer.delete('/appointments/:id',CustomerController.deleteAppointments)
+routerCustomer.delete('/appointments',CustomerController.deleteAppointments)
 
 
 module.exports = routerCustomer
