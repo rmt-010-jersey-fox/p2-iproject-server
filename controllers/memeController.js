@@ -123,7 +123,7 @@ class Controller {
             },
             include: {
                 model: User,
-                attributes: ["id", "name"]
+                attributes: ["id", "name", "email"]
             }
         })
             .then((data) => {

@@ -17,13 +17,13 @@ router.get('/jokes', apiController.jokeApi)
 router.get('/quote', apiController.apiQuotable)
 router.get('/bored', apiController.boredApi)
 router.get('/memegacha', apiController.memeGacha)
-router.get('/memegenerate', apiController.generateMeme)
 
 router.get('/memes', memeController.showAll) // done
 router.get('/memes/list/reported', memeController.showAllReported) // done
 router.get('/memes/list/hot', memeController.showAllHot) // done
 
 router.use(authenticate)
+router.post('/memegenerate', apiController.generateMeme)
 
 router.get('/user/profile', memeController.findByUser) // done
 router.get('/memes/:id', memeController.findById) // done
