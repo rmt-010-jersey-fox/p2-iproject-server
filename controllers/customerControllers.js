@@ -119,10 +119,7 @@ class CustomerController{
     },
     include: [
       {
-        model:  Service
-      },
-      {
-        model:  Barber
+        model:  BarberShop
       }
     ]
     })
