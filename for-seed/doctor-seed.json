@@ -1,0 +1,122 @@
+[
+  {
+    "full_name": "Dr. Andi Gunawan, Sp.A",
+    "session": "Pagi",
+    "PoliId": 1
+  },
+  {
+    "full_name": "Dr. Henry Gunawan, Sp.A",
+    "session": "Siang",
+    "PoliId": 1
+  },
+  {
+    "full_name": "Dr. Tony Chandra, Sp.A",
+    "session": "Sore",
+    "PoliId": 1
+  },
+  {
+    "full_name": "Drg. Achmad Faisal",
+    "session": "Pagi",
+    "PoliId": 2
+  },
+  {
+    "full_name": "Drg. Pramesvara Naori",
+    "session": "Siang",
+    "PoliId": 2
+  },
+  {
+    "full_name": "Drg. Maidel Salsabilla",
+    "session": "Sore",
+    "PoliId": 2
+  },
+  {
+    "full_name": "Dr. Siti Aminah",
+    "session": "Pagi",
+    "PoliId": 3
+  },
+  {
+    "full_name": "Dr. Rajon Rondo",
+    "session": "Siang",
+    "PoliId": 3
+  },
+  {
+    "full_name": "Dr. Cristiano Ronaldinho",
+    "session": "Sore",
+    "PoliId": 3
+  },
+  {
+    "full_name": "Dr. Lionel Messi, Sp.OG",
+    "session": "Pagi",
+    "PoliId": 4
+  },
+  {
+    "full_name": "Dr. Anya Geraldine, Sp.OG",
+    "session": "Siang",
+    "PoliId": 4
+  },
+  {
+    "full_name": "Dr. Awkarin, Sp.OG",
+    "session": "Sore",
+    "PoliId": 4
+  },
+  {
+    "full_name": "Dr. Rahmat Dharmawan, Sp.KK",
+    "session": "Pagi",
+    "PoliId": 5
+  },
+  {
+    "full_name": "Dr. Pep Guardiola, Sp.KK",
+    "session": "Siang",
+    "PoliId": 5
+  },
+  {
+    "full_name": "Dr. Boyke, Sp.KK",
+    "session": "Sore",
+    "PoliId": 5
+  },
+  {
+    "full_name": "Dr. Rasputin, Sp.M",
+    "session": "Pagi",
+    "PoliId": 6
+  },
+  {
+    "full_name": "Dr. Pep Guardiola, Sp.M",
+    "session": "Siang",
+    "PoliId": 6
+  },
+  {
+    "full_name": "Dr. Koeman, Sp.M",
+    "session": "Sore",
+    "PoliId": 6
+  },
+  {
+    "full_name": "Dr. Sir Alex Ferguson, Sp.KJ",
+    "session": "Pagi",
+    "PoliId": 7
+  },
+  {
+    "full_name": "Dr. Abdurrahman Wahid, Sp.KJ",
+    "session": "Siang",
+    "PoliId": 7
+  },
+  {
+    "full_name": "Dr. Sayuti Melik, Sp.KJ",
+    "session": "Sore",
+    "PoliId": 7
+  },
+  {
+    "full_name": "M. Riski Putra Awali, M.Psi, Psikolog",
+    "session": "Pagi",
+    "PoliId": 8
+  },
+  {
+    "full_name": "Elon Musk, M.Psi, Psikolog",
+    "session": "Siang",
+    "PoliId": 8
+  },
+  {
+    "full_name": "Bill Gates, M.Psi, Psikolog",
+    "session": "Sore",
+    "PoliId": 8
+  }
+]
