@@ -130,12 +130,12 @@ class Controller {
                         episodes: episodes,
                         status: 'Completed'
                     })
-                } else if (oldAnime.totalEpisodes >= episodes) {
+                } else if (oldAnime.totalEpisodes > episodes) {
                     return oldAnime.update({
                         episodes: episodes,
                         status: 'On-Going'
                     })
-                } else {
+                } else if (oldAnime.totalEpisodes < episodes) {
                     res.status(400).json({ name: 'errorUpdate', message: `Cannot Input Episode More Than Anime's Total Episodes` })
                 }
             })
