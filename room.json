@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name": "R001",
+        "image_url": "https://arsiteq.com/wp-content/uploads/2019/11/ide-kreatif-kamar-kost.jpg",
+        "price": "50000"
+    },
+    {
+        "id":2,
+        "name": "R002",
+        "image_url": "https://arsiteq.com/wp-content/uploads/2019/11/kamar-kost-terbaik-di-jakarta.jpg",
+        "price": "70000"
+    },
+    {   
+        "id":3,
+        "name": "R003",
+        "image_url": "https://1.bp.blogspot.com/-yV1A7d_C9PY/Wo6ayak492I/AAAAAAAAOOk/i2Q8FtsDQ1sSKapauFJwNROwiEZNUZvowCLcBGAs/s1600/dekorasi-desain-kamar-tidur-kost-sederhana24.jpg",
+        "price": "95000"
+    }
+]
