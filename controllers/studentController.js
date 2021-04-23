@@ -9,7 +9,10 @@ class StudentController {
             let data = await User.findAll({
                 where : {
                     role : "buddy"
-                }
+                },
+                attributes : [
+                    "id", "email", "role", "first_name", "last_name", "imgUrl"
+                ]
             })
             res.status(200).json(data)
         } catch (error) {
@@ -205,7 +208,10 @@ class StudentController {
                 },
                 include : [
                     {
-                        model : User
+                        model : User,
+                        attributes : [
+                            'id', 'email', 'role', 'first_name', 'last_name', 'imgUrl'
+                        ]
                     },
                     {
                         model : BuddyMaterial,
@@ -219,7 +225,10 @@ class StudentController {
                         model : BuddySchedule,
                         include : [
                             {
-                                model : User
+                                model : User,
+                                attributes : [
+                                    'id', 'email', 'role', 'first_name', 'last_name', 'imgUrl'
+                                ]
                             }
                         ]
                     }
