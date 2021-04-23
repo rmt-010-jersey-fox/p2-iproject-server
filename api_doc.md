@@ -19,6 +19,114 @@ LayarTancepWeb adalah sebuah web yang menyediakan pelayanan info terbaru sebuah 
 
 ## RESTFUL endpoints
 
+## POST /addWatchList/:MovieId
+> post/added watchList
+
+Request params
+```
+  http://localhost:3000/addWatchList/:MovieId
+```
+
+
+Response (200)
+
+```json
+[
+    {
+        "adult": false,
+        "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
+        "genre_ids": [
+            28,
+            878
+        ],
+        "id": 399566,
+        "original_language": "en",
+        "original_title": "Godzilla vs. Kong",
+        "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
+        "popularity": 4668.083,
+        "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
+        "release_date": "2021-03-24",
+        "title": "Godzilla vs. Kong",
+        "video": false,
+        "vote_average": 8.3,
+        "vote_count": 4759
+    }
+]
+```
+
+Response (500 - wrong server)
+
+```json
+{
+    "message": "internal server error"
+}
+```
+## GET /watchList
+> show WatchList
+
+Request headers
+
+```json
+{
+    "access_token": "<your_token>",
+    "authorization": "< api_key >"
+}
+```
+
+Request body
+
+```
+not needed
+```
+Response (200) - OK
+```
+  [
+      {
+          title: <string>
+          poster_path: <string>
+          released_date: <string>
+          vote_average: <number>
+          popularity: <number>
+          overview: <string>
+      }
+  ]
+```
+
+Response (500) - wrong server
+```
+[
+    {
+        message: 'internal server error'
+    }
+]
+```
+
+## DELETE /watchList/:id
+> delete watchList
+
+Request params
+```
+   http://localhost:3000/watchList/:id
+```
+
+Response (200) - OK
+```
+[
+    {
+        message: 'successfully deleted'
+    }
+]
+```
+
+Response (500) - wrong server
+```
+[
+    {
+        message: 'internal server error'
+    }
+]
+```
+
 ## POST /register
 
 > create user
