@@ -1,6 +1,7 @@
 const {BarberShop,Barber,Service,User,Appointment} = require('../models')
 const {comparePassword,hashPassword} = require('../helper/bcrypt')
 const {generateToken} = require('../helper/jwt')
+const sendMail = require('../helper/nodemail')
 class CustomerController{
   static postRegister(req,res,next){
     const {username,email,phone,password} = req.body
@@ -111,15 +112,18 @@ class CustomerController{
         next(err)
       })
   }
+  static nodemailer(req,res,next){
+    sendMail(req.loggedUser.email, 'Appointment', 'Thank to Makes an Appointment. dont forget to come 15 minutes before the appointment time')
+  }
 
   static getAppointment(req,res,next){
-    Appointment.findOne({ where: {
+    Appointment.findAll({ where: {
       UserId: req.loggedUser.id,
       status: 'progress'
     }
     })
       .then((data)=>{
-        res.status(200).json(data)
+        res.status(200).json(data[0])
       })
       .catch((err)=>{
         next(err)
@@ -158,7 +162,7 @@ class CustomerController{
 
   static deleteAppointments(req,res,next){
     Appointment.destroy({where:{
-      id: +req.params.id
+      status: 'progress'
     }})
       .then((data)=>{
         if(data){
