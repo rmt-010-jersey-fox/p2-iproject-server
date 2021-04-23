@@ -16,14 +16,14 @@ async function authentication(req, res, next) {
                 }
                 next()
             }else {
-                res.status(401).json({message: 'cant login, wrong token'})
+                throw ({message: 'cant login, wrong token'})
             }
         }else {
-            res.status(401).json({message: 'need acces token for login'})
+            throw ({message: 'need acces token for login'})
         }
     }
     catch(err) {
-        res.status(500).json(err.message)
+        next(err)
     }
 }
 
