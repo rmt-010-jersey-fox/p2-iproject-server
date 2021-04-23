@@ -520,24 +520,69 @@ _Request Body_
 _Response (201 - CREATED)_
 ```
 {
-    "data": [
-      {
-        "id": "1383102894862430216",
-        "text": "Pickle Rick and Gromflomite skins are now available in Rainbow Six Siege! Check out the new Rick and Morty uniforms on Ubisoft News Plays at 10AM PT on https://t.co/zWdgdMiW4Z."
-      },
-      ...
-      {
-        "id": "1381928387699212288",
-        "text": "🛠 Y6S1.2 PC Maintenance 🛠\n\nWe'll be deploying Y6S1.2 on PC today, April 13th.\n\n🖥️PC Only: 9am EDT / 1pm UTC\n⏲Estimated Downtime: 30 mins\n\nFull Patch Notes 🔗 https://t.co/YT9IBDLnDn https://t.co/dalKKBUi9q"
+  "data": {
+    "twitter": {
+      "data": [
+        {
+          "id": "1384702373939978241",
+          "text": "R6Campus Testing development untuk aplikasi Tournament Generator"
+        }
+      ],
+      "meta": {
+        "newest_id": "1384702373939978241",
+        "oldest_id": "1384702373939978241",
+        "result_count": 1
       }
-    ],
-    "meta": {
-      "oldest_id": "1381928387699212288",
-      "newest_id": "1383102894862430216",
-      "result_count": 10,
-      "next_token": "7140dibdnow9c7btw3w4d2gm2dblgc4x17gh8s5wqic6w"
+    },
+    "steamnews": {
+      "appnews": {
+        "appid": 359550,
+        "newsitems": [
+          {
+            "gid": "4570566565010902956",
+            "title": "Ubisoft confirms new dates for postponed 2021 Six Invitational",
+            "url": "https://steamstore-a.akamaihd.net/news/externalpost/The Loadout/4570566565010902956",
+            "is_external_url": true,
+            "author": "editor@theloadout.com",
+            "contents": "<img width=\"900\" height=\"507\" src=\"https://www.theloadout.com/wp-content/uploads/2021/02/Rainbow-Six-Siege-Sledge-1-900x506.jpg\"/><p>Ubisoft has revealed new dates for the previously postponed 2021 Six Invitational, the top event in Rainbow Six Siege esports. The tournament, which aims to be held offline in Paris, France, was originally billed for February, but was <a href=\"https://www.theloadout.com/rainbow-six-siege/six-invitational-2021-postponed\">called off just days before</a> due to an increase in coronavirus restrictions from the French government.</p>\n<p>Ubisoft has now rescheduled the competition for May, and aims to still host the event on LAN with all 20 of the qualified teams. The developer confirms that on April 8 it was \"authorised by the government and the local authorities to hold the Six Invitational 2021 in Paris, France, from May 11-23.\" However, the tournament will be played without a live audience.</p>\n<p>In <a href=\"https://www.ubisoft.com/en-gb/esports/rainbow-six/siege/news-updates/38Zp2hYYhAIn7NwjTN8wlQ/an-update-on-the-six-invitational-2021\">a statement</a>, Ubisoft does express concerns over current travel restrictions between France and Brazil, one of the biggest producers of Siege talent and home to six of the teams qualified for the Six Invitational.</p>\n<p><a href=\"https://www.theloadout.com/rainbow-six-siege/2021-six-invitaional-new-dates\">Read the rest of the story...</a></p>\n<p>RELATED LINKS:<br />\n<a href=\"https://www.theloadout.com/rainbow-six-siege/kayak-interview\">Rainbow Six Siege's Kayak on his debut weekend for G2, replacing Pengu, and more</a><br />\n<a href=\"https://www.theloadout.com/rainbow-six-siege/kayak-replacing-pengu\">Kayak says he doesn't feel like he's \"replacing Pengu\" on G2's Siege team</a><br />\n<a href=\"https://www.theloadout.com/rainbow-six-siege/ranks\">Rainbow Six Siege Ranked: Ranks, MMR, and more explained</a></p>",
+            "feedlabel": "The Loadout",
+            "date": 1618945743,
+            "feedname": "The Loadout",
+            "feed_type": 0,
+            "appid": 359550
+          },
+          {
+            "gid": "4570566565009850586",
+            "title": "Rainbow Six Siege Doc charity bundle raises over $170k for AbleGamers",
+            "url": "https://steamstore-a.akamaihd.net/news/externalpost/PCGamesN/4570566565009850586",
+            "is_external_url": true,
+            "author": "editor@pcgamesn.com",
+            "contents": "<img width=\"900\" height=\"507\" src=\"https://www.pcgamesn.com/wp-content/uploads/2021/04/rainbow-six-siege-ablegamers-bundle-900x506.jpg\"/><p>In November last year, <a href=\"https://www.pcgamesn.com/rainbow-six-siege\">Rainbow Six Siege</a> developer Ubisoft launched an initiative called the <a href=\"https://news.ubisoft.com/en-us/article/2maEZYBk06tPLKieU6VQ17/rainbow-six-siege-launches-sixth-guardian-charity-bundles\">Sixth Guardian Program</a> for the <a href=\"https://www.pcgamesn.com/15-best-pc-first-person-shooters\">FPS game's</a> Operation Neon Dawn. This kicked off a series of seasonal operator gear bundles with 100% of net proceeds going directly to selected charities - and it seems they've been a roaring success. The first chosen charity, The AbleGamers Charity, has announced its own bundle has raised a whopping $170k.</p>\n<p>Well, $171,183 to be precise, which is a pretty huge final total. <a href=\"https://ablegamers.org/\">AbleGamers</a>, which is a US-based non-profit organisation \"dedicated to bringing inclusion and improved quality-of-life to people with disabilities through the power of videogames\", was the first charity to be assigned to a Sixth Guardian Program bundle and has announced the total in a press release.</p>\n<p>The charity's Siege bundle was for defending operator Doc, including a gear set inspired by the charity's colour scheme, with white, yellow-orange, and grey tones. The bundle kitted Doc out with a new uniform, baseball cap headgear, weapon skin, and charm, which you can check out in the image below.</p>\n<p><a href=\"https://www.pcgamesn.com/rainbow-six-siege/the-ablegamers-charity-doc-bundle\">Read the rest of the story...</a></p>\n<p>RELATED LINKS:<br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/tachanka-grenade-buff\">Rainbow Six Siege's Tachanka is getting upgrenaded</a><br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/patch-elo-glitch\">Rainbow Six Siege's 'ELO glitch' is getting patched today</a><br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/defuser-time-glitch\">Rainbow Six Siege's defuser timing is off, confusing esports casters</a></p>",
+            "feedlabel": "PCGamesN",
+            "date": 1618920815,
+            "feedname": "PCGamesN",
+            "feed_type": 0,
+            "appid": 359550
+          },
+          {
+            "gid": "4570566565007976917",
+            "title": "Rainbow Six Siege's Tachanka is getting upgrenaded",
+            "url": "https://steamstore-a.akamaihd.net/news/externalpost/PCGamesN/4570566565007976917",
+            "is_external_url": true,
+            "author": "editor@pcgamesn.com",
+            "contents": "<img width=\"900\" height=\"507\" src=\"https://www.pcgamesn.com/wp-content/uploads/2019/03/rainbow-six-siege-tachanka-900x506.jpg\"/><p>The latest patch notes for the Rainbow Six Siege test server include an initial operator balancing pass, and several of the tactical <a href=\"https://www.pcgamesn.com/best-multiplayer-games\" target=\"_blank\" rel=\"noopener noreferrer\">multiplayer game's</a> ops are getting notable buffs and nerfs. Among them is lovable beefcastle Tachanka, who Ubisoft says is still getting picked with less frequency than his designers had hoped following his extensive <a href=\"https://www.pcgamesn.com/rainbow-six-siege/tachanka-rework-bio\" target=\"_blank\" rel=\"noopener noreferrer\">rework last year</a>.</p>\n<p>This initial test server balancing patch improves Tachanka's grenades in just about every way. His Shumikha Launcher's magazine is being increased from five to seven rounds, its fire duration is going from five to seven seconds, the time to detonate on the rounds has been reduced to 0.75 seconds from one second, and the fire area radius has been increased to 1.9 metres from 1.7 metres.</p>\n<p>The rounds themselves go quite a bit further, too - their speed has been boosted to 30 (up from 20) and the \"distance to start drop\" has been increased from eight metres to 20 metres. That's going to make the launcher much more useful as a direct-fire weapon, with less need to arc the rounds up to make sure they travel far enough to hit their targets.</p>\n<p><a href=\"https://www.pcgamesn.com/rainbow-six-siege/tachanka-grenade-buff\">Read the rest of the story...</a></p>\n<p>RELATED LINKS:<br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/the-ablegamers-charity-doc-bundle\">Rainbow Six Siege Doc charity bundle raises over $170k for AbleGamers</a><br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/patch-elo-glitch\">Rainbow Six Siege's 'ELO glitch' is getting patched today</a><br />\n<a href=\"https://www.pcgamesn.com/rainbow-six-siege/defuser-time-glitch\">Rainbow Six Siege's defuser timing is off, confusing esports casters</a></p>",
+            "feedlabel": "PCGamesN",
+            "date": 1618876231,
+            "feedname": "PCGamesN",
+            "feed_type": 0,
+            "appid": 359550
+          }
+        ],
+        "count": 1047
+      }
     }
   }
+}
 ```
 _Response (500 - Internal Server Error)_
 ```
