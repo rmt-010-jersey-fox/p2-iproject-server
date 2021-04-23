@@ -1,6 +1,8 @@
 const { User, Material, BuddyMaterial, Booking, BuddySchedule, BuddyProfile } = require('../models')
 const axios = require('axios')
 const { addDays } = require('../helper/getDay')
+const cron = require('node-cron')
+// const { cron } = require('../helper/cron')
 class StudentController {
     static async getBuddy (req, res, next) {
         try {
@@ -134,6 +136,7 @@ class StudentController {
 
     static async booking (req, res, next) {
         try {
+
             /**
              * data needed : UserId, BuddyMaterialId, BuddyScheduleId
              */
@@ -161,9 +164,30 @@ class StudentController {
                     },
                     returning : true
                 })
+                // res.status(201).json({ message : book})
                 res.status(201).json({ message : "Congratulation, you have successfully book a schedule!"})
+                
+                //starting cron
+                var cronDate = bookingDate.getDate();
+                // var sch = `34 10 23 * *`;
+                var sch = `0 9 ${cronDate} * *`;
+                var task = cron.schedule(sch, () => {
+                    console.log('running a task every sec');
+                    let data = {
+                        status : 'completed'
+                    }
+                    console.log("cron id update :: ", book.id)
+                    Booking.update(data, {
+                        where : { id : book.id}
+                    })
+                    .then(()=> {
+                        console.log("updated by cron")
+                        task.stop()
+                    })
+                    .catch()
+                });
+                
             }
-            // res.status(201).json({ message : "Congratulation, you have successfully book a schedule!"})
         } catch (error) {
             next(error)
         }
