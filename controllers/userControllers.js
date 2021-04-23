@@ -1,22 +1,38 @@
 const { User } = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 const { sign } = require('../helpers/jwt')
+const transporter = require('../helpers/nodemailer')
 
 class UserController {
-    static async register(req, res) {
+    static async register(req, res, next) {
         try {
             let { email, password } = req.body
             let data = await User.create({
                 email,
                 password
             })
+            let mailOptions = {
+                from: '"LayarTancepWeb <info@layartancepweb.com>',
+                to: "abdul@mail.com",
+                subject: "register Information",
+                text: "success register!",
+                html: `<b> successfully register <\b>`,
+            };
+
+            transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            })
             res.status(201).json({id: data.id, email: data.email}) 
         }
         catch(err) {
-            res.status(500).json(err.message)
+            next(err.message)
         }
     }
-    static async login(req, res) {
+    static async login(req, res, next) {
         try {
             let { email, password } = req.body
             let data = await User.findOne({
@@ -33,14 +49,14 @@ class UserController {
                     })
                     res.status(200).json({id: data.id, email: data.email, access_token: token})
                 }else {
-                    res.status(401).json({message: 'password salah'})
+                    throw ({message: 'password salah'})
                 }
             }else {
-                res.status(401).json({message: 'invalid password / email'})
+                throw ({message: 'invalid password / email'})
             }
         }
         catch(err) {
-            res.status(500).json(err.message)
+            next(err)
         }
     }
 }
