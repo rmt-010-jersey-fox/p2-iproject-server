@@ -96,10 +96,14 @@ class StudentController {
 
     static async getBuddyMaterials (req, res, next) {
         try {
+
             let data = await BuddyMaterial.findAll({
                 include : [
                     {
-                        model : User
+                        model : User,
+                        attributes : [
+                            'id', 'email', 'role', 'first_name', 'last_name', 'imgUrl'
+                        ]
                     },
                     {
                         model : Material
@@ -168,9 +172,9 @@ class StudentController {
                 res.status(201).json({ message : "Congratulation, you have successfully book a schedule!"})
                 
                 //starting cron
-                var cronDate = bookingDate.getDate();
-                var sch = `45 10 23 * *`;
-                // var sch = `0 9 ${cronDate} * *`;
+                var cronDate = bookingDate.getDate() + 1;
+                // var sch = `* * * * *`;
+                var sch = `0 9 ${cronDate} * *`;
                 var task = cron.schedule(sch, () => {
                     console.log('running a task every sec');
                     let data = {
