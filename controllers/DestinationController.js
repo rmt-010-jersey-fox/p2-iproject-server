@@ -13,7 +13,7 @@ class DestinationController {
       console.log(position);
       // console.log(des);
       let listDestination = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position}&radius=50000&type=tourist_attraction&key=${process.env.API_KEY}`)
-      console.log(listDestination)
+      // console.log(listDestination)
       res.status(200).json(listDestination.data)
     } catch (error) {
       next(error)
