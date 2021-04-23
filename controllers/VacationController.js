@@ -5,7 +5,10 @@ class VacationController {
   static async getVacation(req, res, next) {
     try {
       let data = await Vacation.findAll({
-        order: [['id', 'ASC']]
+        order: [['id', 'ASC']],
+        where: {
+          userId: req.user.id
+        },
       })
       res.status(200).json(data)
     } catch (error) {
