@@ -11,8 +11,8 @@ router.get('/anime', Controller.showAnime)
 router.get('/completed', Controller.showCompleted)
 router.post('/anime', Controller.addAnime)
 router.get('/anime/:id', Controller.showAnimeById)
-router.patch('/anime/:id', Controller.editEpisodes)
 router.put('/anime/:id', Controller.editAnime)
+router.patch('/anime/:id', Controller.editEpisodes)
 router.delete('/anime/:id', Controller.deleteAnime)
 
 

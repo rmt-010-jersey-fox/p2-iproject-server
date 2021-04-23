@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       episodes: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       totalEpisodes: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       status: {
         type: Sequelize.STRING

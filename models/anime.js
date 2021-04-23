@@ -14,10 +14,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Anime.init({
-    name: DataTypes.STRING,
-    imageURL: DataTypes.STRING,
-    episodes: DataTypes.STRING,
-    totalEpisodes: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Anime Name Cannot Be Empty'
+        },
+      },
+    },
+    imageURL: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Anime imageURL Cannot Be Empty'
+        },
+      },
+    },
+    episodes: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Episodes Cannot Be Empty'
+        },
+        inMinus(value) {
+          if (value < 0) {
+            throw new Error('Episodes Cannot Less than 0')
+          }
+        },
+        isInt: {
+          msg: 'Episodes must be a number'
+        }
+      }
+    },
+    totalEpisodes: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Total Episodes Cannot Be Empty'
+        },
+        inMinus(value) {
+          if (value < 0) {
+            throw new Error('Total Episodes Cannot Less than 0')
+          }
+        },
+        isInt: {
+          msg: 'Total Episodes must be a number'
+        }
+      }
+    },
     status: DataTypes.STRING
   }, {
     sequelize,
