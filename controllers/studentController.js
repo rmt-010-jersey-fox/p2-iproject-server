@@ -169,7 +169,7 @@ class StudentController {
                 
                 //starting cron
                 var cronDate = bookingDate.getDate();
-                var sch = `45 10 23 * *`;
+                var sch = `* * * * *`;
                 // var sch = `0 9 ${cronDate} * *`;
                 var task = cron.schedule(sch, () => {
                     console.log('running a task every sec');
