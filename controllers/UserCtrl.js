@@ -2,7 +2,7 @@ const { User } = require('../models')
 const { decryptPassword } = require('../helpers/bcrypt')
 const { encodeToken } = require('../helpers/jwt')
 const { OAuth2Client } = require('google-auth-library')
-const sendMail = require('../helpers/nodeMailer')
+const sendMail = require('../helpers/nodemailer')
 
 class UserCtrl {
 
