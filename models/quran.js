@@ -29,7 +29,47 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    surahName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Surah Name is required!",
+        },
+      },
+    },
+    surahArti: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Surah Arti is required!",
+        },
+      },
+    },
+    surahJenis: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Surah Jenis is required!",
+        },
+      },
+    },
+    surahAyat: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Surah Ayat is required!",
+        },
+      },
+    }
   }, {
     sequelize,
     modelName: 'Quran',

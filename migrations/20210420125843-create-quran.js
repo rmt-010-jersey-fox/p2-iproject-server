@@ -20,6 +20,18 @@ module.exports = {
         onUpdate: "cascade",
         onDelete: "cascade",
       },
+      surahName: {
+        type: Sequelize.STRING
+      },
+      surahArti: {
+        type: Sequelize.STRING
+      },
+      surahJenis: {
+        type: Sequelize.STRING
+      },
+      surahAyat: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

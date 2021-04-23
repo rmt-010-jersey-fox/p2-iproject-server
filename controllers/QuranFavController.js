@@ -6,8 +6,12 @@ let BaseURL = "https://api.quran.sutanlab.id"
 class QuranFavController {
   static postFavQuran(req, res, next) {
     let dataInput = {
-      SurahId: req.params.SurahId,
-      UserId: req.loggedUser.id
+      SurahId: req.body.SurahId,
+      UserId: req.loggedUser.id,
+      surahName: req.body.surahName,
+      surahArti: req.body.surahArti,
+      surahJenis: req.body.surahJenis,
+      surahAyat: req.body.surahAyat
     }
 
     Quran.create(dataInput)
@@ -26,24 +30,8 @@ class QuranFavController {
       where: { UserId: req.loggedUser.id},
     })
     .then((favData) => {
-      console.log(favData);
-      favData.forEach((e) => {
-        return axios({
-          method: 'GET',
-          url: `https://api.quran.sutanlab.id/surah/${e.SurahId}`
-        })
-          .then((response) => {
-            // console.log(response.data.data, "<<<<<<< ININININI");
-            res.status(200).json({
-              SurahId : response.data.data.number,
-              surahName : response.data.data.name.transliteration.id,
-              surahArti : response.data.data.name.translation.id,
-              surahAyat : response.data.data.numberOfVerses,
-              surahJenis : response.data.data.revelation.id
-            })
-          })
-          .catch((err) => {console.log(err)})
-      })
+      // console.log(favData)
+      res.status(200).json(favData)
     })
     .catch((err) => {
       console.log(err);

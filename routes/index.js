@@ -22,7 +22,7 @@ router.post("/hadist", HadistController.getHadist)
 
 // Fav Quran
 router.get('/favorites', QuranFavController.getFavQuran)
-router.post('/favorites/:SurahId', QuranFavController.postFavQuran)
+router.post('/favorites', QuranFavController.postFavQuran)
 router.delete('/favorites/:id', Authorization, QuranFavController.deleteFavQuran)
 
 
