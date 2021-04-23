@@ -1,4 +1,4 @@
-# Shoopinc (E-commerce) App Server
+# Recipes World App Server
 An application to browse food and drink recipes. 
 
 
