@@ -1,0 +1,1002 @@
+[
+  {
+    "name": "Edouard Mendy",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1992-03-01T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "Senegal",
+    "shirtNumber": 16,
+    "role": "PLAYER",
+    "ClubId": 1
+  },
+  {
+    "name": "N'Golo Kanté",
+    "position": "Midfielder",
+    "dateOfBirth": "1991-03-29T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 1
+  },
+  {
+    "name": "Mason Mount",
+    "position": "Midfielder",
+    "dateOfBirth": "1999-01-10T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 1
+  },
+  {
+    "name": "Timo Werner",
+    "position": "Attacker",
+    "dateOfBirth": "1996-03-06T00:00:00Z",
+    "countryOfBirth": "Germany",
+    "nationality": "Germany",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 1
+  },
+  {
+    "name": "Christian Pulisic",
+    "position": "Midfielder",
+    "dateOfBirth": "1998-09-18T00:00:00Z",
+    "countryOfBirth": "United States",
+    "nationality": "United States",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 1
+  },
+  {
+    "name": "Martin Ødegaard",
+    "position": "Midfielder",
+    "dateOfBirth": "1998-12-17T00:00:00Z",
+    "countryOfBirth": "Norway",
+    "nationality": "Norway",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 2
+  },
+  {
+    "name": "Héctor Bellerín",
+    "position": "Defender",
+    "dateOfBirth": "1995-03-19T00:00:00Z",
+    "countryOfBirth": "Spain",
+    "nationality": "Spain",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 2
+  },
+  {
+    "name": "Pierre-Emerick Aubameyang",
+    "position": "Attacker",
+    "dateOfBirth": "1989-06-18T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "Gabon",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 2
+  },
+  {
+    "name": "Bukayo Saka",
+    "position": "Attacker",
+    "dateOfBirth": "2001-09-05T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 2
+  },
+  {
+    "name": "Kieran Tierney",
+    "position": "Defender",
+    "dateOfBirth": "1997-06-05T00:00:00Z",
+    "countryOfBirth": "Isle of Man",
+    "nationality": "Scotland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 2
+  },
+  {
+    "name": "Emiliano Martínez",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1992-09-02T00:00:00Z",
+    "countryOfBirth": "Argentina",
+    "nationality": "Argentina",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 3
+  },
+  {
+    "name": "Jack Grealish",
+    "position": "Midfielder",
+    "dateOfBirth": "1995-09-10T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 3
+  },
+  {
+    "name": "Ollie Watkins",
+    "position": "Attacker",
+    "dateOfBirth": "1995-12-30T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 3
+  },
+  {
+    "name": "Tyrone Mings",
+    "position": "Defender",
+    "dateOfBirth": "1993-03-13T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 3
+  },
+  {
+    "name": "Jake Walker",
+    "position": "Defender",
+    "dateOfBirth": "2000-11-03T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 3
+  },
+  {
+    "name": "James Rodríguez",
+    "position": "Midfielder",
+    "dateOfBirth": "1991-07-12T00:00:00Z",
+    "countryOfBirth": "Colombia",
+    "nationality": "Colombia",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 4
+  },
+  {
+    "name": "Lucas Digne",
+    "position": "Defender",
+    "dateOfBirth": "1993-07-20T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 4
+  },
+  {
+    "name": "Yerry Mina",
+    "position": "Defender",
+    "dateOfBirth": "1994-09-23T00:00:00Z",
+    "countryOfBirth": "Colombia",
+    "nationality": "Colombia",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 4
+  },
+  {
+    "name": "Dominic Calvert-Lewin",
+    "position": "Attacker",
+    "dateOfBirth": "1997-03-16T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 4
+  },
+  {
+    "name": "Richarlison",
+    "position": "Attacker",
+    "dateOfBirth": "1997-05-10T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Brazil",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 4
+  },
+  {
+    "name": "Ola Aina",
+    "position": "Defender",
+    "dateOfBirth": "1996-10-08T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Nigeria",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 5
+  },
+  {
+    "name": "Aleksandar Mitrović",
+    "position": "Attacker",
+    "dateOfBirth": "1994-09-16T00:00:00Z",
+    "countryOfBirth": "Serbia",
+    "nationality": "Serbia",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 5
+  },
+  {
+    "name": "Ruben Loftus-Cheek",
+    "position": "Midfielder",
+    "dateOfBirth": "1996-01-23T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 5
+  },
+  {
+    "name": "Kenny Tete",
+    "position": "Defender",
+    "dateOfBirth": "1995-10-09T00:00:00Z",
+    "countryOfBirth": "Netherlands",
+    "nationality": "Netherlands",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 5
+  },
+  {
+    "name": "Michael Hector",
+    "position": "Defender",
+    "dateOfBirth": "1992-07-19T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Jamaica",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 5
+  },
+  {
+    "name": "Alisson",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1992-10-02T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Brazil",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 6
+  },
+  {
+    "name": "Mohamed Salah",
+    "position": "Attacker",
+    "dateOfBirth": "1992-06-15T00:00:00Z",
+    "countryOfBirth": "Egypt",
+    "nationality": "Egypt",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 6
+  },
+  {
+    "name": "Trent Alexander-Arnold",
+    "position": "Defender",
+    "dateOfBirth": "1998-10-07T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 6
+  },
+  {
+    "name": "Virgil van Dijk",
+    "position": "Defender",
+    "dateOfBirth": "1991-07-08T00:00:00Z",
+    "countryOfBirth": "Netherlands",
+    "nationality": "Netherlands",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 6
+  },
+  {
+    "name": "Sadio Mané",
+    "position": "Attacker",
+    "dateOfBirth": "1992-04-10T00:00:00Z",
+    "countryOfBirth": "Senegal",
+    "nationality": "Senegal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 6
+  },
+  {
+    "name": "Ilkay Gündogan",
+    "position": "Midfielder",
+    "dateOfBirth": "1990-10-24T00:00:00Z",
+    "countryOfBirth": "Germany",
+    "nationality": "Germany",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 7
+  },
+  {
+    "name": "Ederson",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1993-08-17T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Brazil",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 7
+  },
+  {
+    "name": "Kevin De Bruyne",
+    "position": "Midfielder",
+    "dateOfBirth": "1991-06-28T00:00:00Z",
+    "countryOfBirth": "Belgium",
+    "nationality": "Belgium",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 7
+  },
+  {
+    "name": "Rúben Dias",
+    "position": "Defender",
+    "dateOfBirth": "1997-05-14T00:00:00Z",
+    "countryOfBirth": "Portugal",
+    "nationality": "Portugal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 7
+  },
+  {
+    "name": "Sergio Agüero",
+    "position": "Attacker",
+    "dateOfBirth": "1988-06-02T00:00:00Z",
+    "countryOfBirth": "Argentina",
+    "nationality": "Argentina",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 7
+  },
+  {
+    "name": "David De Gea",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1990-11-07T00:00:00Z",
+    "countryOfBirth": "Spain",
+    "nationality": "Spain",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 8
+  },
+  {
+    "name": "Bruno Fernandes",
+    "position": "Midfielder",
+    "dateOfBirth": "1994-09-08T00:00:00Z",
+    "countryOfBirth": "Portugal",
+    "nationality": "Portugal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 8
+  },
+  {
+    "name": "Harry Maguire",
+    "position": "Defender",
+    "dateOfBirth": "1992-03-05T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 8
+  },
+  {
+    "name": "Marcus Rashford",
+    "position": "Attacker",
+    "dateOfBirth": "1997-10-31T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 8
+  },
+  {
+    "name": "Anthony Martial",
+    "position": "Attacker",
+    "dateOfBirth": "1995-12-05T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 8
+  },
+  {
+    "name": "Jonjo Shelvey",
+    "position": "Midfielder",
+    "dateOfBirth": "1992-02-27T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 9
+  },
+  {
+    "name": "Andy Carroll",
+    "position": "Attacker",
+    "dateOfBirth": "1989-01-06T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 9
+  },
+  {
+    "name": "Miguel Almirón",
+    "position": "Midfielder",
+    "dateOfBirth": "1994-02-10T00:00:00Z",
+    "countryOfBirth": "Paraguay",
+    "nationality": "Paraguay",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 9
+  },
+  {
+    "name": "Federico Fernández",
+    "position": "Defender",
+    "dateOfBirth": "1989-02-21T00:00:00Z",
+    "countryOfBirth": "Argentina",
+    "nationality": "Argentina",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 9
+  },
+  {
+    "name": "Allan Saint-Maximin",
+    "position": "Attacker",
+    "dateOfBirth": "1997-03-12T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 9
+  },
+  {
+    "name": "Hugo Lloris",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1986-12-26T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 10
+  },
+  {
+    "name": "Harry Kane",
+    "position": "Attacker",
+    "dateOfBirth": "1993-07-28T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 10
+  },
+  {
+    "name": "Reguilón",
+    "position": "Defender",
+    "dateOfBirth": "1996-12-16T00:00:00Z",
+    "countryOfBirth": "Spain",
+    "nationality": "Spain",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 10
+  },
+  {
+    "name": "Lucas Moura",
+    "position": "Midfielder",
+    "dateOfBirth": "1992-08-13T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Brazil",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 10
+  },
+  {
+    "name": "Harry Winks",
+    "position": "Midfielder",
+    "dateOfBirth": "1996-02-02T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 10
+  },
+  {
+    "name": "Branislav Ivanović",
+    "position": "Defender",
+    "dateOfBirth": "1984-02-22T00:00:00Z",
+    "countryOfBirth": "Serbia",
+    "nationality": "Serbia",
+    "shirtNumber": 6,
+    "role": "PLAYER",
+    "ClubId": 11
+  },
+  {
+    "name": "Hal Robson-Kanu",
+    "position": "Midfielder",
+    "dateOfBirth": "1989-05-21T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Wales",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 11
+  },
+  {
+    "name": "Callum Robinson",
+    "position": "Attacker",
+    "dateOfBirth": "1995-02-02T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Republic of Ireland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 11
+  },
+  {
+    "name": "Conor Gallagher",
+    "position": "Midfielder",
+    "dateOfBirth": "2000-02-06T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 11
+  },
+  {
+    "name": "Sam Johnstone",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1993-03-25T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 11
+  },
+  {
+    "name": "Rui Patrício",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1988-02-15T00:00:00Z",
+    "countryOfBirth": "Portugal",
+    "nationality": "Portugal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 12
+  },
+  {
+    "name": "Rúben Neves",
+    "position": "Midfielder",
+    "dateOfBirth": "1997-03-13T00:00:00Z",
+    "countryOfBirth": "Portugal",
+    "nationality": "Portugal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 12
+  },
+  {
+    "name": "Raúl Jiménez",
+    "position": "Attacker",
+    "dateOfBirth": "1991-05-05T00:00:00Z",
+    "countryOfBirth": "Mexico",
+    "nationality": "Mexico",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 12
+  },
+  {
+    "name": "Adama Traoré",
+    "position": "Attacker",
+    "dateOfBirth": "1996-01-25T00:00:00Z",
+    "countryOfBirth": "Spain",
+    "nationality": "Spain",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 12
+  },
+  {
+    "name": "Fábio Silva",
+    "position": "Attacker",
+    "dateOfBirth": "2002-07-19T00:00:00Z",
+    "countryOfBirth": "Portugal",
+    "nationality": "Portugal",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 12
+  },
+  {
+    "name": "Nick Pope",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1992-04-19T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 13
+  },
+  {
+    "name": "James Tarkowski",
+    "position": "Defender",
+    "dateOfBirth": "1992-11-19T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 13
+  },
+  {
+    "name": "Josh Benson",
+    "position": "Midfielder",
+    "dateOfBirth": "1999-12-05T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 13
+  },
+  {
+    "name": "Chris Wood",
+    "position": "Attacker",
+    "dateOfBirth": "1991-12-07T00:00:00Z",
+    "countryOfBirth": "New Zealand",
+    "nationality": "New Zealand",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 13
+  },
+  {
+    "name": "Ashley Barnes",
+    "position": "Attacker",
+    "dateOfBirth": "1989-10-30T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 13
+  },
+  {
+    "name": "Jamie Vardy",
+    "position": "Attacker",
+    "dateOfBirth": "1987-01-11T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 14
+  },
+  {
+    "name": "Kasper Schmeichel",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1986-11-05T00:00:00Z",
+    "countryOfBirth": "Denmark",
+    "nationality": "Denmark",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 14
+  },
+  {
+    "name": "James Maddison",
+    "position": "Midfielder",
+    "dateOfBirth": "1996-11-23T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 14
+  },
+  {
+    "name": "Jonny Evans",
+    "position": "Defender",
+    "dateOfBirth": "1988-01-03T00:00:00Z",
+    "countryOfBirth": "Northern Ireland",
+    "nationality": "Northern Ireland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 14
+  },
+  {
+    "name": "Çağlar Söyüncü",
+    "position": "Defender",
+    "dateOfBirth": "1996-05-23T00:00:00Z",
+    "countryOfBirth": "Turkey",
+    "nationality": "Turkey",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 14
+  },
+  {
+    "name": "Jannik Vestergaard",
+    "position": "Defender",
+    "dateOfBirth": "1992-08-03T00:00:00Z",
+    "countryOfBirth": "Denmark",
+    "nationality": "Denmark",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 15
+  },
+  {
+    "name": "Danny Ings",
+    "position": "Attacker",
+    "dateOfBirth": "1992-07-23T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 15
+  },
+  {
+    "name": "Ryan Bertrand",
+    "position": "Defender",
+    "dateOfBirth": "1989-08-05T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 15
+  },
+  {
+    "name": "James Ward-Prowse",
+    "position": "Midfielder",
+    "dateOfBirth": "1994-11-01T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 15
+  },
+  {
+    "name": "Takumi Minamino",
+    "position": "Attacker",
+    "dateOfBirth": "1995-01-16T00:00:00Z",
+    "countryOfBirth": "Japan",
+    "nationality": "Japan",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 15
+  },
+  {
+    "name": "Rodrigo",
+    "position": "Attacker",
+    "dateOfBirth": "1991-03-06T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Spain",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 16
+  },
+  {
+    "name": "Kalvin Phillips",
+    "position": "Midfielder",
+    "dateOfBirth": "1995-12-02T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 16
+  },
+  {
+    "name": "Stuart Dallas",
+    "position": "Midfielder",
+    "dateOfBirth": "1991-04-19T00:00:00Z",
+    "countryOfBirth": "Northern Ireland",
+    "nationality": "Northern Ireland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 16
+  },
+  {
+    "name": "Patrick Bamford",
+    "position": "Attacker",
+    "dateOfBirth": "1993-09-05T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 16
+  },
+  {
+    "name": "Raphinha",
+    "position": "Defender",
+    "dateOfBirth": "1996-02-14T00:00:00Z",
+    "countryOfBirth": "Brazil",
+    "nationality": "Brazil",
+    "shirtNumber": 7,
+    "role": "PLAYER",
+    "ClubId": 16
+  },
+  {
+    "name": "Michy Batshuayi",
+    "position": "Attacker",
+    "dateOfBirth": "1993-10-02T00:00:00Z",
+    "countryOfBirth": "Belgium",
+    "nationality": "Belgium",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 17
+  },
+  {
+    "name": "Eberechi Eze",
+    "position": "Midfielder",
+    "dateOfBirth": "1998-06-29T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 17
+  },
+  {
+    "name": "Gary Cahill",
+    "position": "Defender",
+    "dateOfBirth": "1985-12-19T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 17
+  },
+  {
+    "name": "Martin Kelly",
+    "position": "Defender",
+    "dateOfBirth": "1990-04-27T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 17
+  },
+  {
+    "name": "Joel Ward",
+    "position": "Defender",
+    "dateOfBirth": "1989-10-29T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 17
+  },
+  {
+    "name": "David McGoldrick",
+    "position": "Attacker",
+    "dateOfBirth": "1987-11-29T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Republic of Ireland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 18
+  },
+  {
+    "name": "George Baldock",
+    "position": "Midfielder",
+    "dateOfBirth": "1993-03-09T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 18
+  },
+  {
+    "name": "John Egan",
+    "position": "Defender",
+    "dateOfBirth": "1992-10-20T00:00:00Z",
+    "countryOfBirth": "Republic of Ireland",
+    "nationality": "Republic of Ireland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 18
+  },
+  {
+    "name": "Aaron Ramsdale",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1998-09-09T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 18
+  },
+  {
+    "name": "Ethan Ampadu",
+    "position": "Midfielder",
+    "dateOfBirth": "2000-09-14T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "Wales",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 18
+  },
+  {
+    "name": "Adam Lallana",
+    "position": "Midfielder",
+    "dateOfBirth": "1988-05-10T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 19
+  },
+  {
+    "name": "Danny Welbeck",
+    "position": "Attacker",
+    "dateOfBirth": "1990-11-26T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 19
+  },
+  {
+    "name": "Neal Maupay",
+    "position": "Attacker",
+    "dateOfBirth": "1996-08-14T00:00:00Z",
+    "countryOfBirth": "France",
+    "nationality": "France",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 19
+  },
+  {
+    "name": "Ben White",
+    "position": "Defender",
+    "dateOfBirth": "1997-10-08T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 19
+  },
+  {
+    "name": "Davy Pröpper",
+    "position": "Midfielder",
+    "dateOfBirth": "1991-09-02T00:00:00Z",
+    "countryOfBirth": "Netherlands",
+    "nationality": "Netherlands",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 19
+  },
+  {
+    "name": "Saïd Benrahma",
+    "position": "Attacker",
+    "dateOfBirth": "1995-08-10T00:00:00Z",
+    "countryOfBirth": "Algeria",
+    "nationality": "Algeria",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 20
+  },
+  {
+    "name": "Manuel Lanzini",
+    "position": "Midfielder",
+    "dateOfBirth": "1993-02-15T00:00:00Z",
+    "countryOfBirth": "Argentina",
+    "nationality": "Argentina",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 20
+  },
+  {
+    "name": "Łukasz Fabiański",
+    "position": "Goalkeeper",
+    "dateOfBirth": "1985-04-18T00:00:00Z",
+    "countryOfBirth": "Poland",
+    "nationality": "Poland",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 20
+  },
+  {
+    "name": "Aaron Cresswell",
+    "position": "Defender",
+    "dateOfBirth": "1989-12-15T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 20
+  },
+  {
+    "name": "Declan Rice",
+    "position": "Midfielder",
+    "dateOfBirth": "1999-01-14T00:00:00Z",
+    "countryOfBirth": "England",
+    "nationality": "England",
+    "shirtNumber": null,
+    "role": "PLAYER",
+    "ClubId": 20
+  }
+]

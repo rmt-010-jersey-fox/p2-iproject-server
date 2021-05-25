@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Chelsea FC",
+    "shortName": "Chelsea",
+    "tla": "CHE"
+  },
+  {
+    "name": "Arsenal FC",
+    "shortName": "Arsenal",
+    "tla": "ARS"
+  },
+  {
+    "name": "Aston Villa FC",
+    "shortName": "Aston Villa",
+    "tla": "AST"
+  },
+  {
+    "name": "Everton FC",
+    "shortName": "Everton",
+    "tla": "EVE"
+  },
+  {
+    "name": "Fulham FC",
+    "shortName": "Fulham",
+    "tla": "FUL"
+  },
+  {
+    "name": "Liverpool FC",
+    "shortName": "Liverpool",
+    "tla": "LIV"
+  },
+  {
+    "name": "Manchester City FC",
+    "shortName": "Man City",
+    "tla": "MCI"
+  },
+  {
+    "name": "Manchester United FC",
+    "shortName": "Man United",
+    "tla": "MUN"
+  },
+  {
+    "name": "Newcastle United FC",
+    "shortName": "Newcastle",
+    "tla": "NEW"
+  }, 
+  {
+    "name": "Tottenham Hotspur FC",
+    "shortName": "Tottenham",
+    "tla": "TOT"
+  },
+  {
+    "name": "West Bromwich Albion FC",
+    "shortName": "West Brom",
+    "tla": "WBA"
+  },
+  {
+    "name": "Wolverhampton Wanderers FC",
+    "shortName": "Wolverhampton",
+    "tla": "WOL"
+  },
+  {
+    "name": "Burnley FC",
+    "shortName": "Burnley",
+    "tla": "BUR"
+  },
+  {
+    "name": "Leicester City FC",
+    "shortName": "Leicester City",
+    "tla": "LEI"
+  },
+  {
+    "name": "Southampton FC",
+    "shortName": "Southampton",
+    "tla": "SOU"
+  },
+  {
+    "name": "Leeds United FC",
+    "shortName": "Leeds United",
+    "tla": "LEE"
+  },
+  {
+    "name": "Crystal Palace FC",
+    "shortName": "Crystal Palace",
+    "tla": "CRY"
+  },
+  {
+    "name": "Sheffield United FC",
+    "shortName": "Sheffield Utd",
+    "tla": "SHE"
+  },
+  {
+    "name": "Brighton & Hove Albion FC",
+    "shortName": "Brighton Hove",
+    "tla": "BHA"
+  },
+  {
+    "name": "West Ham United FC",
+    "shortName": "West Ham",
+    "tla": "WHU"
+  }
+]
